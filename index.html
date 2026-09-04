@@ -3528,8 +3528,11 @@ function hashPin(p){let h=0;for(const c of p)h=(Math.imul(31,h)+c.charCodeAt(0))
 function ini2(n){return n.split(/\s+/).map(w=>w[0]).join('').substring(0,2).toUpperCase();}
 function saveUsers(){
   LS.setItem('atoll_users',JSON.stringify(USERS));
-  // Sauvegarder les profils sur GitHub immédiatement si configuré
-  if(GH.config.token && GH.config.user && GH.config.repo) ghPush(true);
+  // Push vers GitHub avec léger délai pour s'assurer que USERS est complet
+  if(GH.config.token && GH.config.user && GH.config.repo){
+    clearTimeout(saveUsers._t);
+    saveUsers._t = setTimeout(()=>ghPush(true), 800);
+  }
 }
 
 async function initLogin(){
@@ -3644,8 +3647,18 @@ function pinConfirm(){
   const hash=hashPin(pinBuffer);pinBuffer='';
   if(pinMode==='create'){
     pinTargetUser.pin=hash;
-    if(!USERS.find(u=>u.id===pinTargetUser.id))USERS.push(pinTargetUser);
-    saveUsers();document.getElementById('loginError').textContent='';applyUserSession(pinTargetUser);
+    pinTargetUser.lastSeen=new Date().toISOString();
+    // Ajouter dans USERS si pas encore présent
+    const idx=USERS.findIndex(u=>u.id===pinTargetUser.id);
+    if(idx>=0) USERS[idx]=pinTargetUser; else USERS.push(pinTargetUser);
+    // Sauvegarder localement
+    LS.setItem('atoll_users',JSON.stringify(USERS));
+    CURRENT_USER=pinTargetUser;
+    LS.setItem('atoll_current',JSON.stringify(pinTargetUser));
+    document.getElementById('loginError').textContent='';
+    // Push GitHub avec le profil complet
+    if(GH.config.token && GH.config.user && GH.config.repo) ghPush(true);
+    applyUserSession(pinTargetUser);
   } else {
     if(pinTargetUser.pin===hash){document.getElementById('loginError').textContent='';applyUserSession(pinTargetUser);}
     else{updatePinDots();document.getElementById('loginError').textContent='❌ PIN incorrect, réessayez';}
@@ -3655,11 +3668,14 @@ function pinConfirm(){
 function applyUserSession(u){
   u.lastSeen=new Date().toISOString();
   const idx=USERS.findIndex(x=>x.id===u.id);
-  if(idx>=0)USERS[idx]=u;else USERS.push(u);
-  saveUsers();CURRENT_USER=u;LS.setItem('atoll_current',JSON.stringify(u));
+  if(idx>=0) USERS[idx]=u; else USERS.push(u);
+  // Sauvegarde locale uniquement ici (le push GH se fait dans pinConfirm ou saveUsers)
+  LS.setItem('atoll_users',JSON.stringify(USERS));
+  CURRENT_USER=u;
+  LS.setItem('atoll_current',JSON.stringify(u));
   document.getElementById('loginOverlay').style.display='none';
-  if(u.prefs?.week)cW=u.prefs.week;
-  if(u.prefs?.day!==undefined)cD=u.prefs.day;
+  if(u.prefs?.week) cW=u.prefs.week;
+  if(u.prefs?.day!==undefined) cD=u.prefs.day;
   const badge=document.getElementById('userBadge');if(badge)badge.style.display='flex';
   updateUserBadge();applyRolePermissions(u.role);render();
 }
