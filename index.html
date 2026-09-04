@@ -1834,10 +1834,18 @@ const GH = {
 };
 
 function ghApiUrl(file){
-  return `https://api.github.com/repos/${GH.config.user}/${GH.config.repo}/contents/${file}?ref=${GH.config.branch}`;
+  return `https://api.github.com/repos/${GH.config.user}/${GH.config.repo}/contents/${encodeURIComponent(file)}?ref=${GH.config.branch}`;
 }
 function ghHeaders(){
-  return{'Authorization':'token '+GH.config.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'};
+  return{
+    'Authorization':'Bearer '+GH.config.token,
+    'Accept':'application/vnd.github+json',
+    'X-GitHub-Api-Version':'2022-11-28',
+    'Content-Type':'application/json'
+  };
+}
+function ghFetch(url, opts={}){
+  return fetch(url, { ...opts, mode:'cors', credentials:'omit' });
 }
 function ghLog(type,msg){
   const time=new Date().toLocaleTimeString('fr-FR');
@@ -1861,9 +1869,9 @@ async function ghPush(silent=false){
   try{
     // Récupérer le SHA actuel
     let sha=null;
-    try{const r=await fetch(ghApiUrl(file),{headers:ghHeaders()});if(r.ok){const d=await r.json();sha=d.sha;}}catch(e){}
+    try{const r=await ghFetch(ghApiUrl(file),{headers:ghHeaders()});if(r.ok){const d=await r.json();sha=d.sha;}}catch(e){}
     const body={message:`💾 Planning sauvegardé — ${new Date().toLocaleString('fr-FR')}`,content,branch,...(sha?{sha}:{})};
-    const putR=await fetch(`https://api.github.com/repos/${user}/${repo}/contents/${file}`,{method:'PUT',headers:ghHeaders(),body:JSON.stringify(body)});
+    const putR=await ghFetch(`https://api.github.com/repos/${user}/${repo}/contents/${encodeURIComponent(file)}`,{method:'PUT',headers:ghHeaders(),body:JSON.stringify(body)});
     if(putR.ok){
       GH.config.lastSave=new Date().toISOString();
       LS.setItem('atoll_gh',JSON.stringify(GH.config));
@@ -1889,7 +1897,7 @@ async function ghPull(silent=false){
     return false;
   }
   try{
-    const r=await fetch(ghApiUrl(file),{headers:ghHeaders()});
+    const r=await ghFetch(ghApiUrl(file),{headers:ghHeaders()});
     if(!r.ok){
       if(r.status===404){ ghLog('info','ℹ Aucun fichier GitHub trouvé — première utilisation ?'); return false; }
       throw new Error('HTTP '+r.status);
@@ -1955,7 +1963,7 @@ async function ghTestAndSave(){
   const res=document.getElementById('ghTestResult');
   res.style.display='block';res.textContent='🔍 Test en cours…';res.style.color='var(--pa-muted)';
   try{
-    const r=await fetch(`https://api.github.com/repos/${GH.config.user}/${GH.config.repo}`,{headers:ghHeaders()});
+    const r=await ghFetch(`https://api.github.com/repos/${GH.config.user}/${GH.config.repo}`,{headers:ghHeaders()});
     if(r.ok){const d=await r.json();res.style.color='var(--pa-green)';res.textContent=`✅ Repo trouvé : "${d.full_name}"`;ghUpdateDot(true);toast('✓ Config GitHub sauvegardée');}
     else{res.style.color='var(--pa-red)';res.textContent=`❌ Erreur ${r.status} — Vérifiez le token et le nom du repo`;}
   }catch(e){res.style.color='var(--pa-red)';res.textContent='❌ Erreur réseau : '+e.message;}
