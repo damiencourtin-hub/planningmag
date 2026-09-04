@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-04T19:14:23.895Z",
+  "saved_at": "2026-09-04T19:15:28.141Z",
   "stores": [
     {
       "id": "store_default",
@@ -17987,6 +17987,18 @@
         "day": 0
       },
       "lastSeen": "2026-09-04T13:03:07.469Z"
+    },
+    {
+      "id": "u1788530264372",
+      "name": "Damien courtin",
+      "role": "admin",
+      "color": "#c97f5a",
+      "pin": "wgcl",
+      "prefs": {
+        "week": 1,
+        "day": 0
+      },
+      "lastSeen": "2026-09-04T13:57:46.826Z"
     }
   ]
 }
