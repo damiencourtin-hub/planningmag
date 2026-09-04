@@ -1,11 +1,11 @@
 {
   "version": 3,
-  "saved_at": "2026-09-04T11:43:07.289Z",
+  "saved_at": "2026-09-04T11:44:07.292Z",
   "stores": [
     {
       "id": "store_default",
-      "name": "Planning Commercial",
-      "location": "Mon Magasin",
+      "name": "Sarenza Studio Atoll",
+      "location": "Atoll",
       "year": 2026
     }
   ],
