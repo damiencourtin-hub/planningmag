@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-04T11:27:04.235Z",
+  "saved_at": "2026-09-04T11:28:26.789Z",
   "stores": [
     {
       "id": "store_default",
@@ -40922,8 +40922,20 @@
         "week": 2,
         "day": 0
       },
-      "lastSeen": "2026-09-04T11:25:14.082Z",
-      "storeId": "store_default"
+      "lastSeen": "2026-09-04T11:14:06.234Z",
+      "storeId": "store_1788520555425"
+    },
+    {
+      "id": "u1788520630607",
+      "name": "isa",
+      "role": "editor",
+      "color": "#d4a373",
+      "pin": "vo5c",
+      "prefs": {
+        "week": 1,
+        "day": 0
+      },
+      "lastSeen": "2026-09-04T11:17:20.851Z"
     }
   ]
 }
