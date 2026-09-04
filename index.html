@@ -654,25 +654,21 @@ body{
   .cmd-right{gap:5px}
 
   /* Layout : sidebar cachée, plein écran */
-  .app{grid-template-columns:0 0 1fr;transition:none}
-  .app.nav-open-mobile{
-    grid-template-columns:min(82vw,300px) 0 1fr;
-    position:relative;
-  }
+  .app{grid-template-columns:1fr;transition:none;overflow:hidden}
   .nav-toggle{display:none}
   .leftnav{
-    position:fixed;top:0;left:0;bottom:0;width:min(82vw,300px);
+    position:fixed;top:0;left:0;bottom:0;
+    width:min(80vw,280px);
     z-index:200;
     transform:translateX(-100%);
     transition:transform .3s cubic-bezier(.4,0,.2,1);
-    box-shadow:4px 0 24px rgba(0,0,0,.25);
+    box-shadow:4px 0 24px rgba(0,0,0,.3);
+    overflow-y:auto;
   }
   .leftnav.open{transform:translateX(0)}
-
-  /* Overlay pour fermer la sidebar */
   .nav-overlay{
-    display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);
-    z-index:199;backdrop-filter:blur(2px);
+    display:none;position:fixed;inset:0;
+    background:rgba(10,0,20,.5);z-index:199;
   }
   .nav-overlay.show{display:block}
 
@@ -1659,13 +1655,43 @@ function storeKey(k){ return `${k}_${CURRENT_STORE_ID}`; }
 
 // Charger les données du magasin courant
 function loadStoreData(){
-  const sid=CURRENT_STORE_ID;
+  const sid = CURRENT_STORE_ID;
+  // 1. Charger les collaborateurs d'abord (nécessaire pour initData)
   try{
-    const r=LS.getItem(`atoll_v2_${sid}`);
-    if(r) DATA=JSON.parse(r); else { COLLS=JSON.parse(JSON.stringify(DEFAULT_COLLS)); DATA=initData(); }
-  }catch(e){ DATA=initData(); }
-  try{const r=LS.getItem(`atoll_colls_${sid}`);if(r)COLLS=JSON.parse(r);else COLLS=JSON.parse(JSON.stringify(DEFAULT_COLLS));}catch(e){COLLS=JSON.parse(JSON.stringify(DEFAULT_COLLS));}
-  try{const r=LS.getItem(`atoll_tpl_${sid}`);if(r)TPLS=JSON.parse(r);else TPLS=[];}catch(e){TPLS=[];}
+    const r = LS.getItem(`atoll_colls_${sid}`);
+    if(r) COLLS = JSON.parse(r);
+    else COLLS = JSON.parse(JSON.stringify(DEFAULT_COLLS));
+  }catch(e){ COLLS = JSON.parse(JSON.stringify(DEFAULT_COLLS)); }
+
+  // 2. Charger DATA
+  try{
+    const r = LS.getItem(`atoll_v2_${sid}`);
+    if(r){
+      DATA = JSON.parse(r);
+      // Vérifier que chaque semaine a le bon nombre de collabs
+      for(let s=1;s<=53;s++){
+        if(!DATA[s]) DATA[s] = initDataWeek(s);
+        else DATA[s].jours.forEach(j=>{
+          while(j.collaborateurs.length < COLLS.length) j.collaborateurs.push(mkSlot(0));
+          if(j.collaborateurs.length > COLLS.length) j.collaborateurs.length = COLLS.length;
+        });
+      }
+    } else {
+      DATA = initData();
+    }
+  }catch(e){ DATA = initData(); }
+
+  // 3. Templates
+  try{
+    const r = LS.getItem(`atoll_tpl_${sid}`);
+    TPLS = r ? JSON.parse(r) : [];
+  }catch(e){ TPLS = []; }
+}
+
+function initDataWeek(s){
+  return {histo:0,objectif:0,prod_budget:180,hObj:0,
+    objJours:new Array(7).fill(0), histoJours:new Array(7).fill(0),
+    jours:JOURS.map((_,ji)=>({collaborateurs:COLLS.map(()=>mkSlot(ji))}))};
 }
 
 // Sauvegarder les données du magasin courant
@@ -2362,11 +2388,35 @@ function toast(msg,col='var(--pa-green)'){
 // RENDER
 // ══════════════════════════════════════
 function render(){
-  document.getElementById('weekLabel').textContent='S'+cW;
-  const pl=document.getElementById('printWeekLbl');if(pl)pl.textContent=cW;
-  const sn=document.getElementById('storeName');if(sn)sn.textContent=STORE.name||'—';
-  const sl=document.getElementById('storeLocationTxt');if(sl)sl.textContent=STORE.location||'';
-  renderNav();renderContent();
+  // Resync STORE depuis STORES courant
+  STORE = getCurrentStore();
+  PLANNING_YEAR = STORE.year || 2026;
+
+  const wl = document.getElementById('weekLabel');
+  if(wl) wl.textContent = 'S'+cW;
+  const pl = document.getElementById('printWeekLbl'); if(pl) pl.textContent = cW;
+  const sn = document.getElementById('storeName'); if(sn) sn.textContent = STORE.name||'—';
+  const sl = document.getElementById('storeLocationTxt'); if(sl) sl.textContent = STORE.location||'';
+
+  // Guard : s'assurer que DATA[cW] existe et a la bonne structure
+  if(!DATA[cW] || !DATA[cW].jours){
+    DATA = initData();
+    LS.setItem(`atoll_v2_${CURRENT_STORE_ID}`, JSON.stringify(DATA));
+  }
+  if(!DATA[cW].jours[cD]){
+    DATA[cW].jours[cD] = {collaborateurs: COLLS.map((_,ji)=>mkSlot(ji))};
+  }
+
+  try { renderNav(); } catch(e){ console.error('renderNav:', e); }
+  try { renderContent(); } catch(e){
+    console.error('renderContent:', e);
+    const el = document.getElementById('content');
+    if(el) el.innerHTML = `<div style="padding:24px;color:var(--pa-red)">
+      <strong>⚠ Erreur d'affichage</strong><br>
+      <span style="font-size:12px">${e.message}</span><br><br>
+      <button onclick="DATA=initData();render()" class="fl-btn primary">🔄 Réinitialiser</button>
+    </div>`;
+  }
 }
 
 function applyStoreLabels(){
