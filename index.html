@@ -1328,56 +1328,91 @@ body{
 <div class="backdrop" id="dlgGH">
   <div class="fl-dialog" style="max-width:480px">
     <div class="dlg-hd">
-      <div class="dlg-title">⬡ Sauvegarde GitHub — Multi-postes</div>
+      <div class="dlg-title">⬡ GitHub — Synchronisation multi-postes</div>
       <button class="dlg-close" onclick="closeGHConfig()">✕</button>
     </div>
     <div class="dlg-body">
-      <div style="background:#e8f1fb;border:1px solid #bad3e8;border-radius:var(--r-md);padding:12px 14px;margin-bottom:16px;font-size:12px;color:#0d1b2e;line-height:1.6">
-        <strong>💡 Comment ça fonctionne ?</strong><br>
-        Vos données et profils sont sauvegardés dans votre repo GitHub. Sur un nouveau poste, l'app les recharge automatiquement → vos profils apparaissent, entrez votre PIN, c'est tout.
+
+      <!-- Onglets -->
+      <div style="display:flex;border-bottom:1px solid var(--pa-border);margin-bottom:16px;gap:0">
+        <button id="ghTab-config" onclick="ghSwitchTab('config')" style="flex:1;padding:8px;border:none;border-bottom:2px solid #e91e8c;background:transparent;font-family:inherit;font-size:12px;font-weight:700;color:#e91e8c;cursor:pointer">⚙ Configuration</button>
+        <button id="ghTab-share" onclick="ghSwitchTab('share')" style="flex:1;padding:8px;border:none;border-bottom:2px solid transparent;background:transparent;font-family:inherit;font-size:12px;font-weight:600;color:var(--pa-muted);cursor:pointer">📲 Partager sur un appareil</button>
       </div>
-      <div style="background:#fff8e1;border:1px solid #f0d090;border-radius:var(--r-md);padding:10px 14px;margin-bottom:16px;font-size:11px;color:#5d4200">
-        <strong>Créer un token GitHub :</strong> github.com → Settings → Developer settings → Personal access tokens → Tokens (classic) → New token → cochez <strong>repo</strong> → Générer → Copier
-      </div>
-      <div class="fl-g2" style="margin-bottom:10px">
-        <div class="fl-row" style="margin:0">
-          <label class="fl-label">Pseudo GitHub <span style="color:var(--pa-red)">*</span></label>
-          <input class="fl-inp" type="text" id="ghUser" placeholder="votre-pseudo">
+
+      <!-- Panel Configuration -->
+      <div id="ghPanel-config">
+        <div style="background:#fff0f7;border:1px solid #ffb8d9;border-radius:var(--r-md);padding:10px 14px;margin-bottom:14px;font-size:11px;color:#7a0040;line-height:1.5">
+          <strong>Créer un token GitHub :</strong> github.com → Settings → Developer settings → Personal access tokens → Tokens (classic) → New token → cochez <strong>repo</strong> → Générer → Copier
         </div>
-        <div class="fl-row" style="margin:0">
-          <label class="fl-label">Nom du repo <span style="color:var(--pa-red)">*</span></label>
-          <input class="fl-inp" type="text" id="ghRepo" placeholder="nom-du-repo">
+        <div class="fl-g2" style="margin-bottom:10px">
+          <div class="fl-row" style="margin:0">
+            <label class="fl-label">Pseudo GitHub <span style="color:var(--pa-red)">*</span></label>
+            <input class="fl-inp" type="text" id="ghUser" placeholder="votre-pseudo">
+          </div>
+          <div class="fl-row" style="margin:0">
+            <label class="fl-label">Nom du repo <span style="color:var(--pa-red)">*</span></label>
+            <input class="fl-inp" type="text" id="ghRepo" placeholder="nom-du-repo">
+          </div>
+        </div>
+        <div class="fl-g2" style="margin-bottom:10px">
+          <div class="fl-row" style="margin:0">
+            <label class="fl-label">Branche</label>
+            <input class="fl-inp" type="text" id="ghBranch" value="main">
+          </div>
+          <div class="fl-row" style="margin:0">
+            <label class="fl-label">Fichier</label>
+            <input class="fl-inp" type="text" id="ghFile" value="planning_data.json">
+          </div>
+        </div>
+        <div class="fl-row">
+          <label class="fl-label">Personal Access Token <span style="color:var(--pa-red)">*</span></label>
+          <input class="fl-inp" type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxx">
+        </div>
+        <div style="display:flex;gap:10px;margin-bottom:12px">
+          <label style="display:flex;align-items:center;gap:8px;font-size:12px;cursor:pointer;flex:1;padding:9px 12px;background:var(--pa-surface2);border:1px solid var(--pa-border);border-radius:var(--r-md)">
+            <input type="checkbox" id="ghAutoSave" style="accent-color:#e91e8c" onchange="ghToggleAuto(this.checked)">
+            <div><div style="font-weight:600">Auto-sauvegarde</div><div style="font-size:10px;color:var(--pa-muted)">À chaque 💾</div></div>
+          </label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:12px;cursor:pointer;flex:1;padding:9px 12px;background:var(--pa-surface2);border:1px solid var(--pa-border);border-radius:var(--r-md)">
+            <input type="checkbox" id="ghAutoLoad" style="accent-color:#e91e8c" onchange="ghToggleAutoLoad(this.checked)">
+            <div><div style="font-weight:600">Chargement auto</div><div style="font-size:10px;color:var(--pa-muted)">Au démarrage</div></div>
+          </label>
+        </div>
+        <div id="ghTestResult" style="display:none;font-size:12px;padding:8px 12px;border-radius:var(--r-md);background:var(--pa-surface2);margin-bottom:4px"></div>
+        <div id="ghLastSave" style="font-size:11px;color:var(--pa-muted);margin-top:4px"></div>
+      </div>
+
+      <!-- Panel Partage -->
+      <div id="ghPanel-share" style="display:none">
+        <div style="background:#fff0f7;border:1px solid #ffb8d9;border-radius:var(--r-md);padding:12px 14px;margin-bottom:16px;font-size:12px;color:#7a0040;line-height:1.6">
+          <strong>🔒 Sécurité</strong> — Ce lien contient votre token GitHub. Partagez-le uniquement avec des personnes de confiance via un canal privé (SMS, WhatsApp, email pro). Ne le postez jamais publiquement.
+        </div>
+
+        <!-- Lien de configuration -->
+        <div style="margin-bottom:16px">
+          <div style="font-size:12px;font-weight:700;color:var(--pa-text);margin-bottom:8px">🔗 Lien de configuration automatique</div>
+          <div style="font-size:11px;color:var(--pa-muted);margin-bottom:8px">Envoyez ce lien à vos collègues. En cliquant dessus, la synchronisation GitHub se configure automatiquement sur leur appareil.</div>
+          <div style="display:flex;gap:8px">
+            <input id="ghShareLink" class="fl-inp" type="text" readonly style="font-size:10px;font-family:monospace;cursor:text;flex:1" value="— Configurez GitHub d'abord —">
+            <button class="fl-btn primary" onclick="copyGHLink()" style="flex-shrink:0;padding:0 14px">📋 Copier</button>
+          </div>
+        </div>
+
+        <!-- QR Code -->
+        <div style="margin-bottom:8px">
+          <div style="font-size:12px;font-weight:700;color:var(--pa-text);margin-bottom:8px">📲 QR Code — Scanner avec le téléphone</div>
+          <div style="font-size:11px;color:var(--pa-muted);margin-bottom:12px">Idéal pour configurer un smartphone en quelques secondes.</div>
+          <div id="ghQRCode" style="display:flex;justify-content:center;padding:16px;background:#fff;border:1px solid var(--pa-border);border-radius:var(--r-md)">
+            <div style="font-size:12px;color:var(--pa-muted);text-align:center;padding:20px">
+              Configurez et testez GitHub d'abord,<br>puis revenez ici pour générer le QR code.
+            </div>
+          </div>
         </div>
       </div>
-      <div class="fl-g2" style="margin-bottom:10px">
-        <div class="fl-row" style="margin:0">
-          <label class="fl-label">Branche</label>
-          <input class="fl-inp" type="text" id="ghBranch" value="main">
-        </div>
-        <div class="fl-row" style="margin:0">
-          <label class="fl-label">Fichier de données</label>
-          <input class="fl-inp" type="text" id="ghFile" value="planning_data.json">
-        </div>
-      </div>
-      <div class="fl-row">
-        <label class="fl-label">Personal Access Token <span style="color:var(--pa-red)">*</span></label>
-        <input class="fl-inp" type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxx">
-      </div>
-      <div style="display:flex;gap:10px;margin-bottom:12px">
-        <label style="display:flex;align-items:center;gap:8px;font-size:12px;cursor:pointer;flex:1;padding:9px 12px;background:var(--pa-surface2);border:1px solid var(--pa-border);border-radius:var(--r-md)">
-          <input type="checkbox" id="ghAutoSave" style="accent-color:#e91e8c" onchange="ghToggleAuto(this.checked)">
-          <div><div style="font-weight:600">Auto-sauvegarde</div><div style="font-size:10px;color:var(--pa-muted)">À chaque 💾 Enregistrer</div></div>
-        </label>
-        <label style="display:flex;align-items:center;gap:8px;font-size:12px;cursor:pointer;flex:1;padding:9px 12px;background:var(--pa-surface2);border:1px solid var(--pa-border);border-radius:var(--r-md)">
-          <input type="checkbox" id="ghAutoLoad" style="accent-color:#e91e8c" onchange="ghToggleAutoLoad(this.checked)">
-          <div><div style="font-weight:600">Chargement auto</div><div style="font-size:10px;color:var(--pa-muted)">Au démarrage</div></div>
-        </label>
-      </div>
-      <div id="ghTestResult" style="display:none;font-size:12px;padding:8px 12px;border-radius:var(--r-md);background:var(--pa-surface2);margin-bottom:4px"></div>
-      <div id="ghLastSave" style="font-size:11px;color:var(--pa-muted);margin-top:4px"></div>
+
     </div>
-    <div class="dlg-footer">
-      <button class="fl-btn ghost" onclick="ghPull()">📥 Charger depuis GitHub</button>
+    <div class="dlg-footer" id="ghFooter">
+      <button class="fl-btn ghost" onclick="ghPull()">📥 Charger</button>
       <button class="fl-btn ghost" onclick="closeGHConfig()">Fermer</button>
       <button class="fl-btn primary" onclick="ghTestAndSave()">🔍 Tester & Sauvegarder</button>
     </div>
@@ -1818,18 +1853,17 @@ function showSaveIndicator(mode){
   const el=document.getElementById('saveIndicator');
   if(!el) return;
   if(mode==='saved'){
-    el.textContent='✓ Enregistré';
-    el.style.color='rgba(255,255,255,.7)';
+    el.textContent='✓ Enregistré';el.style.color='rgba(255,200,230,.8)';
   } else if(mode==='auto'){
-    el.textContent='✓ Sauvegardé';
-    el.style.color='rgba(255,255,255,.45)';
+    el.textContent='✓ Sauvegardé';el.style.color='rgba(255,200,230,.5)';
   } else if(mode==='gh'){
-    el.textContent='☁ Synchronisé';
-    el.style.color='rgba(100,200,255,.8)';
+    el.textContent='☁ Synchronisé';el.style.color='rgba(180,150,255,.8)';
+  } else if(mode==='sync'){
+    el.textContent='🔄 Mis à jour';el.style.color='rgba(100,255,180,.8)';
   }
   el.style.opacity='1';
   clearTimeout(el._t);
-  el._t=setTimeout(()=>{ el.style.opacity='0'; },3000);
+  el._t=setTimeout(()=>{ el.style.opacity='0'; },3500);
 }
 
 // ══════════════════════════════════════
@@ -2253,13 +2287,94 @@ function openGHConfig(){
   document.getElementById('ghBranch').value =GH.config.branch||'main';
   document.getElementById('ghToken').value  =GH.config.token||'';
   document.getElementById('ghFile').value   =GH.config.file||'planning_data.json';
-  document.getElementById('ghAutoSave').checked   =!!GH.config.autoSave;
-  document.getElementById('ghAutoLoad').checked   =!!GH.config.autoLoad;
+  document.getElementById('ghAutoSave').checked=!!GH.config.autoSave;
+  document.getElementById('ghAutoLoad').checked=!!GH.config.autoLoad;
   const ls=document.getElementById('ghLastSave');
   if(ls) ls.textContent=GH.config.lastSave?'Dernière sauvegarde : '+new Date(GH.config.lastSave).toLocaleString('fr-FR'):'';
+  ghSwitchTab('config');
   document.getElementById('dlgGH').classList.add('open');
 }
 function closeGHConfig(){ document.getElementById('dlgGH').classList.remove('open'); }
+
+function ghSwitchTab(tab){
+  ['config','share'].forEach(t=>{
+    const panel=document.getElementById('ghPanel-'+t);
+    const btn=document.getElementById('ghTab-'+t);
+    if(panel) panel.style.display=t===tab?'':'none';
+    if(btn){
+      btn.style.borderBottomColor=t===tab?'#e91e8c':'transparent';
+      btn.style.color=t===tab?'#e91e8c':'var(--pa-muted)';
+      btn.style.fontWeight=t===tab?'700':'600';
+    }
+  });
+  if(tab==='share') buildSharePanel();
+  // Footer : cacher "Tester" sur l'onglet partage
+  const footer=document.getElementById('ghFooter');
+  if(footer){
+    const testBtn=footer.querySelector('.fl-btn.primary');
+    if(testBtn) testBtn.style.display=tab==='share'?'none':'';
+  }
+}
+
+function buildSharePanel(){
+  if(!GH.config.token || !GH.config.user || !GH.config.repo) return;
+  // Construire l'URL de configuration
+  const baseUrl = location.href.split('?')[0].split('#')[0];
+  const params = new URLSearchParams({
+    gh_user:   GH.config.user,
+    gh_repo:   GH.config.repo,
+    gh_branch: GH.config.branch||'main',
+    gh_file:   GH.config.file||'planning_data.json',
+    gh_token:  GH.config.token,
+  });
+  const shareUrl = `${baseUrl}?${params.toString()}`;
+  const linkEl = document.getElementById('ghShareLink');
+  if(linkEl) linkEl.value = shareUrl;
+  // Générer le QR Code via API publique (sans lib externe)
+  const qrEl = document.getElementById('ghQRCode');
+  if(qrEl){
+    const encoded = encodeURIComponent(shareUrl);
+    qrEl.innerHTML = `
+      <div style="text-align:center">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encoded}"
+          style="border-radius:8px;max-width:200px;width:100%"
+          alt="QR Code configuration GitHub">
+        <div style="font-size:10px;color:var(--pa-muted);margin-top:8px">
+          Scanner avec l'appareil photo du téléphone
+        </div>
+      </div>`;
+  }
+}
+
+function copyGHLink(){
+  const el = document.getElementById('ghShareLink');
+  if(!el || !el.value || el.value.includes('Configurez')) return;
+  navigator.clipboard?.writeText(el.value)
+    .then(()=>toast('✓ Lien copié — partagez-le en message privé'))
+    .catch(()=>{
+      el.select(); document.execCommand('copy');
+      toast('✓ Lien copié');
+    });
+}
+
+// Appliquer automatiquement la config GitHub depuis l'URL (?gh_token=...)
+function applyGHFromURL(){
+  const p = new URLSearchParams(location.search);
+  if(!p.has('gh_token')) return;
+  GH.config.user   = p.get('gh_user')   || GH.config.user;
+  GH.config.repo   = p.get('gh_repo')   || GH.config.repo;
+  GH.config.branch = p.get('gh_branch') || 'main';
+  GH.config.file   = p.get('gh_file')   || 'planning_data.json';
+  GH.config.token  = p.get('gh_token');
+  GH.config.autoSave = true;
+  GH.config.autoLoad = true;
+  LS.setItem('atoll_gh', JSON.stringify(GH.config));
+  // Nettoyer l'URL sans recharger la page
+  const clean = location.href.split('?')[0];
+  history.replaceState({}, document.title, clean);
+  toast('✅ Configuration GitHub appliquée automatiquement !', 'var(--pa-green)');
+  ghUpdateDot(true);
+}
 async function ghTestAndSave(){
   GH.config.user  =document.getElementById('ghUser').value.trim();
   GH.config.repo  =document.getElementById('ghRepo').value.trim();
@@ -4312,6 +4427,9 @@ function confirmDeleteSelf(){
 // INIT
 // ══════════════════════════════════════
 try {
+  // ── Appliquer config GitHub depuis URL si présente ──
+  applyGHFromURL();
+
   // ── Préparation PWA : manifest dynamique ──
   try {
     const svgIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#1a1a1a"/><text x="50" y="64" font-size="44" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="bold">P</text></svg>`;
@@ -4359,12 +4477,58 @@ try {
   render();
   setTimeout(()=>{try{const el=document.querySelector('.wp-cell.active');if(el)el.scrollIntoView({block:'center'});}catch(e){}},80);
 
-  // ── Auto-sauvegarde GitHub toutes les 5 minutes ──
-  setInterval(()=>{
+  // ── SYNCHRONISATION BIDIRECTIONNELLE ──
+  // Push local → GitHub toutes les 60s
+  setInterval(async ()=>{
     if(GH.config.token && GH.config.user && GH.config.repo){
-      ghPush(true).then(()=>showSaveIndicator('gh'));
+      await ghPush(true);
+      showSaveIndicator('gh');
     }
   }, 60 * 1000);
+
+  // Pull GitHub → local toutes les 30s (détecte changements d'un autre appareil)
+  let _lastSHA = null;
+  setInterval(async ()=>{
+    if(!GH.config.token || !GH.config.user || !GH.config.repo) return;
+    if(document.hidden) return; // ne pas syncer si l'onglet est en arrière-plan
+    try{
+      // Vérifier le SHA du fichier sans tout télécharger
+      const r = await ghFetch(ghApiUrl(GH.config.file), {headers:ghHeaders()});
+      if(!r.ok) return;
+      const meta = await r.json();
+      const sha = meta.sha;
+      if(_lastSHA === null){ _lastSHA = sha; return; } // première fois, mémoriser
+      if(sha === _lastSHA) return; // pas de changement
+      // SHA différent = un autre appareil a sauvegardé → on pull
+      _lastSHA = sha;
+      const pulled = await ghPull(true);
+      if(pulled){
+        loadStoreData();
+        STORE = getCurrentStore();
+        PLANNING_YEAR = STORE.year || 2026;
+        render();
+        showSaveIndicator('sync');
+        toast('🔄 Planning mis à jour depuis un autre appareil', '#7c3aed');
+      }
+    }catch(e){}
+  }, 30 * 1000);
+
+  // Resync quand l'onglet redevient visible
+  document.addEventListener('visibilitychange', async ()=>{
+    if(!document.hidden && GH.config.token && GH.config.user && GH.config.repo){
+      try{
+        const r = await ghFetch(ghApiUrl(GH.config.file), {headers:ghHeaders()});
+        if(!r.ok) return;
+        const meta = await r.json();
+        if(meta.sha !== _lastSHA){
+          _lastSHA = meta.sha;
+          await ghPull(true);
+          loadStoreData(); STORE=getCurrentStore(); PLANNING_YEAR=STORE.year||2026;
+          render(); showSaveIndicator('sync');
+        }
+      }catch(e){}
+    }
+  });
 
   // Init login system
   initLogin();
