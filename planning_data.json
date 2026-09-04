@@ -1,11 +1,11 @@
 {
   "version": 3,
-  "saved_at": "2026-09-04T11:46:09.245Z",
+  "saved_at": "2026-09-04T11:48:10.959Z",
   "stores": [
     {
       "id": "store_default",
-      "name": "Planning Commercial",
-      "location": "Mon Magasin",
+      "name": "Sarenza Studio Atoll",
+      "location": "SZ5475",
       "year": 2026
     }
   ],
@@ -20739,7 +20739,20 @@
         "week": 1,
         "day": 0
       },
-      "lastSeen": "2026-09-04T11:40:23.203Z"
+      "lastSeen": "2026-09-04T11:47:48.647Z"
+    },
+    {
+      "id": "u1788520630607",
+      "name": "isa",
+      "role": "editor",
+      "color": "#d4a373",
+      "pin": "vo5c",
+      "prefs": {
+        "week": 1,
+        "day": 0
+      },
+      "lastSeen": "2026-09-04T11:47:10.954Z",
+      "storeId": "store_default"
     }
   ]
 }
