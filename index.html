@@ -459,7 +459,7 @@ body{
 /* Color swatches */
 .color-row{display:flex;gap:6px;flex-wrap:wrap}
 .csw{width:22px;height:22px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:.1s;flex-shrink:0}
-.csw.sel{border-color:var(--pa-blue);box-shadow:0 0 0 1px var(--pa-blue)}
+.csw.sel{border-color:#fff!important;box-shadow:0 0 0 3px #1a1a1a;transform:scale(1.2)}
 .sec-ttl{font-size:12px;font-weight:700;color:var(--pa-text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
 
 /* Quick picks */
@@ -773,8 +773,29 @@ body{
 .wc-h{font-size:13px;font-weight:700;color:var(--pa-text)}
 .wc-t{font-size:10px;color:var(--pa-muted);line-height:1.3}
 .wc-bar{height:3px;border-radius:2px;margin-top:3px;background:#e91e8c;opacity:.6}
+/* ─── SÉLECTEUR MAGASIN ─── */
+.store-selector-btn{
+  display:flex;align-items:center;gap:8px;cursor:pointer;
+  padding:4px 10px 4px 8px;border-radius:var(--r-md);
+  border:1px solid rgba(244,114,182,.2);background:rgba(244,114,182,.08);
+  transition:all .2s ease;max-width:180px;
+}
+.store-selector-btn:hover{background:rgba(244,114,182,.16);border-color:rgba(244,114,182,.4);box-shadow:var(--glow-sm)}
+.store-selector-icon{font-size:14px}
+.store-selector-name{font-size:12px;font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.store-selector-arrow{font-size:10px;color:rgba(255,200,230,.6);flex-shrink:0}
+.store-card{
+  display:flex;align-items:center;gap:12px;padding:12px 14px;
+  background:var(--pa-surface2);border:1.5px solid var(--pa-border);
+  border-radius:var(--r-md);cursor:pointer;transition:all .2s ease;
+}
+.store-card:hover{border-color:#e91e8c;background:#fff0f7;transform:translateY(-1px);box-shadow:0 4px 12px rgba(233,30,140,.1)}
+.store-card.active{border-color:#e91e8c;background:#fff0f7;box-shadow:0 0 0 2px rgba(233,30,140,.15)}
+.store-card-icon{width:40px;height:40px;border-radius:var(--r-md);background:linear-gradient(135deg,#e91e8c,#9d0a5e);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;box-shadow:0 0 12px rgba(233,30,140,.25)}
+.store-card-name{font-size:14px;font-weight:700;color:var(--pa-text)}
+.store-card-loc{font-size:11px;color:var(--pa-muted)}
+.store-card-badge{margin-left:auto;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:linear-gradient(135deg,#e91e8c,#9d0a5e);color:#fff;white-space:nowrap}
 </style>
-</head>
 <body>
 
 <!-- ══ LOGIN OVERLAY ══ -->
@@ -904,15 +925,57 @@ body{
   </div>
 </div>
 
+<!-- ══ STORE SELECTOR DIALOG ══ -->
+<div class="backdrop" id="dlgStoreSelector">
+  <div class="fl-dialog" style="max-width:480px">
+    <div class="dlg-hd">
+      <div class="dlg-title">🏪 Magasins</div>
+      <button class="dlg-close" onclick="closeStoreSelector()">✕</button>
+    </div>
+    <div class="dlg-body">
+      <!-- Onglets admin -->
+      <div id="storeTabs" style="display:none;border-bottom:1px solid var(--pa-border);margin-bottom:14px;display:flex;gap:0">
+        <button id="storeTab-list" onclick="storeSwitchTab('list')" style="flex:1;padding:8px;border:none;border-bottom:2px solid #e91e8c;background:transparent;font-family:inherit;font-size:13px;font-weight:700;color:#e91e8c;cursor:pointer">📋 Mes magasins</button>
+        <button id="storeTab-create" onclick="storeSwitchTab('create')" style="flex:1;padding:8px;border:none;border-bottom:2px solid transparent;background:transparent;font-family:inherit;font-size:13px;font-weight:600;color:var(--pa-muted);cursor:pointer">✚ Nouveau magasin</button>
+      </div>
+      <!-- Liste des magasins -->
+      <div id="storePanelList">
+        <div id="storeList" style="display:flex;flex-direction:column;gap:8px"></div>
+      </div>
+      <!-- Créer un magasin -->
+      <div id="storePanelCreate" style="display:none">
+        <div class="fl-row">
+          <label class="fl-label">Nom / Titre</label>
+          <input class="fl-inp" type="text" id="newStoreName" placeholder="Planning Commercial">
+        </div>
+        <div class="fl-row">
+          <label class="fl-label">Magasin / Localisation</label>
+          <input class="fl-inp" type="text" id="newStoreLoc" placeholder="Ville · Enseigne">
+        </div>
+        <div class="fl-row" style="margin-bottom:20px">
+          <label class="fl-label">Année du planning</label>
+          <input class="fl-inp" type="number" id="newStoreYear" value="2026" style="max-width:120px">
+        </div>
+        <button class="fl-btn primary" style="width:100%;justify-content:center;height:42px" onclick="createAndSwitchStore()">
+          ✚ Créer ce magasin
+        </button>
+      </div>
+    </div>
+    <div class="dlg-footer" id="storeSelectorFooter">
+      <button class="fl-btn ghost" onclick="closeStoreSelector()">Fermer</button>
+    </div>
+  </div>
+</div>
+
 <!-- ══ COMMAND BAR ══ -->
 <div class="cmd-bar">
-  <div class="cmd-logo" onclick="openStoreEditor()" title="Cliquer pour modifier le magasin" style="cursor:pointer">
+  <div class="cmd-logo">
     <div class="cmd-logo-icon">📋</div>
     <div>
       <div class="cmd-logo-text" id="storeName">Planning Commercial</div>
-      <div class="cmd-logo-sub">
-        <span id="storeLocationTxt">Angers ATOLL</span>
-        <span style="font-size:9px;opacity:.55;margin-left:4px">✏️</span>
+      <div class="cmd-logo-sub" onclick="openStoreSelector()" title="Changer de magasin" style="cursor:pointer">
+        <span id="storeLocationTxt">—</span>
+        <span style="opacity:.4;margin-left:4px">▾</span>
       </div>
     </div>
   </div>
@@ -1449,19 +1512,15 @@ const LS = (()=>{
 // DATA & CONSTANTS
 // ══════════════════════════════════════
 const DEFAULT_COLLS = [
-  {nom:'Claude',    base:35, color:'#c97f5a'},
-  {nom:'Fernanda',  base:35, color:'#8ba888'},
-  {nom:'Nathalie',  base:35, color:'#b08968'},
-  {nom:'Lilou',     base:30, color:'#9b7ba8'},
-  {nom:'Ilona',     base:24, color:'#d4a373'},
-  {nom:'CDI',       base:24, color:'#7d8e9a'},
-  {nom:'CDD 35 (1)',base:35, color:'#a48b78'},
-  {nom:'CDD 35 (2)',base:35, color:'#8b6f5c'},
+  {nom:'Collaborateur 1', base:35, color:'#c97f5a'},
+  {nom:'Collaborateur 2', base:35, color:'#8ba888'},
+  {nom:'Collaborateur 3', base:35, color:'#b08968'},
+  {nom:'Collaborateur 4', base:30, color:'#9b7ba8'},
+  {nom:'Collaborateur 5', base:24, color:'#d4a373'},
+  {nom:'Collaborateur 6', base:24, color:'#7d8e9a'},
+  {nom:'Collaborateur 7', base:35, color:'#a48b78'},
+  {nom:'Collaborateur 8', base:35, color:'#8b6f5c'},
 ];
-let COLLS=(()=>{try{const r=LS.getItem('atoll_colls');if(r)return JSON.parse(r);}catch(e){}return JSON.parse(JSON.stringify(DEFAULT_COLLS));})();
-
-// Store config
-let STORE = (()=>{try{const r=LS.getItem('atoll_store');if(r)return JSON.parse(r);}catch(e){}return{name:'Planning Commercial',location:'Angers ATOLL'};})();
 
 const JOURS  = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
 const JCOURT = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
@@ -1469,35 +1528,113 @@ const CA_R   = [0.148,0.156,0.163,0.170,0.178,0.185,0];
 const PCOLS  = ['#c97f5a','#8ba888','#b08968','#9b7ba8','#d4a373','#7d8e9a','#a48b78','#8b6f5c','#b8860b','#6b8e6b','#a45a55','#2a2622'];
 const MOIS_COURT = ['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
 
-// Année du planning (paramétrable, 2026 par défaut)
-let PLANNING_YEAR = (()=>{try{const r=LS.getItem('atoll_year');if(r)return parseInt(r);}catch(e){}return STORE.year||2026;})();
+// ══════════════════════════════════════
+// MULTI-STORE ARCHITECTURE
+// ══════════════════════════════════════
+// STORES = liste de tous les magasins : [{id, name, location, year}, ...]
+// STORE_DATA = { [storeId]: { data, colls, tpls } }
+// CURRENT_STORE_ID = magasin actuellement affiché
 
-// Lundi de la semaine ISO `week` pour une année donnée
+let STORES = (()=>{ try{const r=LS.getItem('atoll_stores');if(r)return JSON.parse(r);}catch(e){}
+  // Premier lancement : créer un magasin par défaut
+  return [{id:'store_default', name:'Planning Commercial', location:'Mon Magasin', year:2026}];
+})();
+
+let CURRENT_STORE_ID = (()=>{ try{const r=LS.getItem('atoll_current_store');if(r)return r;}catch(e){}
+  return STORES[0]?.id||'store_default';
+})();
+
+// Retourne le magasin courant
+function getCurrentStore(){ return STORES.find(s=>s.id===CURRENT_STORE_ID)||STORES[0]; }
+
+// Clés localStorage spécifiques au magasin
+function storeKey(k){ return `${k}_${CURRENT_STORE_ID}`; }
+
+// Charger les données du magasin courant
+function loadStoreData(){
+  const sid=CURRENT_STORE_ID;
+  try{
+    const r=LS.getItem(`atoll_v2_${sid}`);
+    if(r) DATA=JSON.parse(r); else { COLLS=JSON.parse(JSON.stringify(DEFAULT_COLLS)); DATA=initData(); }
+  }catch(e){ DATA=initData(); }
+  try{const r=LS.getItem(`atoll_colls_${sid}`);if(r)COLLS=JSON.parse(r);else COLLS=JSON.parse(JSON.stringify(DEFAULT_COLLS));}catch(e){COLLS=JSON.parse(JSON.stringify(DEFAULT_COLLS));}
+  try{const r=LS.getItem(`atoll_tpl_${sid}`);if(r)TPLS=JSON.parse(r);else TPLS=[];}catch(e){TPLS=[];}
+}
+
+// Sauvegarder les données du magasin courant
+function saveStoreData(){
+  LS.setItem(`atoll_v2_${CURRENT_STORE_ID}`,JSON.stringify(DATA));
+  LS.setItem(`atoll_colls_${CURRENT_STORE_ID}`,JSON.stringify(COLLS));
+  LS.setItem(`atoll_tpl_${CURRENT_STORE_ID}`,JSON.stringify(TPLS));
+  LS.setItem('atoll_stores',JSON.stringify(STORES));
+}
+
+// Switcher vers un autre magasin
+function switchStore(storeId){
+  saveStoreData(); // sauvegarder le magasin actuel avant de changer
+  CURRENT_STORE_ID=storeId;
+  LS.setItem('atoll_current_store',storeId);
+  loadStoreData();
+  cW=1;cD=0;
+  // Mettre à jour le profil utilisateur courant avec son magasin
+  if(CURRENT_USER){ CURRENT_USER.storeId=storeId; LS.setItem('atoll_current',JSON.stringify(CURRENT_USER)); }
+  render();
+  toast('🏪 '+getCurrentStore().name);
+  closeStoreSelector();
+}
+
+// Créer un nouveau magasin
+function createStore(name, location, year){
+  const id='store_'+Date.now();
+  STORES.push({id, name, location, year:year||2026});
+  LS.setItem('atoll_stores',JSON.stringify(STORES));
+  // Init données vides pour ce magasin
+  const emptyColls=JSON.parse(JSON.stringify(DEFAULT_COLLS));
+  LS.setItem(`atoll_colls_${id}`,JSON.stringify(emptyColls));
+  const tempColls=COLLS; COLLS=emptyColls;
+  const emptyData=initData();
+  COLLS=tempColls;
+  LS.setItem(`atoll_v2_${id}`,JSON.stringify(emptyData));
+  LS.setItem(`atoll_tpl_${id}`,JSON.stringify([]));
+  return id;
+}
+
+// Supprimer un magasin
+function deleteStore(storeId){
+  if(STORES.length<=1){ toast('⚠ Impossible de supprimer le dernier magasin','var(--pa-red)'); return; }
+  STORES=STORES.filter(s=>s.id!==storeId);
+  LS.setItem('atoll_stores',JSON.stringify(STORES));
+  ['atoll_v2','atoll_colls','atoll_tpl'].forEach(k=>LS.setItem(`${k}_${storeId}`,'{}'));
+  if(CURRENT_STORE_ID===storeId) switchStore(STORES[0].id);
+}
+
+// Init données courantes
+let STORE = getCurrentStore();
+let COLLS = JSON.parse(JSON.stringify(DEFAULT_COLLS));
+let TPLS  = [];
+
+let PLANNING_YEAR = (()=>{ return getCurrentStore().year||2026; })();
+
 function isoWeekMonday(year, week){
-  // 4 janvier est toujours dans la semaine ISO 1
   const jan4 = new Date(year, 0, 4);
-  const dayOfWeek = (jan4.getDay()+6)%7; // 0=lundi
+  const dayOfWeek = (jan4.getDay()+6)%7;
   const week1Monday = new Date(jan4);
   week1Monday.setDate(jan4.getDate() - dayOfWeek);
   const monday = new Date(week1Monday);
   monday.setDate(week1Monday.getDate() + (week-1)*7);
   return monday;
 }
-// Date du jour `ji` (0=lundi) de la semaine ISO
 function dateOfDay(year, week, ji){
   const m = isoWeekMonday(year, week);
   const d = new Date(m);
   d.setDate(m.getDate()+ji);
   return d;
 }
-// "12" (jour du mois) pour affichage compact
 function dayNum(year, week, ji){ return dateOfDay(year,week,ji).getDate(); }
-// "lun. 5 janv." format court
 function dayLabelLong(year, week, ji){
   const d=dateOfDay(year,week,ji);
   return `${d.getDate()} ${MOIS_COURT[d.getMonth()]}`;
 }
-// Plage de la semaine "5 → 11 janv. 2026"
 function weekRangeLabel(year, week){
   const lun=dateOfDay(year,week,0), dim=dateOfDay(year,week,6);
   if(lun.getMonth()===dim.getMonth()) return `${lun.getDate()} → ${dim.getDate()} ${MOIS_COURT[dim.getMonth()]} ${year}`;
@@ -1518,14 +1655,14 @@ function initData(){
   return d;
 }
 function loadD(k,init){try{const r=LS.getItem(k);if(r)return JSON.parse(r);}catch(e){}return init();}
-let DATA=loadD('atoll_v2',initData);
-let TPLS=loadD('atoll_tpl',()=>[]);
+let DATA=initData();
+// Charger les données du magasin courant au démarrage
+loadStoreData();
+STORE=getCurrentStore();
+PLANNING_YEAR=STORE.year||2026;
 
 function saveData(){
-  LS.setItem('atoll_v2',JSON.stringify(DATA));
-  LS.setItem('atoll_tpl',JSON.stringify(TPLS));
-  LS.setItem('atoll_colls',JSON.stringify(COLLS));
-  LS.setItem('atoll_store',JSON.stringify(STORE));
+  saveStoreData();
   LS.setItem('atoll_users',JSON.stringify(USERS));
   showSaveIndicator('saved');
   if(SP.config.autoSync && SP.config.siteUrl) spPush('week', true);
@@ -1535,7 +1672,7 @@ function saveData(){
 // Sauvegarde locale silencieuse — après chaque modification
 function saveLocal(){
   try{
-    LS.setItem('atoll_v2',JSON.stringify(DATA));
+    LS.setItem(`atoll_v2_${CURRENT_STORE_ID}`,JSON.stringify(DATA));
     LS.setItem('atoll_colls',JSON.stringify(COLLS));
     showSaveIndicator('auto');
   }catch(e){}
@@ -1780,7 +1917,7 @@ async function spPull(){
       if(item.ProdBudget) DATA[s].prod_budget=parseInt(item.ProdBudget);
     });
 
-    LS.setItem('atoll_v2',JSON.stringify(DATA));
+    LS.setItem(`atoll_v2_${CURRENT_STORE_ID}`,JSON.stringify(DATA));
     spSetProgress(100,'Terminé');
     spLog('ok',`✅ ${allItems.length} lignes importées depuis SharePoint`);
     render();
@@ -1868,11 +2005,25 @@ async function ghPush(silent=false){
   if(!user||!repo||!token){if(!silent){toast('⚠ Configurez GitHub d\'abord','var(--pa-orange)');openGHConfig();}return;}
 
   if(!silent) toast('☁️ Sauvegarde GitHub…','#6b7c93');
+  // Construire le payload multi-magasins
+  const storesPayload={};
+  STORES.forEach(st=>{
+    try{
+      const d=LS.getItem(`atoll_v2_${st.id}`);
+      const c=LS.getItem(`atoll_colls_${st.id}`);
+      const t=LS.getItem(`atoll_tpl_${st.id}`);
+      storesPayload[st.id]={
+        data:   d?JSON.parse(d):null,
+        colls:  c?JSON.parse(c):null,
+        tpls:   t?JSON.parse(t):[],
+      };
+    }catch(e){}
+  });
   const payload={
-    version:2, saved_at:new Date().toISOString(),
-    store:STORE, collaborateurs:COLLS, templates:TPLS,
-    users:USERS,   // ← profils inclus
-    data:DATA
+    version:3, saved_at:new Date().toISOString(),
+    stores:STORES,
+    storesData:storesPayload,
+    users:USERS,
   };
   const content=btoa(unescape(encodeURIComponent(JSON.stringify(payload,null,2))));
   try{
@@ -1915,16 +2066,32 @@ async function ghPull(silent=false){
     const raw=decodeURIComponent(escape(atob(d.content)));
     const payload=JSON.parse(raw);
 
-    if(payload.data)            { DATA=payload.data;            LS.setItem('atoll_v2',JSON.stringify(DATA)); }
-    if(payload.collaborateurs)  { COLLS.splice(0,COLLS.length,...payload.collaborateurs); LS.setItem('atoll_colls',JSON.stringify(COLLS)); }
-    if(payload.templates)       { TPLS=payload.templates;       LS.setItem('atoll_tpl',JSON.stringify(TPLS)); }
-    if(payload.store)           { Object.assign(STORE,payload.store); LS.setItem('atoll_store',JSON.stringify(STORE)); }
+    if(payload.stores?.length){
+      STORES.splice(0,STORES.length,...payload.stores);
+      LS.setItem('atoll_stores',JSON.stringify(STORES));
+    }
+    if(payload.storesData){
+      Object.entries(payload.storesData).forEach(([sid,sd])=>{
+        if(sd.data)  LS.setItem(`atoll_v2_${sid}`,JSON.stringify(sd.data));
+        if(sd.colls) LS.setItem(`atoll_colls_${sid}`,JSON.stringify(sd.colls));
+        if(sd.tpls)  LS.setItem(`atoll_tpl_${sid}`,JSON.stringify(sd.tpls));
+      });
+    }
+    // Compatibilité v2 (ancien format mono-magasin)
+    if(!payload.stores && payload.store){
+      const sid=CURRENT_STORE_ID;
+      if(payload.data)           LS.setItem(`atoll_v2_${sid}`,JSON.stringify(payload.data));
+      if(payload.collaborateurs) LS.setItem(`atoll_colls_${sid}`,JSON.stringify(payload.collaborateurs));
+      if(payload.templates)      LS.setItem(`atoll_tpl_${sid}`,JSON.stringify(payload.templates));
+    }
     if(payload.users?.length){
-      // Remplacer complètement la liste des profils par celle de GitHub
-      // (source de vérité unique = GitHub)
-      USERS.splice(0, USERS.length, ...payload.users);
+      USERS.splice(0,USERS.length,...payload.users);
       LS.setItem('atoll_users',JSON.stringify(USERS));
     }
+    // Recharger les données du magasin courant
+    loadStoreData();
+    STORE=getCurrentStore();
+    PLANNING_YEAR=STORE.year||2026;
     ghLog('ok','✅ Chargé depuis GitHub ('+new Date(payload.saved_at||Date.now()).toLocaleString('fr-FR')+')');
     ghUpdateDot(true);
     if(!silent) toast('✅ Planning + profils chargés depuis GitHub');
@@ -2096,8 +2263,11 @@ function render(){
 }
 
 function applyStoreLabels(){
-  document.getElementById('storeName').textContent=STORE.name;
-  document.getElementById('storeLocationTxt').textContent=STORE.location;
+  const s=getCurrentStore();
+  const sn=document.getElementById('storeName');
+  const sl=document.getElementById('storeLocationTxt');
+  if(sn) sn.textContent=s.name||'Planning Commercial';
+  if(sl) sl.textContent=s.location||'—';
 }
 
 function switchTab(m){
@@ -3048,6 +3218,105 @@ function printWeek(){
   window.print();
 }
 
+// ══════════════════════════════════════
+// STORE SELECTOR
+// ══════════════════════════════════════
+function openStoreSelector(){
+  document.getElementById('dlgStoreSelector').classList.add('open');
+  storeSwitchTab('list');
+  renderStoreList();
+}
+function closeStoreSelector(){ document.getElementById('dlgStoreSelector').classList.remove('open'); }
+
+function storeSwitchTab(tab){
+  const isAdmin=CURRENT_USER?.role==='admin';
+  // Afficher les onglets uniquement pour admin
+  const tabs=document.getElementById('storeTabs');
+  if(tabs) tabs.style.display=isAdmin?'flex':'none';
+  ['list','create'].forEach(t=>{
+    const panel=document.getElementById('storePanel'+t.charAt(0).toUpperCase()+t.slice(1));
+    const btn=document.getElementById('storeTab-'+t);
+    if(panel) panel.style.display=t===tab?'':'none';
+    if(btn){
+      btn.style.borderBottomColor=t===tab?'#e91e8c':'transparent';
+      btn.style.color=t===tab?'#e91e8c':'var(--pa-muted)';
+      btn.style.fontWeight=t===tab?'700':'600';
+    }
+  });
+}
+
+function renderStoreList(){
+  const isAdmin=CURRENT_USER?.role==='admin';
+  const userStoreId=CURRENT_USER?.storeId;
+  const list=document.getElementById('storeList');
+  const footer=document.getElementById('storeSelectorFooter');
+
+  list.innerHTML=STORES.map(s=>{
+    const isCurrent=s.id===CURRENT_STORE_ID;
+    const isUserStore=s.id===userStoreId;
+    return`<div class="store-card${isCurrent?' active':''}" onclick="${isAdmin?`switchStore('${s.id}')`:`attachUserToStore('${s.id}')`}" style="cursor:pointer">
+      <div class="store-card-icon">🏪</div>
+      <div style="flex:1;min-width:0">
+        <div class="store-card-name">${s.name}</div>
+        <div class="store-card-loc">${s.location||'—'} · ${s.year||2026}</div>
+      </div>
+      ${isCurrent?'<span class="store-card-badge">✓ Actif</span>':''}
+      ${isUserStore&&!isCurrent?'<span class="store-card-badge" style="background:rgba(233,30,140,.3)">Mon magasin</span>':''}
+      ${isAdmin&&STORES.length>1&&!isCurrent?`<button onclick="event.stopPropagation();deleteStoreConfirm('${s.id}')"
+        style="background:none;border:1px solid var(--pa-border);color:var(--pa-muted);cursor:pointer;font-size:12px;
+        padding:4px 8px;border-radius:var(--r-sm);transition:.2s;font-family:inherit;flex-shrink:0"
+        onmouseover="this.style.color='var(--pa-red)';this.style.borderColor='var(--pa-red)'"
+        onmouseout="this.style.color='var(--pa-muted)';this.style.borderColor='var(--pa-border)'">🗑</button>`:''}
+    </div>`;
+  }).join('');
+
+  if(footer){
+    footer.innerHTML=`
+      ${isAdmin?`<button class="fl-btn ghost" onclick="closeStoreSelector();openStoreEditor()">✏️ Modifier</button>`:''}
+      <button class="fl-btn ghost" onclick="closeStoreSelector()" style="margin-left:auto">Fermer</button>`;
+  }
+}
+
+function attachUserToStore(storeId){
+  // Rattacher l'utilisateur connecté à ce magasin
+  if(!CURRENT_USER) return;
+  CURRENT_USER.storeId=storeId;
+  const idx=USERS.findIndex(u=>u.id===CURRENT_USER.id);
+  if(idx>=0) USERS[idx].storeId=storeId;
+  LS.setItem('atoll_current',JSON.stringify(CURRENT_USER));
+  LS.setItem('atoll_users',JSON.stringify(USERS));
+  switchStore(storeId);
+  toast('✓ Rattaché à '+STORES.find(s=>s.id===storeId)?.name);
+}
+
+function createAndSwitchStore(){
+  const name=document.getElementById('newStoreName').value.trim();
+  const loc=document.getElementById('newStoreLoc').value.trim();
+  const year=parseInt(document.getElementById('newStoreYear').value)||2026;
+  if(!name||!loc){ toast('⚠ Remplissez le nom et le magasin','var(--pa-orange)'); return; }
+  const id=createStore(name,loc,year);
+  document.getElementById('newStoreName').value='';
+  document.getElementById('newStoreLoc').value='';
+  toast('✓ Magasin "'+name+'" créé');
+  switchStore(id);
+}
+
+function deleteStoreConfirm(storeId){
+  const s=STORES.find(x=>x.id===storeId);
+  if(!s) return;
+  const list=document.getElementById('storeList');
+  const prev=list.innerHTML;
+  list.innerHTML=`<div style="text-align:center;padding:20px 0">
+    <div style="font-size:36px;margin-bottom:10px">🗑</div>
+    <div style="font-size:15px;font-weight:700;margin-bottom:6px">Supprimer "${s.name}" ?</div>
+    <div style="font-size:13px;color:var(--pa-muted);margin-bottom:20px">Toutes les données de ce magasin seront perdues.</div>
+    <div style="display:flex;gap:10px;justify-content:center">
+      <button class="fl-btn ghost" onclick="renderStoreList()">Annuler</button>
+      <button class="fl-btn danger" style="background:var(--pa-red);color:#fff" onclick="deleteStore('${storeId}');renderStoreList()">Supprimer</button>
+    </div>
+  </div>`;
+}
+
 // ── Settings menu ──
 function toggleSettingsMenu(){
   const m=document.getElementById('settingsMenu');
@@ -3357,8 +3626,8 @@ function saveCollabEditor(){
   for(let s=cW;s<=53;s++){
     DATA[s].collabSnapshot = COLLS.map(c=>({nom:c.nom, base:c.base, color:c.color}));
   }
-  LS.setItem('atoll_colls',JSON.stringify(COLLS));
-  LS.setItem('atoll_v2',JSON.stringify(DATA));
+  LS.setItem(`atoll_colls_${CURRENT_STORE_ID}`,JSON.stringify(COLLS));
+  LS.setItem(`atoll_v2_${CURRENT_STORE_ID}`,JSON.stringify(DATA));
   document.getElementById('dlgCollab').classList.remove('open');
   render();
   toast('✓ Équipe mise à jour à partir de S'+cW);
@@ -3377,7 +3646,7 @@ function getCollsForWeek(s){
 }
 function closeCollabEditor(){
   // Recharger COLLS et DATA depuis le storage pour annuler les modifs non sauvegardées
-  try{const r=LS.getItem('atoll_colls');if(r)COLLS.splice(0,COLLS.length,...JSON.parse(r));}catch(e){}
+  try{const r=LS.getItem(`atoll_colls_${CURRENT_STORE_ID}`);if(r)COLLS.splice(0,COLLS.length,...JSON.parse(r));}catch(e){}
   try{const r=LS.getItem('atoll_v2');if(r){const d=JSON.parse(r);for(const k in DATA)delete DATA[k];Object.assign(DATA,d);}}catch(e){}
   document.getElementById('dlgCollab').classList.remove('open');
 }
@@ -3492,25 +3761,28 @@ function exportCSV(){
 // STORE NAME EDITOR
 // ══════════════════════════════════════
 function openStoreEditor(){
-  document.getElementById('storeNameInp').value=STORE.name;
-  document.getElementById('storeLocInp').value=STORE.location;
+  const s=getCurrentStore();
+  document.getElementById('storeNameInp').value=s.name||'';
+  document.getElementById('storeLocInp').value=s.location||'';
+  const yi=document.getElementById('storeYearInp');if(yi)yi.value=s.year||2026;
   document.getElementById('dlgStore').classList.add('open');
 }
-function closeStoreEditor(){
-  document.getElementById('dlgStore').classList.remove('open');
-}
+function closeStoreEditor(){ document.getElementById('dlgStore').classList.remove('open'); }
 function saveStoreEditor(){
   const name=document.getElementById('storeNameInp').value.trim()||'Planning Commercial';
   const loc=document.getElementById('storeLocInp').value.trim()||'Magasin';
-  STORE={name,location:loc};
-  LS.setItem('atoll_store',JSON.stringify(STORE));
-  applyStoreLabels();
-  closeStoreEditor();
+  const yi=document.getElementById('storeYearInp');
+  const year=yi?parseInt(yi.value)||2026:2026;
+  const idx=STORES.findIndex(s=>s.id===CURRENT_STORE_ID);
+  if(idx>=0) STORES[idx]={...STORES[idx],name,location:loc,year};
+  LS.setItem('atoll_stores',JSON.stringify(STORES));
+  STORE=getCurrentStore(); PLANNING_YEAR=year;
+  applyStoreLabels(); closeStoreEditor(); render();
   toast('✓ Magasin mis à jour');
 }
 
 
-[['dlgHoraire',closeHM],['dlgTpl',closeTM],['dlgApply',closeAM],['dlgCollab',closeCollabEditor],['dlgStore',closeStoreEditor],['dlgExport',closeExportModal],['dlgSP',closeSPConfig],['dlgGH',closeGHConfig],['dlgUsers',closeUserManager]].forEach(([id,fn])=>{
+[['dlgHoraire',closeHM],['dlgTpl',closeTM],['dlgApply',closeAM],['dlgCollab',closeCollabEditor],['dlgStore',closeStoreEditor],['dlgExport',closeExportModal],['dlgSP',closeSPConfig],['dlgGH',closeGHConfig],['dlgUsers',closeUserManager],['dlgStoreSelector',closeStoreSelector]].forEach(([id,fn])=>{
   const el=document.getElementById(id);
   if(el) el.addEventListener('click',e=>{if(e.target===e.currentTarget)fn();});
 });
@@ -3518,7 +3790,7 @@ document.addEventListener('keydown',e=>{
   if(e.target.matches('input,select,textarea'))return;
   if(e.key==='ArrowLeft')changeWeek(-1);
   if(e.key==='ArrowRight')changeWeek(1);
-  if(e.key==='Escape'){closeHM();closeTM();closeAM();closeCollabEditor();closeStoreEditor();closeExportModal();closeSPConfig();closeGHConfig();closeUserManager();}
+  if(e.key==='Escape'){closeHM();closeTM();closeAM();closeCollabEditor();closeStoreEditor();closeExportModal();closeSPConfig();closeGHConfig();closeUserManager();closeStoreSelector();}
   if(e.ctrlKey&&e.key==='s'){e.preventDefault();saveData();}
 });
 
@@ -3546,7 +3818,7 @@ async function initLogin(){
   // Init color pickers
   ['newUserColors','adminUserColors'].forEach(id=>{
     const el=document.getElementById(id);
-    if(el) el.innerHTML=USER_COLORS.map((c,i)=>`<div class="csw${i===0?' sel':''}" style="background:${c};width:22px;height:22px" onclick="selectColor('${id}','${c}',this)"></div>`).join('');
+    if(el) el.innerHTML=USER_COLORS.map((c,i)=>`<div class="csw${i===0?' sel':''}" style="background:${c};width:22px;height:22px" data-col="${c}" onclick="selectColor('${id}','${c}',this)"></div>`).join('');
   });
 
   // Appliquer les labels du magasin
@@ -3643,7 +3915,7 @@ function highlightRole(){
 function selectColor(containerId, col, el){
   if(containerId==='newUserColors') newUserColor=col;
   else adminUserColor=col;
-  document.querySelectorAll('#'+containerId+' .csw').forEach(s=>s.classList.toggle('sel',s.style.background===col||s.style.backgroundColor===col));
+  document.querySelectorAll('#'+containerId+' .csw').forEach(s=>s.classList.toggle('sel',s.dataset.col===col));
 }
 
 function checkAdminPwd(){
@@ -3704,11 +3976,18 @@ function applyUserSession(u){
   u.lastSeen=new Date().toISOString();
   const idx=USERS.findIndex(x=>x.id===u.id);
   if(idx>=0) USERS[idx]=u; else USERS.push(u);
-  // Sauvegarde locale uniquement ici (le push GH se fait dans pinConfirm ou saveUsers)
   LS.setItem('atoll_users',JSON.stringify(USERS));
   CURRENT_USER=u;
   LS.setItem('atoll_current',JSON.stringify(u));
   document.getElementById('loginOverlay').style.display='none';
+  // Switcher vers le magasin de l'utilisateur si défini
+  if(u.storeId && STORES.find(s=>s.id===u.storeId) && u.storeId!==CURRENT_STORE_ID){
+    CURRENT_STORE_ID=u.storeId;
+    LS.setItem('atoll_current_store',u.storeId);
+    loadStoreData();
+    STORE=getCurrentStore();
+    PLANNING_YEAR=STORE.year||2026;
+  }
   if(u.prefs?.week) cW=u.prefs.week;
   if(u.prefs?.day!==undefined) cD=u.prefs.day;
   const badge=document.getElementById('userBadge');if(badge)badge.style.display='flex';
