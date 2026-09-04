@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-04T11:16:45.675Z",
+  "saved_at": "2026-09-04T11:18:02.035Z",
   "stores": [
     {
       "id": "store_default",
@@ -40913,18 +40913,6 @@
   },
   "users": [
     {
-      "id": "u1788430755372",
-      "name": "Damien courtin",
-      "role": "admin",
-      "color": "#c97f5a",
-      "pin": "wgcl",
-      "prefs": {
-        "week": 1,
-        "day": 0
-      },
-      "lastSeen": "2026-09-04T11:02:36.754Z"
-    },
-    {
       "id": "u1788513106852",
       "name": "Damien courtin",
       "role": "admin",
@@ -40935,7 +40923,19 @@
         "day": 0
       },
       "lastSeen": "2026-09-04T11:14:06.234Z",
-      "storeId": "store_default"
+      "storeId": "store_1788520555425"
+    },
+    {
+      "id": "u1788520630607",
+      "name": "isa",
+      "role": "editor",
+      "color": "#d4a373",
+      "pin": "vo5c",
+      "prefs": {
+        "week": 1,
+        "day": 0
+      },
+      "lastSeen": "2026-09-04T11:17:20.851Z"
     }
   ]
 }
