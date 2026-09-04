@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-04T12:59:13.693Z",
+  "saved_at": "2026-09-04T13:03:59.315Z",
   "stores": [
     {
       "id": "store_default",
@@ -82,7 +82,7 @@
                   "statut": "work",
                   "debut": "09:00",
                   "pause": 0,
-                  "fin": "09:00"
+                  "fin": "17:00"
                 },
                 {
                   "statut": "work",
@@ -17986,7 +17986,7 @@
         "week": 1,
         "day": 0
       },
-      "lastSeen": "2026-09-04T12:55:11.856Z"
+      "lastSeen": "2026-09-04T13:03:07.469Z"
     }
   ]
 }
