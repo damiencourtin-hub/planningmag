@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-04T20:53:36.680Z",
+  "saved_at": "2026-09-04T20:54:41.207Z",
   "stores": [
     {
       "id": "store_default",
@@ -11869,7 +11869,7 @@
             {
               "collaborateurs": [
                 {
-                  "statut": "work",
+                  "statut": "R",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -11921,7 +11921,7 @@
                   "fin": "09:00"
                 },
                 {
-                  "statut": "work",
+                  "statut": "R",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -11967,7 +11967,7 @@
                   "fin": "09:00"
                 },
                 {
-                  "statut": "work",
+                  "statut": "R",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -11995,7 +11995,7 @@
                   "fin": "09:00"
                 },
                 {
-                  "statut": "work",
+                  "statut": "R",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -12019,7 +12019,7 @@
                   "fin": "09:00"
                 },
                 {
-                  "statut": "work",
+                  "statut": "R",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
