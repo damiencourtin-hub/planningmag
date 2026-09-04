@@ -58,44 +58,47 @@
 ═══════════════════════════════════════ */
 
 :root {
-  /* ─── PALETTE BLEU MICROSOFT / M365 ─── */
-  --pa-bg:         #f0f4f9;          /* fond général bleuté très clair */
+  /* ─── PALETTE NÉON BLEU — très léger, élégant ─── */
+  --pa-bg:         #f2f6ff;
   --pa-surface:    #ffffff;
-  --pa-surface2:   #f5f8fd;          /* surface secondaire bleutée */
+  --pa-surface2:   #f7f9ff;
   --pa-card:       #ffffff;
-  --pa-border:     #d0dce8;          /* bordures bleutées */
-  --pa-border2:    #b3c6d9;
+  --pa-border:     #f8dcea;
+  --pa-border2:    #f0b0cc;
 
-  /* Bleu principal M365 */
-  --pa-blue:       #0078d4;          /* bleu Microsoft */
-  --pa-blue-light: #e8f1fb;          /* surlignage bleu très clair */
-  --pa-blue-mid:   #bad3e8;          /* séparateur bleu */
-  --pa-blue-dark:  #005a9e;          /* hover bleu foncé */
+  /* Bleu néon principal */
+  --pa-blue:       #e91e8c;          /* rose néon principal */
+  --pa-blue-light: #fff0f7;          /* fond surligné rose très doux */
+  --pa-blue-mid:   #ffb8d9;
+  --pa-blue-dark:  #b5136b;
+  --pa-blue-neon:  #f472b6;          /* accent néon rose */
 
-  /* Header sombre dégradé bleu marine */
-  --pa-dark:       #0d1b2e;          /* bleu nuit */
-  --pa-dark2:      #1a3050;          /* bleu nuit hover */
+  /* Header */
+  --pa-dark:       #1a0812;
+  --pa-dark2:      #2a0a1a;
 
-  /* Neutres */
-  --pa-text:       #1a2535;          /* texte principal bleu très foncé */
-  --pa-text2:      #2d3f55;
-  --pa-muted:      #6b7c93;
-  --pa-muted2:     #9aafc2;
+  /* Texte */
+  --pa-text:       #2a0a20;
+  --pa-text2:      #4a1030;
+  --pa-muted:      #a05a7a;
+  --pa-muted2:     #cc8aaa;
 
   /* Status */
-  --pa-green:      #107c10;
-  --pa-green-bg:   #dff6dd;
-  --pa-orange:     #c97718;
-  --pa-orange-bg:  #fbecd9;
-  --pa-red:        #c0392b;
-  --pa-red-bg:     #fbe5e2;
-  --pa-yellow:     #b8860b;
-  --pa-yellow-bg:  #fff8e1;
+  --pa-green:      #00a86b;
+  --pa-green-bg:   #e6fff5;
+  --pa-orange:     #e08000;
+  --pa-orange-bg:  #fff4e0;
+  --pa-red:        #e02b2b;
+  --pa-red-bg:     #fff0f0;
+  --pa-yellow:     #c49000;
+  --pa-yellow-bg:  #fffbe6;
 
-  /* Ombres */
-  --shadow-2:  0 1px 3px rgba(0,78,120,.08), 0 1px 2px rgba(0,78,120,.06);
-  --shadow-4:  0 4px 12px rgba(0,78,120,.12), 0 2px 6px rgba(0,78,120,.06);
-  --shadow-8:  0 12px 32px rgba(0,78,120,.18), 0 4px 12px rgba(0,78,120,.1);
+  /* Ombres néon très légères */
+  --shadow-2:  0 1px 4px rgba(233,30,140,.07), 0 1px 2px rgba(233,30,140,.05);
+  --shadow-4:  0 4px 16px rgba(233,30,140,.10), 0 2px 6px rgba(233,30,140,.06);
+  --shadow-8:  0 12px 36px rgba(233,30,140,.14), 0 4px 12px rgba(233,30,140,.08);
+  --glow-sm:   0 0 14px rgba(244,114,182,.25);
+  --glow-md:   0 0 28px rgba(244,114,182,.3);
 
   /* Rayons */
   --r-sm: 6px;
@@ -106,14 +109,16 @@
 
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;overflow:hidden;font-size:14px}
-/* Retirer les flèches +/- natives des inputs number */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 input[type="number"]{-moz-appearance:textfield;appearance:textfield}
 body{
   font-family:'Inter','Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;
-  background:#f0f4f9;
-  background-image:linear-gradient(160deg,#e8f1fb 0%,#f0f4f9 40%,#f5f8fd 100%);
+  background:#fff0f7;
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(244,114,182,.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(233,30,140,.05) 0%, transparent 60%),
+    linear-gradient(160deg,#fff0f7 0%,#fff5fa 50%,#fff9fc 100%);
   background-attachment:fixed;
   color:var(--pa-text);
   display:flex;flex-direction:column;
@@ -121,58 +126,59 @@ body{
   font-feature-settings:'cv02','cv03','cv04','cv11';
 }
 
-/* ─── COMMAND BAR — dégradé bleu marine ─── */
+/* ─── COMMAND BAR — néon bleu nuit ─── */
 .cmd-bar{
-  background:linear-gradient(135deg,#0d1b2e 0%,#0f2848 50%,#0d3060 100%);
-  border-bottom:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(135deg,#1a0812 0%,#2a0a1a 45%,#3d0a28 100%);
+  border-bottom:1px solid rgba(244,114,182,.15);
   padding:0 22px;
   display:flex;align-items:center;justify-content:space-between;
   height:62px;flex-shrink:0;
-  box-shadow:0 4px 16px rgba(0,0,0,.25),0 1px 4px rgba(0,0,0,.15);
+  box-shadow:0 4px 20px rgba(233,30,140,.2), 0 1px 0 rgba(244,114,182,.1);
   z-index:10;position:relative;
 }
 .cmd-logo{display:flex;align-items:center;gap:12px}
 .cmd-logo-icon{
   width:36px;height:36px;border-radius:var(--r-md);
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.18);
+  background:rgba(244,114,182,.15);
+  border:1px solid rgba(244,114,182,.25);
   display:flex;align-items:center;justify-content:center;
-  font-size:16px;color:#fff;font-weight:700;
-  box-shadow:0 2px 8px rgba(0,0,0,.2);
-  backdrop-filter:blur(8px);
+  font-size:16px;color:#fff;
+  box-shadow:0 0 12px rgba(244,114,182,.28);
 }
 .cmd-logo-text{font-size:16px;font-weight:700;color:#fff;letter-spacing:-.01em}
-.cmd-logo-sub{font-size:11px;color:rgba(255,255,255,.55);margin-top:1px;font-weight:500;letter-spacing:.02em;cursor:pointer}
+.cmd-logo-sub{font-size:11px;color:rgba(255,190,220,.6);margin-top:1px;font-weight:500;cursor:pointer}
 .cmd-center{display:flex;align-items:center;gap:8px}
 .cmd-nav{
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);
-  padding:0 12px;height:36px;border-radius:50%;cursor:pointer;
-  font-family:inherit;font-size:22px;display:flex;align-items:center;justify-content:center;
-  width:36px;transition:all .2s ease;
+  background:rgba(255,255,255,.06);border:1px solid rgba(244,114,182,.18);
+  color:rgba(255,200,230,.8);padding:0;height:34px;width:34px;
+  border-radius:50%;cursor:pointer;font-family:inherit;font-size:20px;
+  display:flex;align-items:center;justify-content:center;transition:all .2s ease;
 }
-.cmd-nav:hover{background:rgba(255,255,255,.15);color:#fff;transform:scale(1.05);border-color:rgba(255,255,255,.25)}
+.cmd-nav:hover{background:rgba(244,114,182,.15);color:#fff;border-color:rgba(244,114,182,.4);box-shadow:var(--glow-sm)}
 .cmd-week{
-  background:rgba(255,255,255,.15);color:#fff;
-  border:1px solid rgba(255,255,255,.25);
+  background:linear-gradient(135deg,rgba(233,30,140,.2),rgba(244,114,182,.12));
+  color:#fff;border:1px solid rgba(244,114,182,.35);
   padding:0 22px;height:38px;border-radius:var(--r-md);
-  font-weight:700;font-size:14px;min-width:72px;text-align:center;
-  cursor:pointer;font-family:inherit;
-  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:14px;min-width:90px;text-align:center;
+  cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;
   transition:all .2s ease;letter-spacing:.02em;
-  backdrop-filter:blur(8px);
+  box-shadow:0 0 16px rgba(244,114,182,.22), inset 0 1px 0 rgba(255,255,255,.08);
 }
-.cmd-week:hover{background:rgba(255,255,255,.22);transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.cmd-week:hover{background:linear-gradient(135deg,rgba(233,30,140,.35),rgba(244,114,182,.25));box-shadow:var(--glow-md);transform:translateY(-1px)}
 .cmd-right{display:flex;gap:6px;align-items:center}
 .cmd-btn{
-  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);
-  color:rgba(255,255,255,.9);padding:0 14px;height:36px;border-radius:var(--r-md);
+  background:rgba(255,255,255,.06);border:1px solid rgba(244,114,182,.18);
+  color:rgba(255,210,230,.9);padding:0 14px;height:36px;border-radius:var(--r-md);
   cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;
   display:flex;align-items:center;gap:7px;transition:all .2s ease;white-space:nowrap;
-  backdrop-filter:blur(4px);
 }
-.cmd-btn:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.3);transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.2)}
-.cmd-btn.primary{background:#0078d4;color:#fff;border-color:#006cbd;box-shadow:0 2px 8px rgba(0,120,212,.4)}
-.cmd-btn.primary:hover{background:#006cbd;box-shadow:0 4px 12px rgba(0,120,212,.5);transform:translateY(-1px)}
+.cmd-btn:hover{background:rgba(244,114,182,.15);border-color:rgba(244,114,182,.35);color:#fff;box-shadow:var(--glow-sm);transform:translateY(-1px)}
+.cmd-btn.primary{
+  background:linear-gradient(135deg,#e91e8c,#b5136b);
+  color:#fff;border-color:rgba(244,114,182,.5);
+  box-shadow:0 0 16px rgba(233,30,140,.3), 0 2px 8px rgba(233,30,140,.2);
+}
+.cmd-btn.primary:hover{background:linear-gradient(135deg,#f43fa0,#e91e8c);box-shadow:0 0 24px rgba(233,30,140,.45);transform:translateY(-1px)}
 
 /* ─── LAYOUT ─── */
 .app{display:grid;grid-template-columns:248px 14px 1fr;flex:1;overflow:hidden;transition:grid-template-columns .25s ease}
@@ -218,7 +224,7 @@ body{
   border-radius:var(--r-md);
   letter-spacing:.01em;
 }
-.nav-tab.active{color:#fff;background:var(--pa-blue);box-shadow:var(--shadow-2);font-weight:700}
+.nav-tab.active{color:#fff;background:linear-gradient(135deg,#e91e8c,#9d0a5e);box-shadow:var(--shadow-2), var(--glow-sm);font-weight:700}
 .nav-tab:hover:not(.active){color:var(--pa-text);background:var(--pa-surface2)}
 .nav-body{flex:1;overflow-y:auto;padding:16px 14px;display:flex;flex-direction:column;gap:10px}
 
@@ -232,7 +238,7 @@ body{
   font-size:11px;font-weight:600;color:var(--pa-muted2);
 }
 .wp-cell:hover{background:var(--pa-blue-light);border-color:var(--pa-blue-mid);color:var(--pa-blue-dark);transform:translateY(-1px)}
-.wp-cell.active{background:var(--pa-blue);color:#fff;border-color:var(--pa-blue);box-shadow:var(--shadow-2)}
+.wp-cell.active{background:linear-gradient(135deg,#e91e8c,#9d0a5e);color:#fff;border-color:#e91e8c;box-shadow:var(--shadow-2),var(--glow-sm)}
 .wp-cell.has-data{color:var(--pa-text)}
 .wp-mini{height:3px;background:var(--pa-border);border-radius:999px;margin-top:4px;overflow:hidden}
 .wp-mini-fill{height:100%;background:var(--pa-blue);border-radius:999px;transition:width .4s ease}
@@ -296,7 +302,7 @@ body{
   border-radius:var(--r-md);min-width:78px;
 }
 .pivot-item:hover{color:var(--pa-text);background:var(--pa-surface2);border-color:var(--pa-border2);transform:translateY(-1px)}
-.pivot-item.active{color:#fff;background:var(--pa-blue);border-color:var(--pa-blue);box-shadow:var(--shadow-2)}
+.pivot-item.active{color:#fff;background:linear-gradient(135deg,#e91e8c,#9d0a5e);border-color:#e91e8c;box-shadow:var(--shadow-2),var(--glow-sm)}
 .pivot-sub{font-size:10px;font-weight:500;color:var(--pa-muted2);margin-top:1px}
 .pivot-item.active .pivot-sub{color:rgba(255,255,255,.7)}
 
@@ -308,9 +314,10 @@ body{
 }
 .detail-card:hover{box-shadow:var(--shadow-4)}
 .detail-hdr{
-  background:linear-gradient(135deg,#0078d4 0%,#005a9e 100%);
+  background:linear-gradient(135deg,#e91e8c 0%,#9d0a5e 100%);
   padding:16px 22px;
   display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  box-shadow:inset 0 -1px 0 rgba(255,255,255,.08), 0 2px 8px rgba(26,111,255,.15);
 }
 .detail-title{font-size:15px;font-weight:700;color:#fff;letter-spacing:-.005em}
 .detail-meta{display:flex;gap:26px}
@@ -400,7 +407,7 @@ body{
   color:var(--pa-text);border-radius:var(--r-md);padding:10px 14px;
   font-family:inherit;font-size:14px;outline:none;transition:all .2s ease;
 }
-.fl-inp:focus{border-color:var(--pa-blue);box-shadow:0 0 0 3px var(--pa-blue-light)}
+.fl-inp:focus{border-color:#e91e8c;box-shadow:0 0 0 3px rgba(233,30,140,.1),0 0 8px rgba(233,30,140,.07)}
 .fl-inp:hover:not(:focus){border-color:var(--pa-text2)}
 .fl-row{margin-bottom:16px}
 .fl-g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
@@ -427,12 +434,12 @@ body{
 .day-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 .day-tog{background:var(--pa-surface);border:1px solid var(--pa-border2);color:var(--pa-muted);padding:8px 14px;border-radius:var(--r-md);cursor:pointer;font-size:12px;font-weight:700;font-family:inherit;transition:all .2s ease;user-select:none}
 .day-tog:hover{color:var(--pa-text);border-color:var(--pa-muted);transform:translateY(-1px)}
-.day-tog.on{background:var(--pa-blue);color:#fff;border-color:var(--pa-blue);box-shadow:var(--shadow-2)}
+.day-tog.on{background:linear-gradient(135deg,#e91e8c,#9d0a5e);color:#fff;border-color:#e91e8c;box-shadow:var(--shadow-2),var(--glow-sm)}
 
 .collab-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .collab-cb{display:flex;align-items:center;gap:9px;cursor:pointer;font-size:13px;font-weight:600;background:var(--pa-surface);border:1px solid var(--pa-border);border-radius:var(--r-md);padding:10px 14px;transition:all .2s ease}
 .collab-cb:hover{background:var(--pa-blue-light);border-color:var(--pa-blue-mid);transform:translateY(-1px);box-shadow:var(--shadow-2)}
-.collab-cb input{accent-color:var(--pa-blue);width:16px;height:16px;cursor:pointer}
+.collab-cb input{accent-color:#e91e8c;width:16px;height:16px;cursor:pointer}
 .mini-av{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;flex-shrink:0;box-shadow:0 0 0 2px var(--pa-surface),0 0 0 3px var(--pa-border)}
 
 /* Template list */
@@ -503,7 +510,7 @@ body{
 /* Toast (Fluent MessageBar) */
 .toast{
   position:fixed;bottom:24px;right:24px;
-  background:var(--pa-blue);color:#fff;
+  background:linear-gradient(135deg,#e91e8c,#9d0a5e);color:#fff;
   padding:14px 22px;border-radius:var(--r-lg);box-shadow:var(--shadow-8);
   font-weight:600;font-size:14px;z-index:999;letter-spacing:.005em;
   transform:translateY(80px);opacity:0;transition:all .35s cubic-bezier(.34,1.56,.64,1);pointer-events:none;
@@ -646,9 +653,10 @@ body{
 /* ─── LOGIN OVERLAY ─── */
 .login-overlay{
   position:fixed;inset:0;z-index:9999;
-  background:#0f1623;
+  background:#1a0812;
   background-attachment:fixed;
-  background-image:linear-gradient(155deg,#0d1117 0%,#1a1a2e 30%,#16213e 60%,#0f3460 100%);
+  background-image:linear-gradient(155deg,#1a0812 0%,#2a0a1a 30%,#3d0a28 60%,#200010 100%);
+  box-shadow:inset 0 0 120px rgba(233,30,140,.08);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   padding:24px;overflow-y:auto;
   /* Force GPU layer to prevent bleed */
@@ -674,6 +682,7 @@ body{
   animation:cardIn .5s cubic-bezier(.34,1.56,.64,1) .1s both;
 }
 @keyframes cardIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 .login-logo{display:flex;align-items:center;gap:12px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid #f0f0f0}
 .login-logo-icon{width:36px;height:36px;background:#1a1a1a;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;flex-shrink:0}
 .login-logo-text{font-size:14px;font-weight:700;color:#1a1a1a;letter-spacing:-.01em}
@@ -686,7 +695,7 @@ body{
   padding:9px 9px 7px;border:1.5px solid #ebebeb;border-radius:12px;cursor:pointer;
   background:#fafafa;transition:all .2s ease;min-width:62px;position:relative;
 }
-.login-av-btn:hover{border-color:#1a1a1a;background:#f5f5f5;transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.login-av-btn:hover{border-color:#e91e8c;background:#fff0f7;transform:translateY(-2px);box-shadow:0 4px 16px rgba(233,30,140,.14)}
 .login-av-circle{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.2)}
 .login-av-name{font-size:10px;font-weight:600;color:#1a1a1a;text-align:center;max-width:60px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .login-av-role{font-size:9px;color:#bbb;text-align:center}
@@ -699,17 +708,17 @@ body{
   font-size:12px;font-weight:600;cursor:pointer;background:transparent;
   font-family:'Inter',sans-serif;transition:all .2s ease;
 }
-.login-new:hover{border-color:#0078d4;color:#0078d4;background:#e8f1fb}
+.login-new:hover{border-color:#e91e8c;color:#e91e8c;background:#fff0f7;box-shadow:0 0 8px rgba(233,30,140,.1)}
 .pin-dots{display:flex;gap:14px;justify-content:center;margin:14px 0 10px}
 .pin-dot{width:11px;height:11px;border-radius:50%;border:2px solid #ddd;background:transparent;transition:all .2s ease}
-.pin-dot.filled{background:#0078d4;border-color:#0078d4;transform:scale(1.15)}
+.pin-dot.filled{background:#e91e8c;border-color:#e91e8c;transform:scale(1.15);box-shadow:0 0 10px rgba(233,30,140,.5)}
 .pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;max-width:200px;margin:0 auto 4px}
 .pin-key{
   background:#f8f8f8;border:1px solid #ebebeb;border-radius:10px;padding:13px;
   text-align:center;cursor:pointer;font-size:18px;font-weight:600;color:#1a1a1a;
   transition:all .15s ease;user-select:none;font-family:'Inter',sans-serif;
 }
-.pin-key:hover{background:#0078d4;color:#fff;border-color:#0078d4;transform:scale(1.03)}
+.pin-key:hover{background:linear-gradient(135deg,#e91e8c,#b5136b);color:#fff;border-color:#e91e8c;transform:scale(1.03);box-shadow:0 0 14px rgba(233,30,140,.35)}
 .pin-key:active{transform:scale(.93)}
 .pin-key.del{font-size:13px;color:#aaa}
 .pin-key.del:hover{background:#fde7e9;color:#c0392b;border-color:#f0b8b8}
@@ -721,11 +730,11 @@ body{
 /* User badge header */
 .user-badge{
   display:flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  background:rgba(244,114,182,.1);border:1px solid rgba(244,114,182,.2);
   border-radius:var(--r-md);padding:5px 12px 5px 7px;cursor:pointer;transition:all .2s ease;
   backdrop-filter:blur(4px);
 }
-.user-badge:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.35);transform:translateY(-1px)}
+.user-badge:hover{background:rgba(244,114,182,.18);border-color:rgba(244,114,182,.4);transform:translateY(-1px);box-shadow:var(--glow-sm)}
 .user-badge-av{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0}
 .user-badge-name{font-size:12px;font-weight:600;color:#fff}
 .user-badge-role{font-size:10px;color:rgba(255,255,255,.6)}
@@ -746,7 +755,7 @@ body{
 
 /* ─── VUE HEBDOMADAIRE ─── */
 .week-panel{background:var(--pa-surface);border:1px solid var(--pa-border);border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-2);margin-top:14px}
-.week-panel-hdr{background:linear-gradient(135deg,#0078d4 0%,#005a9e 100%);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.week-panel-hdr{background:linear-gradient(135deg,#e91e8c 0%,#9d0a5e 100%);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .week-panel-title{font-size:14px;font-weight:700;color:#fff;letter-spacing:-.01em}
 .week-kpi-row{display:flex;gap:16px;flex-wrap:wrap}
 .week-kpi{text-align:right}
@@ -760,10 +769,10 @@ body{
 .week-table td{padding:8px 5px;border-bottom:1px solid rgba(208,220,232,.4);vertical-align:middle;text-align:center;font-size:12px}
 .week-table td.collab-td{text-align:left;padding-left:12px}
 .week-table tr:not(.total-row):hover td{background:var(--pa-blue-light)}
-.week-table tr.total-row td{background:linear-gradient(135deg,#0d1b2e,#0f2848)!important;color:#fff!important;font-weight:700;font-size:12px}
+.week-table tr.total-row td{background:linear-gradient(135deg,#1a0812,#9d0a5e)!important;color:#fff!important;font-weight:700;font-size:12px}
 .wc-h{font-size:13px;font-weight:700;color:var(--pa-text)}
 .wc-t{font-size:10px;color:var(--pa-muted);line-height:1.3}
-.wc-bar{height:3px;border-radius:2px;margin-top:3px;background:var(--pa-blue);opacity:.6}
+.wc-bar{height:3px;border-radius:2px;margin-top:3px;background:#e91e8c;opacity:.6}
 </style>
 </head>
 <body>
@@ -1188,11 +1197,11 @@ body{
       </div>
       <div style="display:flex;gap:10px;margin-bottom:12px">
         <label style="display:flex;align-items:center;gap:8px;font-size:12px;cursor:pointer;flex:1;padding:9px 12px;background:var(--pa-surface2);border:1px solid var(--pa-border);border-radius:var(--r-md)">
-          <input type="checkbox" id="ghAutoSave" style="accent-color:var(--pa-blue)" onchange="ghToggleAuto(this.checked)">
+          <input type="checkbox" id="ghAutoSave" style="accent-color:#e91e8c" onchange="ghToggleAuto(this.checked)">
           <div><div style="font-weight:600">Auto-sauvegarde</div><div style="font-size:10px;color:var(--pa-muted)">À chaque 💾 Enregistrer</div></div>
         </label>
         <label style="display:flex;align-items:center;gap:8px;font-size:12px;cursor:pointer;flex:1;padding:9px 12px;background:var(--pa-surface2);border:1px solid var(--pa-border);border-radius:var(--r-md)">
-          <input type="checkbox" id="ghAutoLoad" style="accent-color:var(--pa-blue)" onchange="ghToggleAutoLoad(this.checked)">
+          <input type="checkbox" id="ghAutoLoad" style="accent-color:#e91e8c" onchange="ghToggleAutoLoad(this.checked)">
           <div><div style="font-weight:600">Chargement auto</div><div style="font-size:10px;color:var(--pa-muted)">Au démarrage</div></div>
         </label>
       </div>
@@ -1247,10 +1256,10 @@ body{
           <label class="fl-label">Mode d'authentification</label>
           <div style="display:flex;gap:8px">
             <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;flex:1;background:var(--pa-surface2);border:1px solid var(--pa-border);border-radius:3px;padding:8px">
-              <input type="radio" name="spAuth" value="cookie" checked style="accent-color:var(--pa-blue)"> Compte M365 (navigateur connecté)
+              <input type="radio" name="spAuth" value="cookie" checked style="accent-color:#e91e8c"> Compte M365 (navigateur connecté)
             </label>
             <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;flex:1;background:var(--pa-surface2);border:1px solid var(--pa-border);border-radius:3px;padding:8px">
-              <input type="radio" name="spAuth" value="token" style="accent-color:var(--pa-blue)"> Token Bearer (API)
+              <input type="radio" name="spAuth" value="token" style="accent-color:#e91e8c"> Token Bearer (API)
             </label>
           </div>
         </div>
@@ -1295,7 +1304,7 @@ body{
 
         <div class="sp-section" style="margin-top:16px">Synchronisation automatique</div>
         <label style="display:flex;align-items:center;gap:10px;font-size:13px;cursor:pointer;padding:10px;background:var(--pa-surface2);border:1px solid var(--pa-border);border-radius:3px">
-          <input type="checkbox" id="spAutoSync" style="accent-color:var(--pa-blue)" onchange="spToggleAutoSync(this.checked)">
+          <input type="checkbox" id="spAutoSync" style="accent-color:#e91e8c" onchange="spToggleAutoSync(this.checked)">
           <div>
             <div style="font-weight:600">Synchro automatique à chaque sauvegarde</div>
             <div style="font-size:11px;color:var(--pa-muted)">Publie automatiquement vers SharePoint quand vous cliquez 💾 Enregistrer</div>
@@ -1910,12 +1919,10 @@ async function ghPull(silent=false){
     if(payload.collaborateurs)  { COLLS.splice(0,COLLS.length,...payload.collaborateurs); LS.setItem('atoll_colls',JSON.stringify(COLLS)); }
     if(payload.templates)       { TPLS=payload.templates;       LS.setItem('atoll_tpl',JSON.stringify(TPLS)); }
     if(payload.store)           { Object.assign(STORE,payload.store); LS.setItem('atoll_store',JSON.stringify(STORE)); }
-    if(payload.users?.length)   {
-      // Fusionner les profils GitHub avec les profils locaux (éviter doublons)
-      payload.users.forEach(u=>{
-        if(!USERS.find(x=>x.id===u.id)) USERS.push(u);
-        else { const idx=USERS.findIndex(x=>x.id===u.id); if(idx>=0) USERS[idx]={...USERS[idx],...u,prefs:USERS[idx].prefs||u.prefs}; }
-      });
+    if(payload.users?.length){
+      // Remplacer complètement la liste des profils par celle de GitHub
+      // (source de vérité unique = GitHub)
+      USERS.splice(0, USERS.length, ...payload.users);
       LS.setItem('atoll_users',JSON.stringify(USERS));
     }
     ghLog('ok','✅ Chargé depuis GitHub ('+new Date(payload.saved_at||Date.now()).toLocaleString('fr-FR')+')');
@@ -2640,7 +2647,7 @@ function renderWeekPanel(sem){
       const h=calcH(slot);
       rowH+=h; dayTH[ji]+=h;
       const isToday=dateOfDay(PLANNING_YEAR,sem,ji)?.toDateString()===new Date().toDateString();
-      const bg=isToday?'background:rgba(0,120,212,.04);':ji===cD?'background:rgba(0,120,212,.06);':'';
+      const bg=isToday?'background:rgba(233,30,140,.04);':ji===cD?'background:rgba(233,30,140,.06);':'';
 
       if(slot.statut==='R')   tbody+=`<td style="${bg}"><span style="color:var(--pa-muted2);font-size:11px;font-style:italic">Repos</span></td>`;
       else if(slot.statut==='CP')  tbody+=`<td style="${bg}"><span style="color:var(--pa-yellow);font-weight:700;font-size:12px">CP</span></td>`;
@@ -3217,7 +3224,7 @@ function openAM(id){
   ).join('');
   document.getElementById('collabCbs').innerHTML=COLLS.map((c,ci)=>
     `<label class="collab-cb">
-      <input type="checkbox" value="${ci}" checked style="accent-color:var(--pa-blue)">
+      <input type="checkbox" value="${ci}" checked style="accent-color:#e91e8c">
       <div class="mini-av" style="background:${c.color}">${ini(c.nom)}</div>
       ${c.nom}
     </label>`
@@ -3541,30 +3548,58 @@ async function initLogin(){
     const el=document.getElementById(id);
     if(el) el.innerHTML=USER_COLORS.map((c,i)=>`<div class="csw${i===0?' sel':''}" style="background:${c};width:22px;height:22px" onclick="selectColor('${id}','${c}',this)"></div>`).join('');
   });
-  // Apply store labels to login
-  const sn=document.getElementById('loginStoreName'),sl=document.getElementById('loginStoreLocation');
-  const ht=document.getElementById('loginHeroTitle'),ft=document.getElementById('loginFooterTxt');
-  if(sn) sn.textContent=STORE.name||'Planning Commercial';
-  if(sl) sl.textContent=STORE.location||'';
-  if(ht) ht.textContent=STORE.name||'Planning Commercial';
-  if(ft) ft.textContent=(STORE.name||'Planning Commercial')+(STORE.location?' · '+STORE.location:'');
 
-  // Si déjà connecté sur ce poste → restaurer la session
+  // Appliquer les labels du magasin
+  function applyLabels(){
+    const sn=document.getElementById('loginStoreName'),sl=document.getElementById('loginStoreLocation');
+    const ht=document.getElementById('loginHeroTitle'),ft=document.getElementById('loginFooterTxt');
+    if(sn) sn.textContent=STORE.name||'Planning Commercial';
+    if(sl) sl.textContent=STORE.location||'';
+    if(ht) ht.textContent=STORE.name||'Planning Commercial';
+    if(ft) ft.textContent=(STORE.name||'Planning Commercial')+(STORE.location?' · '+STORE.location:'');
+  }
+  applyLabels();
+
+  // Si déjà connecté sur ce poste → restaurer la session directement
   if(CURRENT_USER){ applyUserSession(CURRENT_USER); return; }
 
-  // Auto-load GitHub si configuré → récupère les profils des autres postes
+  // Afficher l'overlay avec message de chargement si GitHub configuré
   if(GH.config.token && GH.config.user && GH.config.repo){
-    const loaded = await ghPull(true);
-    if(loaded){
-      render(); // rafraîchir avec les nouvelles données
-      // Mettre à jour les labels store
-      if(sn) sn.textContent=STORE.name||'Planning Commercial';
-      if(sl) sl.textContent=STORE.location||'';
-      if(ht) ht.textContent=STORE.name||'Planning Commercial';
-    }
-  }
+    // Montrer un écran de chargement
+    document.getElementById('loginOverlay').style.display='flex';
+    document.getElementById('loginPhase1').innerHTML=`
+      <div style="text-align:center;padding:20px 0">
+        <div style="font-size:32px;margin-bottom:12px;animation:spin 1s linear infinite;display:inline-block">⟳</div>
+        <div style="font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:6px">Chargement des profils…</div>
+        <div style="font-size:12px;color:#aaa">Connexion à GitHub en cours</div>
+      </div>`;
+    loginShowPhase(1);
 
-  showLoginOverlay();
+    const loaded = await ghPull(true);
+
+    if(loaded){
+      // Recharger USERS depuis localStorage (ghPull y a écrit les profils)
+      try{const r=LS.getItem('atoll_users');if(r)USERS.splice(0,USERS.length,...JSON.parse(r));}catch(e){}
+      render();
+      applyLabels();
+    }
+
+    // Reconstruire la phase 1 normale
+    document.getElementById('loginPhase1').innerHTML=`
+      <div class="login-title">Bienvenue</div>
+      <div class="login-sub">Sélectionnez votre profil</div>
+      <div class="login-avatars" id="loginAvatars"></div>
+      <div class="login-divider">ou</div>
+      <button class="login-new" onclick="loginShowNew()"><span style="font-size:16px">＋</span> Créer mon profil</button>
+      <div style="margin-top:10px;text-align:center">
+        <span onclick="loginShowAdmin()" style="font-size:11px;color:#ddd;cursor:pointer;user-select:none" title="Accès administrateur">⚙</span>
+      </div>`;
+
+    renderLoginAvatars();
+    loginShowPhase(1);
+  } else {
+    showLoginOverlay();
+  }
 }
 
 function showLoginOverlay(){
