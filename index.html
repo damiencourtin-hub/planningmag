@@ -857,6 +857,19 @@ body{
 .store-card-name{font-size:14px;font-weight:700;color:var(--pa-text)}
 .store-card-loc{font-size:11px;color:var(--pa-muted)}
 .store-card-badge{margin-left:auto;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:linear-gradient(135deg,#e91e8c,#9d0a5e);color:#fff;white-space:nowrap}
+/* ─── VERROU D'ÉDITION ─── */
+.lock-banner{
+  position:fixed;top:0;left:0;right:0;z-index:5000;
+  background:linear-gradient(135deg,#7c3aed,#4c1d95);
+  color:#fff;padding:11px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  box-shadow:0 4px 20px rgba(124,58,237,.5);
+  animation:lockSlideDown .35s cubic-bezier(.34,1.56,.64,1);
+  font-family:'Inter',sans-serif;font-size:13px;font-weight:600;
+}
+@keyframes lockSlideDown{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+.lock-pulse{width:9px;height:9px;border-radius:50%;background:#c4b5fd;display:inline-block;margin-right:8px;animation:lockPulse 1.4s infinite}
+@keyframes lockPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
 </style>
 <body>
 
@@ -1039,6 +1052,7 @@ body{
   <div class="cmd-bar-bottom">
     <button class="cmd-btn" onclick="openTplManager()">⚡ <span class="cmd-btn-label">Plages types</span></button>
     <button class="cmd-btn" onclick="printWeek()">🖨 <span class="cmd-btn-label">Imprimer</span></button>
+    <button class="cmd-btn" onclick="manualRefresh()" id="refreshBtn" title="Charger la dernière version sauvegardée">🔄 <span class="cmd-btn-label">Actualiser</span></button>
     <div style="position:relative">
       <button class="cmd-btn" onclick="toggleSettingsMenu()" id="settingsMenuBtn">⚙ <span class="cmd-btn-label">Options</span> ▾</button>
       <div id="settingsMenu" style="display:none;position:absolute;top:44px;right:0;background:#fff;border:1px solid #d0dce8;border-radius:12px;box-shadow:0 12px 32px rgba(0,78,120,.18);z-index:100;min-width:210px;overflow:hidden;animation:dlgIn .2s ease">
@@ -1772,21 +1786,38 @@ loadStoreData();
 STORE=getCurrentStore();
 PLANNING_YEAR=STORE.year||2026;
 
-function saveData(){
+async function saveData(){
   saveStoreData();
   LS.setItem('atoll_users',JSON.stringify(USERS));
   showSaveIndicator('saved');
+  toast('💾 Enregistrement…','var(--pa-muted)');
+  if(GH.config.token && GH.config.user && GH.config.repo){
+    await ghPush(true);
+    await lockRelease(); // libérer le verrou → les autres peuvent éditer
+    showSaveIndicator('gh');
+    toast('✅ Planning enregistré et synchronisé');
+  } else {
+    toast('💾 Planning enregistré en local');
+  }
   if(SP.config.autoSync && SP.config.siteUrl) spPush('week', true);
-  if(GH.config.token && GH.config.user && GH.config.repo) ghPush(true);
 }
 
 // Sauvegarde locale silencieuse — après chaque modification
-function saveLocal(){
+async function saveLocal(){
+  // Sauvegarder localement immédiatement
   try{
     LS.setItem(`atoll_v2_${CURRENT_STORE_ID}`,JSON.stringify(DATA));
-    LS.setItem('atoll_colls',JSON.stringify(COLLS));
     showSaveIndicator('auto');
   }catch(e){}
+  // Acquérir le verrou pour ce magasin (bloque les autres sur le même magasin)
+  if(GH.config.token && GH.config.user && GH.config.repo){
+    const ok = await lockAcquire();
+    if(!ok){
+      // Verrou refusé → annuler la modif locale
+      try{ loadStoreData(); render(); }catch(e){}
+      return;
+    }
+  }
 }
 
 // Indicateur visuel discret dans le header
@@ -3561,7 +3592,24 @@ function attachUserToStore(storeId){
   toast('✓ Rattaché à '+STORES.find(s=>s.id===storeId)?.name);
 }
 
-// ── Settings menu ──
+// ── Actualiser manuellement ──
+async function manualRefresh(){
+  if(!GH.config.token||!GH.config.user||!GH.config.repo){
+    toast('⚠ GitHub non configuré','var(--pa-orange)'); return;
+  }
+  const btn=document.getElementById('refreshBtn');
+  if(btn){ btn.disabled=true; btn.style.opacity='.5'; }
+  toast('🔄 Chargement de la dernière version…','var(--pa-muted)');
+  const pulled = await ghPull(true);
+  if(pulled){
+    loadStoreData(); STORE=getCurrentStore(); PLANNING_YEAR=STORE.year||2026;
+    render(); showSaveIndicator('sync');
+    toast('✅ Planning mis à jour');
+  } else {
+    toast('ℹ Déjà à jour');
+  }
+  if(btn){ btn.disabled=false; btn.style.opacity='1'; }
+}
 function toggleSettingsMenu(){
   const m=document.getElementById('settingsMenu');
   if(m) m.style.display=m.style.display==='none'?'block':'none';
@@ -4092,31 +4140,24 @@ async function initLogin(){
   }
   applyLabels();
 
-  // Si déjà connecté sur ce poste → restaurer la session directement
-  if(CURRENT_USER){ applyUserSession(CURRENT_USER); return; }
-
-  // Afficher l'overlay avec message de chargement si GitHub configuré
+  // Toujours charger la dernière version GitHub à l'ouverture
   if(GH.config.token && GH.config.user && GH.config.repo){
-    // Montrer un écran de chargement
     document.getElementById('loginOverlay').style.display='flex';
     document.getElementById('loginPhase1').innerHTML=`
       <div style="text-align:center;padding:20px 0">
         <div style="font-size:32px;margin-bottom:12px;animation:spin 1s linear infinite;display:inline-block">⟳</div>
-        <div style="font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:6px">Chargement des profils…</div>
-        <div style="font-size:12px;color:#aaa">Connexion à GitHub en cours</div>
+        <div style="font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:6px">Chargement en cours…</div>
+        <div style="font-size:12px;color:#aaa">Récupération de la dernière version</div>
       </div>`;
     loginShowPhase(1);
 
-    const loaded = await ghPull(true);
+    await ghPull(true);
+    // Recharger USERS et données du magasin
+    try{const r=LS.getItem('atoll_users');if(r)USERS.splice(0,USERS.length,...JSON.parse(r));}catch(e){}
+    loadStoreData(); STORE=getCurrentStore(); PLANNING_YEAR=STORE.year||2026;
+    render(); applyLabels();
 
-    if(loaded){
-      // Recharger USERS depuis localStorage (ghPull y a écrit les profils)
-      try{const r=LS.getItem('atoll_users');if(r)USERS.splice(0,USERS.length,...JSON.parse(r));}catch(e){}
-      render();
-      applyLabels();
-    }
-
-    // Reconstruire la phase 1 normale
+    // Reconstruire la phase 1
     document.getElementById('loginPhase1').innerHTML=`
       <div class="login-title">Bienvenue</div>
       <div class="login-sub">Sélectionnez votre profil</div>
@@ -4126,9 +4167,7 @@ async function initLogin(){
       <div style="margin-top:10px;text-align:center">
         <span onclick="loginShowAdmin()" style="font-size:11px;color:#ddd;cursor:pointer;user-select:none" title="Accès administrateur">⚙</span>
       </div>`;
-
-    renderLoginAvatars();
-    loginShowPhase(1);
+    renderLoginAvatars(); loginShowPhase(1);
   } else {
     showLoginOverlay();
   }
@@ -4365,6 +4404,167 @@ function confirmDeleteSelf(){
 }
 
 // ══════════════════════════════════════
+// SYSTÈME DE VERROU D'ÉDITION
+// ══════════════════════════════════════
+const LOCK_FILE   = 'lock.json';
+const LOCK_TTL    = 3 * 60 * 1000; // 3 minutes sans activité = verrou libéré
+const LOCK_RENEW  = 60 * 1000;     // renouveler le verrou toutes les 60s si actif
+let _lockState    = null;  // {user, name, since, mine}
+let _lockRenewTimer = null;
+let _lastActivity = Date.now();
+
+// Mettre à jour la date de dernière activité à chaque interaction
+document.addEventListener('pointerdown', ()=>{ _lastActivity=Date.now(); });
+document.addEventListener('keydown',     ()=>{ _lastActivity=Date.now(); });
+
+// Lire le verrou actuel depuis GitHub
+async function lockRead(){
+  if(!GH.config.token||!GH.config.user||!GH.config.repo) return null;
+  try{
+    const r = await ghFetch(`https://api.github.com/repos/${GH.config.user}/${GH.config.repo}/contents/${LOCK_FILE}?ref=${GH.config.branch||'main'}`, {headers:ghHeaders()});
+    if(r.status===404) return null; // pas de verrou
+    if(!r.ok) return null;
+    const d = await r.json();
+    const raw = JSON.parse(decodeURIComponent(escape(atob(d.content))));
+    raw._sha = d.sha;
+    // Verrou expiré ?
+    if(Date.now() - raw.since > LOCK_TTL) return null;
+    return raw;
+  }catch(e){ return null; }
+}
+
+// Écrire le verrou sur GitHub (inclut le magasin)
+async function lockWrite(acquire=true){
+  if(!GH.config.token||!GH.config.user||!GH.config.repo) return;
+  if(!CURRENT_USER) return;
+  try{
+    let sha = null;
+    try{
+      const r = await ghFetch(`https://api.github.com/repos/${GH.config.user}/${GH.config.repo}/contents/${LOCK_FILE}?ref=${GH.config.branch||'main'}`, {headers:ghHeaders()});
+      if(r.ok){ const d=await r.json(); sha=d.sha; }
+    }catch(e){}
+    const payload = acquire
+      ? {user:CURRENT_USER.id, name:CURRENT_USER.name, since:Date.now(), storeId:CURRENT_STORE_ID}
+      : {user:null, name:null, since:0, storeId:CURRENT_STORE_ID, released:true};
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+    const body = {
+      message: acquire?`🔒 ${CURRENT_USER.name}`:'🔓 libéré',
+      content, branch:GH.config.branch||'main',
+      ...(sha?{sha}:{})
+    };
+    await ghFetch(`https://api.github.com/repos/${GH.config.user}/${GH.config.repo}/contents/${LOCK_FILE}`,
+      {method:'PUT', headers:ghHeaders(), body:JSON.stringify(body)});
+  }catch(e){}
+}
+
+// Vérifier le verrou — bloque uniquement si même magasin
+async function lockCheck(){
+  if(_lockState?.mine) return;
+  const current = await lockRead();
+  // Ignorer si verrou d'un autre magasin
+  if(current && current.storeId && current.storeId !== CURRENT_STORE_ID) return;
+  if(current && current.user && current.user !== CURRENT_USER?.id){
+    _lockState = {...current, mine:false};
+    lockShowBanner(current);
+  } else {
+    if(_lockState && !_lockState.mine){ _lockState=null; lockHideBanner(); }
+  }
+}
+async function lockAcquire(){
+  if(_lockState?.mine) return true;
+  const current = await lockRead();
+  // Verrou d'un autre magasin → pas bloquant
+  if(current && current.storeId && current.storeId !== CURRENT_STORE_ID) return true;
+  // Verrou du même magasin par quelqu'un d'autre
+  if(current && current.user && current.user !== CURRENT_USER?.id){
+    lockShowBanner(current); return false;
+  }
+  await lockWrite(true);
+  _lockState = {user:CURRENT_USER?.id, name:CURRENT_USER?.name, since:Date.now(), storeId:CURRENT_STORE_ID, mine:true};
+  lockHideBanner();
+  clearInterval(_lockRenewTimer);
+  _lockRenewTimer = setInterval(async ()=>{
+    if(Date.now()-_lastActivity < LOCK_TTL) await lockWrite(true);
+    else lockRelease();
+  }, LOCK_RENEW);
+  return true;
+}
+
+// Libérer le verrou
+async function lockRelease(){
+  if(!_lockState?.mine) return;
+  clearInterval(_lockRenewTimer);
+  _lockState = null;
+  await lockWrite(false);
+  lockHideBanner();
+}
+
+// Vérifier le verrou des autres (dans la boucle de sync)
+async function lockCheck(){
+  if(_lockState?.mine) return; // c'est notre verrou, on skip
+  const current = await lockRead();
+  if(current && current.user && current.user!==CURRENT_USER?.id){
+    _lockState = {...current, mine:false};
+    lockShowBanner(current);
+  } else {
+    _lockState = null;
+    lockHideBanner();
+  }
+}
+
+// Afficher la bannière de verrou
+function lockShowBanner(lock){
+  let banner = document.getElementById('lockBanner');
+  if(!banner){
+    banner = document.createElement('div');
+    banner.id = 'lockBanner';
+    banner.className = 'lock-banner';
+    document.body.prepend(banner);
+  }
+  const since = new Date(lock.since).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+  const remaining = Math.max(0, Math.round((LOCK_TTL-(Date.now()-lock.since))/60000));
+  banner.innerHTML = `
+    <div style="display:flex;align-items:center">
+      <span class="lock-pulse"></span>
+      <span>🔒 <strong>${lock.name}</strong> est en train de modifier le planning</span>
+      <span style="margin-left:10px;font-size:11px;opacity:.7">depuis ${since} · expire dans ~${remaining} min</span>
+    </div>
+    <span style="font-size:11px;opacity:.7;cursor:default">Mode lecture seule</span>`;
+  // Désactiver les interactions d'édition
+  lockApplyReadOnly(true);
+}
+
+// Masquer la bannière
+function lockHideBanner(){
+  const b = document.getElementById('lockBanner');
+  if(b){ b.style.animation='lockSlideDown .3s reverse'; setTimeout(()=>b.remove(),300); }
+  lockApplyReadOnly(false);
+}
+
+// Bloquer / débloquer les interactions d'édition
+function lockApplyReadOnly(readonly){
+  // Bouton enregistrer
+  const saveBtn = document.querySelector('.cmd-btn.primary');
+  if(saveBtn){ saveBtn.disabled=readonly; saveBtn.style.opacity=readonly?'.4':'1'; }
+  // Overlay transparent pour bloquer les clics sur le tableau
+  let overlay = document.getElementById('lockOverlay');
+  if(readonly && !overlay){
+    overlay = document.createElement('div');
+    overlay.id = 'lockOverlay';
+    overlay.style.cssText='position:fixed;inset:0;z-index:4999;cursor:not-allowed';
+    overlay.title='Planning en cours de modification par un autre utilisateur';
+    // Laisser passer les clics sur la barre de commande
+    overlay.style.top='58px';
+    document.body.appendChild(overlay);
+  } else if(!readonly && overlay){
+    overlay.remove();
+  }
+}
+
+// Libérer le verrou quand on quitte la page
+window.addEventListener('beforeunload', ()=>{ lockRelease(); });
+
+// ══════════════════════════════════════
 // INIT
 // ══════════════════════════════════════
 try {
@@ -4418,58 +4618,20 @@ try {
   render();
   setTimeout(()=>{try{const el=document.querySelector('.wp-cell.active');if(el)el.scrollIntoView({block:'center'});}catch(e){}},80);
 
-  // ── SYNCHRONISATION BIDIRECTIONNELLE ──
-  // Push local → GitHub toutes les 60s
+  // ── AUTO-SAVE toutes les 5 minutes (silencieux) ──
   setInterval(async ()=>{
-    if(GH.config.token && GH.config.user && GH.config.repo){
-      await ghPush(true);
-      showSaveIndicator('gh');
-    }
-  }, 60 * 1000);
+    if(!GH.config.token||!GH.config.user||!GH.config.repo) return;
+    if(!CURRENT_USER) return;
+    await ghPush(true);
+    showSaveIndicator('gh');
+  }, 5 * 60 * 1000);
 
-  // Pull GitHub → local toutes les 30s (détecte changements d'un autre appareil)
-  let _lastSHA = null;
+  // ── VÉRIFICATION DU VERROU toutes les 15s (léger, juste lock.json) ──
   setInterval(async ()=>{
-    if(!GH.config.token || !GH.config.user || !GH.config.repo) return;
-    if(document.hidden) return; // ne pas syncer si l'onglet est en arrière-plan
-    try{
-      // Vérifier le SHA du fichier sans tout télécharger
-      const r = await ghFetch(ghApiUrl(GH.config.file), {headers:ghHeaders()});
-      if(!r.ok) return;
-      const meta = await r.json();
-      const sha = meta.sha;
-      if(_lastSHA === null){ _lastSHA = sha; return; } // première fois, mémoriser
-      if(sha === _lastSHA) return; // pas de changement
-      // SHA différent = un autre appareil a sauvegardé → on pull
-      _lastSHA = sha;
-      const pulled = await ghPull(true);
-      if(pulled){
-        loadStoreData();
-        STORE = getCurrentStore();
-        PLANNING_YEAR = STORE.year || 2026;
-        render();
-        showSaveIndicator('sync');
-        toast('🔄 Planning mis à jour depuis un autre appareil', '#7c3aed');
-      }
-    }catch(e){}
-  }, 30 * 1000);
-
-  // Resync quand l'onglet redevient visible
-  document.addEventListener('visibilitychange', async ()=>{
-    if(!document.hidden && GH.config.token && GH.config.user && GH.config.repo){
-      try{
-        const r = await ghFetch(ghApiUrl(GH.config.file), {headers:ghHeaders()});
-        if(!r.ok) return;
-        const meta = await r.json();
-        if(meta.sha !== _lastSHA){
-          _lastSHA = meta.sha;
-          await ghPull(true);
-          loadStoreData(); STORE=getCurrentStore(); PLANNING_YEAR=STORE.year||2026;
-          render(); showSaveIndicator('sync');
-        }
-      }catch(e){}
-    }
-  });
+    if(!GH.config.token||!GH.config.user||!GH.config.repo) return;
+    if(document.hidden) return;
+    await lockCheck();
+  }, 15 * 1000);
 
   // Init login system
   initLogin();
