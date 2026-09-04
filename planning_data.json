@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "saved_at": "2026-09-04T07:50:36.064Z",
+  "saved_at": "2026-09-04T07:51:04.468Z",
   "store": {
     "name": "Planning Commercial",
     "location": "Angers ATOLL"
   },
   "collaborateurs": [
     {
-      "nom": "Claude",
+      "nom": "Isabelle",
       "base": 35,
       "color": "#c97f5a"
     },
@@ -451,6 +451,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "2": {
@@ -840,6 +882,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -1231,6 +1315,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "4": {
@@ -1620,6 +1746,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -2011,6 +2179,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "6": {
@@ -2400,6 +2610,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -2791,6 +3043,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "8": {
@@ -3180,6 +3474,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -3571,6 +3907,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "10": {
@@ -3960,6 +4338,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -4351,6 +4771,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "12": {
@@ -4740,6 +5202,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -5131,6 +5635,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "14": {
@@ -5520,6 +6066,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -5911,6 +6499,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "16": {
@@ -6300,6 +6930,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -6691,6 +7363,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "18": {
@@ -7080,6 +7794,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -7471,6 +8227,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "20": {
@@ -7860,6 +8658,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -8251,6 +9091,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "22": {
@@ -8640,6 +9522,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -9031,6 +9955,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "24": {
@@ -9420,6 +10386,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -9811,6 +10819,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "26": {
@@ -10200,6 +11250,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -10591,6 +11683,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "28": {
@@ -10980,6 +12114,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -11371,6 +12547,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "30": {
@@ -11760,6 +12978,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -12151,6 +13411,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "32": {
@@ -12540,6 +13842,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -12931,6 +14275,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "34": {
@@ -13320,6 +14706,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -13711,6 +15139,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "36": {
@@ -14100,6 +15570,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -14491,6 +16003,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "38": {
@@ -14880,6 +16434,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -15271,6 +16867,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "40": {
@@ -15660,6 +17298,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -16051,6 +17731,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "42": {
@@ -16440,6 +18162,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -16831,6 +18595,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "44": {
@@ -17220,6 +19026,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -17611,6 +19459,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "46": {
@@ -18000,6 +19890,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -18391,6 +20323,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "48": {
@@ -18780,6 +20754,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -19171,6 +21187,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "50": {
@@ -19560,6 +21618,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     },
@@ -19951,6 +22051,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "52": {
@@ -20341,6 +22483,48 @@
             }
           ]
         }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
+        }
       ]
     },
     "53": {
@@ -20730,6 +22914,48 @@
               "fin": "09:00"
             }
           ]
+        }
+      ],
+      "collabSnapshot": [
+        {
+          "nom": "Isabelle",
+          "base": 35,
+          "color": "#c97f5a"
+        },
+        {
+          "nom": "Fernanda",
+          "base": 35,
+          "color": "#8ba888"
+        },
+        {
+          "nom": "Nathalie",
+          "base": 35,
+          "color": "#b08968"
+        },
+        {
+          "nom": "Lilou",
+          "base": 30,
+          "color": "#9b7ba8"
+        },
+        {
+          "nom": "Ilona",
+          "base": 24,
+          "color": "#d4a373"
+        },
+        {
+          "nom": "CDI",
+          "base": 24,
+          "color": "#7d8e9a"
+        },
+        {
+          "nom": "CDD 35 (1)",
+          "base": 35,
+          "color": "#a48b78"
+        },
+        {
+          "nom": "CDD 35 (2)",
+          "base": 35,
+          "color": "#8b6f5c"
         }
       ]
     }
