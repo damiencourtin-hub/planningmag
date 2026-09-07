@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-05T11:32:43.236Z",
+  "saved_at": "2026-09-07T04:58:51.129Z",
   "stores": [
     {
       "id": "store_default",
@@ -20,7 +20,7 @@
           "objJours": [
             0,
             0,
-            6000,
+            0,
             0,
             0,
             0,
@@ -79,13 +79,7 @@
             {
               "collaborateurs": [
                 {
-                  "statut": "R",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "R",
+                  "statut": "work",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -93,8 +87,14 @@
                 {
                   "statut": "work",
                   "debut": "09:00",
-                  "pause": 1.5,
-                  "fin": "17:00"
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
                 },
                 {
                   "statut": "work",
@@ -11869,46 +11869,6 @@
             {
               "collaborateurs": [
                 {
-                  "statut": "R",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "11:00",
-                  "pause": 1,
-                  "fin": "18:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 1,
-                  "fin": "18:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "11:30",
-                  "pause": 1,
-                  "fin": "20:30"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                }
-              ]
-            },
-            {
-              "collaborateurs": [
-                {
                   "statut": "work",
                   "debut": "09:00",
                   "pause": 0,
@@ -11921,7 +11881,7 @@
                   "fin": "09:00"
                 },
                 {
-                  "statut": "R",
+                  "statut": "work",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -11967,7 +11927,7 @@
                   "fin": "09:00"
                 },
                 {
-                  "statut": "R",
+                  "statut": "work",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -11995,12 +11955,6 @@
                   "fin": "09:00"
                 },
                 {
-                  "statut": "R",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
                   "statut": "work",
                   "debut": "09:00",
                   "pause": 0,
@@ -12019,7 +11973,13 @@
                   "fin": "09:00"
                 },
                 {
-                  "statut": "R",
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -12030,43 +11990,79 @@
               "collaborateurs": [
                 {
                   "statut": "work",
-                  "debut": "09:30",
-                  "pause": 1,
-                  "fin": "20:30",
-                  "pauseDebut": "13:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 1,
-                  "fin": "17:00",
-                  "pauseDebut": "13:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 1,
-                  "fin": "17:00",
-                  "pauseDebut": "12:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "11:30",
-                  "pause": 1,
-                  "fin": "17:45",
-                  "pauseDebut": "14:00"
-                },
-                {
-                  "statut": "R",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
                 },
                 {
                   "statut": "work",
-                  "debut": "16:00",
+                  "debut": "09:00",
                   "pause": 0,
-                  "fin": "20:15"
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                }
+              ]
+            },
+            {
+              "collaborateurs": [
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
                 }
               ]
             },
@@ -17963,48 +17959,7 @@
           "color": "#7d8e9a"
         }
       ],
-      "tpls": [
-        {
-          "id": "t1788555329842",
-          "name": "Ouverture 7h",
-          "color": "#c97f5a",
-          "debut": "09:00",
-          "pause": 1,
-          "fin": "18:00"
-        },
-        {
-          "id": "t1788555368689",
-          "name": "Fermeture 7h",
-          "color": "#c97f5a",
-          "debut": "11:30",
-          "pause": 1,
-          "fin": "20:30"
-        },
-        {
-          "id": "t1788555441456",
-          "name": "Ouverture 24h",
-          "color": "#c97f5a",
-          "debut": "09:00",
-          "pause": 0,
-          "fin": "13:00"
-        },
-        {
-          "id": "t1788555471601",
-          "name": "Fermeture 24h",
-          "color": "#c97f5a",
-          "debut": "16:00",
-          "pause": 0,
-          "fin": "20:00"
-        },
-        {
-          "id": "t1788555507441",
-          "name": "Journée 35h",
-          "color": "#c97f5a",
-          "debut": "11:00",
-          "pause": 1,
-          "fin": "18:00"
-        }
-      ]
+      "tpls": []
     }
   },
   "users": [
@@ -18020,18 +17975,6 @@
       },
       "lastSeen": "2026-09-04T12:07:23.000Z",
       "storeId": "store_default"
-    },
-    {
-      "id": "u1788526472258",
-      "name": "isabelle back off",
-      "role": "editor",
-      "color": "#c97f5a",
-      "pin": "vslr",
-      "prefs": {
-        "week": 36,
-        "day": 1
-      },
-      "lastSeen": "2026-09-05T09:19:27.708Z"
     }
   ]
 }
