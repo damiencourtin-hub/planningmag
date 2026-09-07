@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-07T07:42:56.943Z",
+  "saved_at": "2026-09-07T07:44:12.364Z",
   "stores": [
     {
       "id": "store_default",
@@ -12207,7 +12207,7 @@
             {
               "collaborateurs": [
                 {
-                  "statut": "work",
+                  "statut": "R",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -12259,7 +12259,7 @@
                   "fin": "09:00"
                 },
                 {
-                  "statut": "work",
+                  "statut": "R",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -12305,7 +12305,7 @@
                   "fin": "09:00"
                 },
                 {
-                  "statut": "work",
+                  "statut": "R",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
