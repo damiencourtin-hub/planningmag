@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-07T07:44:12.364Z",
+  "saved_at": "2026-09-14T20:23:38.441Z",
   "stores": [
     {
       "id": "store_default",
@@ -17970,10 +17970,10 @@
       "color": "#9b7ba8",
       "pin": "wgcl",
       "prefs": {
-        "week": 1,
+        "week": 38,
         "day": 0
       },
-      "lastSeen": "2026-09-04T12:07:23.000Z",
+      "lastSeen": "2026-09-14T20:23:26.779Z",
       "storeId": "store_default"
     },
     {
