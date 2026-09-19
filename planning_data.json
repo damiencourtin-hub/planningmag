@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-19T12:37:37.669Z",
+  "saved_at": "2026-09-19T12:39:47.536Z",
   "stores": [
     {
       "id": "store_default",
@@ -13057,11 +13057,23 @@
                 {
                   "statut": "work",
                   "debut": "09:00",
+                  "pause": 1,
+                  "fin": "17:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "12:00",
+                  "pause": 1,
+                  "fin": "20:15"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
                 },
                 {
-                  "statut": "work",
+                  "statut": "R",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -13074,21 +13086,9 @@
                 },
                 {
                   "statut": "work",
-                  "debut": "09:00",
+                  "debut": "15:00",
                   "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
+                  "fin": "20:15"
                 }
               ]
             },
