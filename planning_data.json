@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-19T11:49:47.502Z",
+  "saved_at": "2026-09-19T11:50:57.072Z",
   "stores": [
     {
       "id": "store_default",
@@ -12898,14 +12898,16 @@
                 {
                   "statut": "work",
                   "debut": "09:00",
-                  "pause": 0,
-                  "fin": "15:00"
+                  "pause": 1,
+                  "fin": "16:00",
+                  "pauseDebut": "12:00"
                 },
                 {
                   "statut": "work",
-                  "debut": "12:30",
+                  "debut": "13:00",
                   "pause": 1,
-                  "fin": "20:15"
+                  "fin": "20:15",
+                  "pauseDebut": "14:00"
                 },
                 {
                   "statut": "MAL",
@@ -12915,9 +12917,9 @@
                 },
                 {
                   "statut": "work",
-                  "debut": "09:00",
+                  "debut": "09:30",
                   "pause": 0,
-                  "fin": "13:30"
+                  "fin": "14:00"
                 }
               ]
             },
