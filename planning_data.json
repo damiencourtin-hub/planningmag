@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-21T20:15:46.170Z",
+  "saved_at": "2026-09-21T20:20:46.168Z",
   "stores": [
     {
       "id": "store_default",
@@ -13272,9 +13272,10 @@
                 },
                 {
                   "statut": "work",
-                  "debut": "11:00",
-                  "pause": 1,
-                  "fin": "20:15"
+                  "debut": "13:00",
+                  "pause": 0.5,
+                  "fin": "20:15",
+                  "pauseDebut": "15:30"
                 },
                 {
                   "statut": "work",
@@ -13301,9 +13302,10 @@
               "collaborateurs": [
                 {
                   "statut": "work",
-                  "debut": "09:00",
+                  "debut": "08:00",
                   "pause": 1,
-                  "fin": "17:00"
+                  "fin": "17:00",
+                  "pauseDebut": "12:00"
                 },
                 {
                   "statut": "work",
@@ -13319,9 +13321,10 @@
                 },
                 {
                   "statut": "work",
-                  "debut": "11:00",
+                  "debut": "09:00",
                   "pause": 1,
-                  "fin": "18:00"
+                  "fin": "16:00",
+                  "pauseDebut": "13:00"
                 },
                 {
                   "statut": "work",
@@ -13331,8 +13334,8 @@
                 },
                 {
                   "statut": "work",
-                  "debut": "14:15",
-                  "pause": 0,
+                  "debut": "12:00",
+                  "pause": 1,
                   "fin": "20:15"
                 }
               ]
