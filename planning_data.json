@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-21T20:45:44.423Z",
+  "saved_at": "2026-09-21T20:46:55.109Z",
   "stores": [
     {
       "id": "store_default",
@@ -14792,8 +14792,9 @@
                 {
                   "statut": "work",
                   "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
+                  "pause": 1,
+                  "fin": "17:00",
+                  "pauseDebut": "12:00"
                 },
                 {
                   "statut": "work",
@@ -18056,6 +18057,14 @@
           "debut": "11:00",
           "pause": 1,
           "fin": "20:15"
+        },
+        {
+          "id": "t1790023550462",
+          "name": "Formation",
+          "color": "#9b7ba8",
+          "debut": "09:30",
+          "pause": 1,
+          "fin": "18:00"
         }
       ]
     }
