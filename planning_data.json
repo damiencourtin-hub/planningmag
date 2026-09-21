@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-21T20:59:24.845Z",
+  "saved_at": "2026-09-21T21:00:32.398Z",
   "stores": [
     {
       "id": "store_default",
@@ -12875,15 +12875,15 @@
         "39": {
           "histo": 0,
           "objectif": 0,
-          "prod_budget": 180,
-          "hObj": 0,
+          "prod_budget": 111,
+          "hObj": 272,
           "objJours": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
+            3018,
+            3259,
+            4607,
+            4037,
+            5228,
+            10009,
             0
           ],
           "histoJours": [
@@ -18090,7 +18090,7 @@
       "color": "#8ba888",
       "pin": "vslr",
       "prefs": {
-        "week": 38,
+        "week": 39,
         "day": 4
       },
       "lastSeen": "2026-09-21T11:40:57.512Z"
