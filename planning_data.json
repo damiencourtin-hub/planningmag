@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-21T11:53:13.406Z",
+  "saved_at": "2026-09-21T11:55:39.147Z",
   "stores": [
     {
       "id": "store_default",
@@ -12760,6 +12760,32 @@
               "collaborateurs": [
                 {
                   "statut": "work",
+                  "debut": "11:00",
+                  "pause": 1,
+                  "fin": "19:30"
+                },
+                {
+                  "statut": "work",
+                  "debut": "13:00",
+                  "pause": 1,
+                  "fin": "20:15",
+                  "pauseDebut": "15:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "12:00",
+                  "pause": 1,
+                  "fin": "20:15"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 1,
+                  "fin": "17:00",
+                  "pauseDebut": "12:00"
+                },
+                {
+                  "statut": "MAL",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -12768,31 +12794,7 @@
                   "statut": "work",
                   "debut": "09:00",
                   "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
+                  "fin": "14:00"
                 }
               ]
             },
