@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-21T19:55:46.190Z",
+  "saved_at": "2026-09-21T19:57:05.811Z",
   "stores": [
     {
       "id": "store_default",
@@ -13446,7 +13446,7 @@
                   "fin": "20:15"
                 },
                 {
-                  "statut": "work",
+                  "statut": "R",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -13463,39 +13463,39 @@
               "collaborateurs": [
                 {
                   "statut": "work",
-                  "debut": "09:00",
+                  "debut": "11:00",
                   "pause": 1,
                   "fin": "18:00"
                 },
                 {
                   "statut": "work",
+                  "debut": "11:00",
+                  "pause": 1,
+                  "fin": "20:15"
+                },
+                {
+                  "statut": "work",
+                  "debut": "11:00",
+                  "pause": 1,
+                  "fin": "20:15"
+                },
+                {
+                  "statut": "work",
                   "debut": "09:00",
+                  "pause": 1,
+                  "fin": "17:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "16:15",
                   "pause": 0,
-                  "fin": "09:00"
+                  "fin": "20:15"
                 },
                 {
                   "statut": "work",
                   "debut": "09:00",
                   "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
+                  "fin": "14:00"
                 }
               ]
             },
@@ -18000,7 +18000,48 @@
           "color": "#7d8e9a"
         }
       ],
-      "tpls": []
+      "tpls": [
+        {
+          "id": "t1790019705173",
+          "name": "Journée 35h",
+          "color": "#c97f5a",
+          "debut": "11:00",
+          "pause": 1,
+          "fin": "18:00"
+        },
+        {
+          "id": "t1790019797179",
+          "name": "Fermeture 24h",
+          "color": "#c97f5a",
+          "debut": "14:15",
+          "pause": 0,
+          "fin": "20:15"
+        },
+        {
+          "id": "t1790019835253",
+          "name": "Ouverture 24h",
+          "color": "#c97f5a",
+          "debut": "09:00",
+          "pause": 0,
+          "fin": "14:00"
+        },
+        {
+          "id": "t1790019885197",
+          "name": "Ouverture 35h",
+          "color": "#c97f5a",
+          "debut": "09:00",
+          "pause": 1,
+          "fin": "17:00"
+        },
+        {
+          "id": "t1790019920487",
+          "name": "Fermeture 35h",
+          "color": "#c97f5a",
+          "debut": "11:00",
+          "pause": 1,
+          "fin": "20:15"
+        }
+      ]
     }
   },
   "users": [
