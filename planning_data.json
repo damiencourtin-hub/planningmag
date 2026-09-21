@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-19T22:49:20.279Z",
+  "saved_at": "2026-09-21T11:41:50.218Z",
   "stores": [
     {
       "id": "store_default",
@@ -12919,7 +12919,7 @@
                   "statut": "work",
                   "debut": "09:30",
                   "pause": 0,
-                  "fin": "14:00"
+                  "fin": "13:00"
                 }
               ]
             },
@@ -12927,7 +12927,7 @@
               "collaborateurs": [
                 {
                   "statut": "work",
-                  "debut": "09:00",
+                  "debut": "08:00",
                   "pause": 1,
                   "fin": "17:00",
                   "pauseDebut": "12:00"
@@ -18005,7 +18005,7 @@
         "week": 39,
         "day": 0
       },
-      "lastSeen": "2026-09-19T11:45:05.509Z"
+      "lastSeen": "2026-09-21T11:40:57.512Z"
     }
   ]
 }
