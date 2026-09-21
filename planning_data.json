@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-21T12:00:47.851Z",
+  "saved_at": "2026-09-21T12:04:14.554Z",
   "stores": [
     {
       "id": "store_default",
@@ -13081,14 +13081,14 @@
                   "statut": "work",
                   "debut": "12:00",
                   "pause": 1,
-                  "fin": "20:15",
+                  "fin": "20:30",
                   "pauseDebut": "13:00"
                 },
                 {
                   "statut": "work",
                   "debut": "09:00",
                   "pause": 1,
-                  "fin": "16:00",
+                  "fin": "17:00",
                   "pauseDebut": "12:00"
                 },
                 {
@@ -13098,7 +13098,7 @@
                   "fin": "09:00"
                 },
                 {
-                  "statut": "work",
+                  "statut": "R",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -13107,7 +13107,7 @@
                   "statut": "work",
                   "debut": "13:00",
                   "pause": 1,
-                  "fin": "20:15",
+                  "fin": "20:30",
                   "pauseDebut": "14:00"
                 }
               ]
@@ -13116,42 +13116,43 @@
               "collaborateurs": [
                 {
                   "statut": "work",
-                  "debut": "12:00",
+                  "debut": "10:30",
                   "pause": 1,
-                  "fin": "20:15",
-                  "pauseDebut": "14:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 1,
-                  "fin": "18:00",
+                  "fin": "20:30",
                   "pauseDebut": "13:00"
                 },
                 {
                   "statut": "work",
                   "debut": "09:00",
                   "pause": 1,
-                  "fin": "16:00",
+                  "fin": "19:00",
+                  "pauseDebut": "13:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 1,
+                  "fin": "19:00",
                   "pauseDebut": "12:00"
                 },
                 {
                   "statut": "work",
                   "debut": "12:00",
                   "pause": 1,
-                  "fin": "20:15"
-                },
-                {
-                  "statut": "MAL",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
+                  "fin": "20:30",
+                  "pauseDebut": "14:00"
                 },
                 {
                   "statut": "work",
-                  "debut": "14:00",
+                  "debut": "10:00",
                   "pause": 0,
-                  "fin": "19:30"
+                  "fin": "13:30"
+                },
+                {
+                  "statut": "work",
+                  "debut": "14:30",
+                  "pause": 0,
+                  "fin": "20:30"
                 }
               ]
             },
