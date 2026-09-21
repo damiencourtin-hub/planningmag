@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-21T11:50:48.012Z",
+  "saved_at": "2026-09-21T11:53:13.406Z",
   "stores": [
     {
       "id": "store_default",
@@ -12675,7 +12675,8 @@
                   "statut": "work",
                   "debut": "12:00",
                   "pause": 1,
-                  "fin": "20:15"
+                  "fin": "20:15",
+                  "pauseDebut": "14:15"
                 },
                 {
                   "statut": "R",
@@ -12687,14 +12688,15 @@
                   "statut": "work",
                   "debut": "12:00",
                   "pause": 1,
-                  "fin": "20:15"
+                  "fin": "20:15",
+                  "pauseDebut": "13:15"
                 },
                 {
                   "statut": "work",
                   "debut": "09:30",
                   "pause": 1,
                   "fin": "17:00",
-                  "pauseDebut": "13:00"
+                  "pauseDebut": "12:15"
                 },
                 {
                   "statut": "work",
@@ -12714,36 +12716,40 @@
               "collaborateurs": [
                 {
                   "statut": "work",
+                  "debut": "11:30",
+                  "pause": 1,
+                  "fin": "20:15",
+                  "pauseDebut": "13:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 1,
+                  "fin": "19:00",
+                  "pauseDebut": "13:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 1,
+                  "fin": "17:00",
+                  "pauseDebut": "12:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "11:00",
+                  "pause": 1,
+                  "fin": "20:15",
+                  "pauseDebut": "14:00"
+                },
+                {
+                  "statut": "MAL",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
                 },
                 {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
+                  "statut": "R",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
