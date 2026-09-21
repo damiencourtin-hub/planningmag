@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-21T11:56:49.982Z",
+  "saved_at": "2026-09-21T11:58:51.170Z",
   "stores": [
     {
       "id": "store_default",
@@ -12986,9 +12986,9 @@
               "collaborateurs": [
                 {
                   "statut": "work",
-                  "debut": "09:30",
+                  "debut": "09:00",
                   "pause": 1,
-                  "fin": "17:30",
+                  "fin": "18:00",
                   "pauseDebut": "13:00"
                 },
                 {
@@ -13000,7 +13000,7 @@
                 },
                 {
                   "statut": "work",
-                  "debut": "12:00",
+                  "debut": "11:00",
                   "pause": 1,
                   "fin": "20:30",
                   "pauseDebut": "13:00"
