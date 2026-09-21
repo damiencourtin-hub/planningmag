@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-21T20:40:09.391Z",
+  "saved_at": "2026-09-21T20:42:52.215Z",
   "stores": [
     {
       "id": "store_default",
@@ -13616,6 +13616,12 @@
             {
               "collaborateurs": [
                 {
+                  "statut": "R",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
                   "statut": "work",
                   "debut": "09:00",
                   "pause": 0,
@@ -13623,6 +13629,120 @@
                 },
                 {
                   "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                }
+              ]
+            },
+            {
+              "collaborateurs": [
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "R",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "R",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                }
+              ]
+            },
+            {
+              "collaborateurs": [
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "R",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                }
+              ]
+            },
+            {
+              "collaborateurs": [
+                {
+                  "statut": "work",
+                  "debut": "09:00",
+                  "pause": 0,
+                  "fin": "09:00"
+                },
+                {
+                  "statut": "R",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -13680,127 +13800,7 @@
                   "fin": "09:00"
                 },
                 {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                }
-              ]
-            },
-            {
-              "collaborateurs": [
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                }
-              ]
-            },
-            {
-              "collaborateurs": [
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                }
-              ]
-            },
-            {
-              "collaborateurs": [
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
-                },
-                {
-                  "statut": "work",
+                  "statut": "R",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -18081,8 +18081,8 @@
       "color": "#8ba888",
       "pin": "vslr",
       "prefs": {
-        "week": 40,
-        "day": 3
+        "week": 39,
+        "day": 1
       },
       "lastSeen": "2026-09-21T11:40:57.512Z"
     }
