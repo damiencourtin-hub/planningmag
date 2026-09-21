@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-21T20:20:46.168Z",
+  "saved_at": "2026-09-21T20:23:40.508Z",
   "stores": [
     {
       "id": "store_default",
@@ -13304,7 +13304,7 @@
                   "statut": "work",
                   "debut": "08:00",
                   "pause": 1,
-                  "fin": "17:00",
+                  "fin": "18:00",
                   "pauseDebut": "12:00"
                 },
                 {
@@ -13334,9 +13334,10 @@
                 },
                 {
                   "statut": "work",
-                  "debut": "12:00",
+                  "debut": "13:00",
                   "pause": 1,
-                  "fin": "20:15"
+                  "fin": "20:15",
+                  "pauseDebut": "14:30"
                 }
               ]
             },
@@ -13346,19 +13347,22 @@
                   "statut": "work",
                   "debut": "09:00",
                   "pause": 1,
-                  "fin": "17:00"
+                  "fin": "17:00",
+                  "pauseDebut": "12:00"
+                },
+                {
+                  "statut": "work",
+                  "debut": "10:00",
+                  "pause": 1,
+                  "fin": "19:15",
+                  "pauseDebut": "13:00"
                 },
                 {
                   "statut": "work",
                   "debut": "09:00",
                   "pause": 1,
-                  "fin": "17:00"
-                },
-                {
-                  "statut": "work",
-                  "debut": "11:00",
-                  "pause": 1,
-                  "fin": "20:15"
+                  "fin": "18:15",
+                  "pauseDebut": "13:00"
                 },
                 {
                   "statut": "R",
@@ -13374,9 +13378,9 @@
                 },
                 {
                   "statut": "work",
-                  "debut": "09:00",
+                  "debut": "15:15",
                   "pause": 0,
-                  "fin": "14:00"
+                  "fin": "20:15"
                 }
               ]
             },
