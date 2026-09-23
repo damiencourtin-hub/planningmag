@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-23T04:47:51.672Z",
+  "saved_at": "2026-09-23T04:49:53.348Z",
   "stores": [
     {
       "id": "store_default",
@@ -13659,13 +13659,15 @@
                   "statut": "work",
                   "debut": "09:00",
                   "pause": 1,
-                  "fin": "17:00"
+                  "fin": "17:00",
+                  "pauseDebut": "12:00"
                 },
                 {
                   "statut": "work",
                   "debut": "11:00",
                   "pause": 1,
-                  "fin": "20:15"
+                  "fin": "20:15",
+                  "pauseDebut": "14:00"
                 },
                 {
                   "statut": "R",
@@ -13677,7 +13679,8 @@
                   "statut": "work",
                   "debut": "09:00",
                   "pause": 1,
-                  "fin": "17:00"
+                  "fin": "17:00",
+                  "pauseDebut": "13:00"
                 },
                 {
                   "statut": "work",
@@ -13817,39 +13820,39 @@
               "collaborateurs": [
                 {
                   "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
+                  "debut": "11:00",
+                  "pause": 1,
+                  "fin": "20:15"
                 },
                 {
                   "statut": "work",
                   "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
+                  "pause": 1,
+                  "fin": "17:00"
                 },
                 {
                   "statut": "work",
                   "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
+                  "pause": 1,
+                  "fin": "17:00"
                 },
                 {
                   "statut": "work",
-                  "debut": "09:00",
-                  "pause": 0,
-                  "fin": "09:00"
+                  "debut": "11:00",
+                  "pause": 1,
+                  "fin": "20:15"
                 },
                 {
                   "statut": "work",
-                  "debut": "09:00",
+                  "debut": "14:15",
                   "pause": 0,
-                  "fin": "09:00"
+                  "fin": "20:15"
                 },
                 {
                   "statut": "work",
-                  "debut": "09:00",
+                  "debut": "14:15",
                   "pause": 0,
-                  "fin": "09:00"
+                  "fin": "20:15"
                 }
               ]
             },
@@ -18091,7 +18094,7 @@
       "pin": "vslr",
       "prefs": {
         "week": 42,
-        "day": 1
+        "day": 5
       },
       "lastSeen": "2026-09-22T20:08:40.339Z"
     }
