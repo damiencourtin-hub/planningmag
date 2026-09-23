@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-23T04:20:23.047Z",
+  "saved_at": "2026-09-23T04:21:43.275Z",
   "stores": [
     {
       "id": "store_default",
@@ -13592,7 +13592,7 @@
         "41": {
           "histo": 0,
           "objectif": 0,
-          "prod_budget": 180,
+          "prod_budget": 122,
           "hObj": 0,
           "objJours": [
             3731,
@@ -13930,7 +13930,7 @@
         "42": {
           "histo": 0,
           "objectif": 0,
-          "prod_budget": 180,
+          "prod_budget": 122,
           "hObj": 0,
           "objJours": [
             4475,
@@ -14268,7 +14268,7 @@
         "43": {
           "histo": 0,
           "objectif": 0,
-          "prod_budget": 180,
+          "prod_budget": 122,
           "hObj": 0,
           "objJours": [
             3659,
@@ -14606,7 +14606,7 @@
         "44": {
           "histo": 0,
           "objectif": 0,
-          "prod_budget": 180,
+          "prod_budget": 122,
           "hObj": 0,
           "objJours": [
             3235,
@@ -14945,15 +14945,15 @@
         "45": {
           "histo": 0,
           "objectif": 0,
-          "prod_budget": 180,
+          "prod_budget": 127,
           "hObj": 0,
           "objJours": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
+            4101,
+            4484,
+            5680,
+            4809,
+            6550,
+            10757,
             0
           ],
           "histoJours": [
@@ -15283,15 +15283,15 @@
         "46": {
           "histo": 0,
           "objectif": 0,
-          "prod_budget": 180,
+          "prod_budget": 127,
           "hObj": 0,
           "objJours": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
+            4530,
+            4869,
+            2995,
+            4764,
+            6181,
+            11230,
             0
           ],
           "histoJours": [
@@ -18090,7 +18090,7 @@
       "color": "#8ba888",
       "pin": "vslr",
       "prefs": {
-        "week": 45,
+        "week": 46,
         "day": 4
       },
       "lastSeen": "2026-09-22T20:08:40.339Z"
