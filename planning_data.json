@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-23T04:37:48.206Z",
+  "saved_at": "2026-09-23T04:43:20.720Z",
   "stores": [
     {
       "id": "store_default",
@@ -14636,7 +14636,7 @@
                   "fin": "09:00"
                 },
                 {
-                  "statut": "work",
+                  "statut": "CP",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -14676,7 +14676,7 @@
                   "fin": "09:00"
                 },
                 {
-                  "statut": "work",
+                  "statut": "CP",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -14716,7 +14716,7 @@
                   "fin": "09:00"
                 },
                 {
-                  "statut": "work",
+                  "statut": "CP",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -14756,7 +14756,7 @@
                   "fin": "18:00"
                 },
                 {
-                  "statut": "work",
+                  "statut": "CP",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -14797,7 +14797,7 @@
                   "pauseDebut": "12:00"
                 },
                 {
-                  "statut": "work",
+                  "statut": "CP",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -14837,7 +14837,7 @@
                   "fin": "09:00"
                 },
                 {
-                  "statut": "work",
+                  "statut": "CP",
                   "debut": "09:00",
                   "pause": 0,
                   "fin": "09:00"
@@ -18090,7 +18090,7 @@
       "color": "#8ba888",
       "pin": "vslr",
       "prefs": {
-        "week": 40,
+        "week": 44,
         "day": 4
       },
       "lastSeen": "2026-09-22T20:08:40.339Z"
