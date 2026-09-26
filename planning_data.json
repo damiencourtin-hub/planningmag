@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "saved_at": "2026-09-26T14:43:50.382Z",
+  "saved_at": "2026-09-26T14:45:30.015Z",
   "stores": [
     {
       "id": "store_default",
@@ -20382,7 +20382,7 @@
       "color": "#8ba888",
       "pin": "vslr",
       "prefs": {
-        "week": 40,
+        "week": 41,
         "day": 1
       },
       "lastSeen": "2026-09-26T13:43:56.412Z"
