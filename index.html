@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://api.github.com https://api.anthropic.com; manifest-src 'self' blob: data:; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#1a0812">
+<meta name="theme-color" content="#1e141a">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" type="image/png" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -69,46 +69,52 @@
 
 :root {
   /* ─── PALETTE NÉON BLEU — très léger, élégant ─── */
-  --pa-bg:         #f2f6ff;
+  --pa-bg:         #f6f4f5;
   --pa-surface:    #ffffff;
-  --pa-surface2:   #f7f9ff;
+  --pa-surface2:   #faf9f9;
   --pa-card:       #ffffff;
-  --pa-border:     #f8dcea;
-  --pa-border2:    #f0b0cc;
+  --pa-border:     #e9e4e7;
+  --pa-border2:    #d7d0d4;
 
   /* Bleu néon principal */
   --pa-blue:       var(--ac);          /* rose néon principal */
   --pa-blue-light: var(--ac-lt);          /* fond surligné rose très doux */
   --pa-blue-mid:   var(--pa-blue-mid);
   --pa-blue-dark:  var(--ac-dk);
-  --pa-blue-neon:  #f472b6;          /* accent néon rose */
+  --pa-blue-neon:  #d98bb0;          /* accent néon rose */
 
   /* Header */
   --pa-dark:       var(--hd1);
   --pa-dark2:      var(--hd2);
 
   /* Texte */
-  --pa-text:       #2a0a20;
-  --pa-text2:      #4a1030;
-  --pa-muted:      #a05a7a;
-  --pa-muted2:     #cc8aaa;
+  --pa-text:       #1f1a1d;
+  --pa-text2:      #433b40;
+  --pa-muted:      #766b72;
+  --pa-muted2:     #a89ea4;
 
   /* Status */
-  --pa-green:      #00a86b;
-  --pa-green-bg:   #e6fff5;
-  --pa-orange:     #e08000;
-  --pa-orange-bg:  #fff4e0;
-  --pa-red:        #e02b2b;
-  --pa-red-bg:     #fff0f0;
-  --pa-yellow:     #c49000;
-  --pa-yellow-bg:  #fffbe6;
+  /* États — une seule teinte par sens, partout dans l'appli */
+  --ok:#1e7a46;   --ok-bg:#e7f3ec;
+  --warn:#b45309; --warn-bg:#fdf1e4;
+  --bad:#c0362c;  --bad-bg:#fbeceb;
+  --need:#5a45a8; --need-bg:#efecf9;
+  --info:#3d5f99; --info-bg:#ebf0f8;
+  --pa-green:      var(--ok);
+  --pa-green-bg:   var(--ok-bg);
+  --pa-orange:     var(--warn);
+  --pa-orange-bg:  var(--warn-bg);
+  --pa-red:        var(--bad);
+  --pa-red-bg:     var(--bad-bg);
+  --pa-yellow:     #8a6d00;
+  --pa-yellow-bg:  #fbf5dc;
 
   /* Ombres néon très légères */
   --shadow-2:  0 1px 4px rgba(var(--ac-rgb),.07), 0 1px 2px rgba(var(--ac-rgb),.05);
   --shadow-4:  0 4px 16px rgba(var(--ac-rgb),.10), 0 2px 6px rgba(var(--ac-rgb),.06);
   --shadow-8:  0 12px 36px rgba(var(--ac-rgb),.14), 0 4px 12px rgba(var(--ac-rgb),.08);
-  --glow-sm:   0 0 14px rgba(var(--ac2-rgb),.25);
-  --glow-md:   0 0 28px rgba(var(--ac2-rgb),.3);
+  --glow-sm:   0 0 0 transparent;
+  --glow-md:   0 2px 8px rgba(0,0,0,.08);
 
   /* Rayons */
   --r-sm: 6px;
@@ -223,7 +229,7 @@ body{
   color:#fff;border-color:rgba(var(--ac2-rgb),.5);
   box-shadow:0 0 16px rgba(var(--ac-rgb),.3), 0 2px 8px rgba(var(--ac-rgb),.2);
 }
-.cmd-btn.primary:hover{background:linear-gradient(135deg,#f43fa0,var(--ac));box-shadow:0 0 24px rgba(var(--ac-rgb),.45);transform:translateY(-1px)}
+.cmd-btn.primary:hover{background:var(--ac-dk);box-shadow:0 0 24px rgba(var(--ac-rgb),.45);transform:translateY(-1px)}
 
 /* ─── LAYOUT ─── */
 .app{display:grid;grid-template-columns:248px 36px 1fr;flex:1;overflow:hidden;transition:grid-template-columns .25s ease}
@@ -406,7 +412,7 @@ body{
 .cover-line{font-size:11px;color:var(--pa-muted);padding:6px 12px!important;display:table-cell}
 .cover-line>span{margin-right:14px}
 .min-inp{width:42px;font-family:inherit;font-size:11px;font-weight:700;padding:2px 4px;border:1px solid var(--pa-border2);border-radius:4px;text-align:center}
-.cover-warn{color:#d13438;font-weight:700}
+.cover-warn{color:var(--bad);font-weight:700}
 .cover-ok{color:var(--pa-green);font-weight:600}
 .cmd-btn.ai{background:linear-gradient(135deg,rgba(var(--ac-rgb),.35),rgba(var(--ac-dk-rgb),.35));border-color:rgba(var(--ac2-rgb),.5);color:#fff}
 .tool-btn.ai{border-color:var(--ac);color:var(--ac);background:var(--ac-lt)}
@@ -423,7 +429,7 @@ body{
 .hp-add{border:1px dashed var(--pa-border2);background:transparent;border-radius:8px;padding:5px 10px;font-family:inherit;font-size:12px;font-weight:600;color:var(--pa-blue);cursor:pointer}
 .hp-add:hover{border-color:var(--ac);color:var(--ac)}
 .hp-x{border:none;background:transparent;color:var(--pa-muted);cursor:pointer;font-size:13px;padding:4px 6px;border-radius:4px}
-.hp-x:hover{color:#d13438;background:#fde7e9}
+.hp-x:hover{color:var(--bad);background:var(--bad-bg)}
 .hp-t{font-family:inherit;font-size:12px;padding:4px 5px;border:1px solid var(--pa-border2);border-radius:6px;width:84px}
 .hp-n{font-family:inherit;font-size:12px;font-weight:700;padding:4px;border:1px solid var(--pa-border2);border-radius:6px;width:48px;text-align:center}
 .hp-pk{display:flex;align-items:center;gap:4px;margin-bottom:5px;font-size:12px;flex-wrap:wrap}
@@ -454,7 +460,7 @@ body{
 .ai-chip{font-size:10px;font-weight:800;padding:2px 7px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em;margin-right:4px}
 .ai-act{font-size:12.5px;color:var(--pa-text2);margin-top:3px}
 .opt-ind{font-size:12.5px;background:var(--ac-bg2);border:1px solid var(--ac-bd);border-radius:10px;padding:8px 12px;margin-top:12px;color:var(--pa-text2)}
-.opt-info{font-size:12px;line-height:1.5;background:#eef4fb;border:1px solid #cfe0f3;color:#1f3b5a;border-radius:10px;padding:9px 12px;margin-bottom:10px}
+.opt-info{font-size:12px;line-height:1.5;background:var(--info-bg);border:1px solid #cfe0f3;color:#1f3b5a;border-radius:10px;padding:9px 12px;margin-bottom:10px}
 .ai-claude{margin-top:16px;border:1px solid var(--ac-bd);background:var(--ac-bg2);border-radius:12px;padding:14px 16px}
 .last-save{font-size:11px;color:rgba(var(--hd-soft-rgb),.82);white-space:nowrap;margin-left:10px;cursor:pointer;overflow:hidden;text-overflow:ellipsis;max-width:420px}
 .last-save strong{color:#fff;font-weight:700}
@@ -503,10 +509,6 @@ body{
 /* Glisser au doigt (téléphone, iPad) : la barre capte le geste au lieu de faire défiler la page */
 .gantt-bar .gantt-body,.gantt-handle,.gantt-pausebar .gantt-body,.gantt-pausebar .gantt-handle{touch-action:none}
 .gantt-handle{min-width:10px}
-.sm-grp{padding:9px 16px 4px;font-size:10.5px;font-weight:800;color:#8a7a86;text-transform:uppercase;letter-spacing:.06em;background:#faf7f9}
-.sm-item{padding:11px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#1a2535;font-weight:600;border-bottom:1px solid #f0f4f9}
-.sm-item:hover{background:var(--ac-lt)}
-.sm-hi{color:var(--ac-dk)}
 .cu-head{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;font-size:13px}
 .cu-row1{display:flex;flex-wrap:wrap;align-items:center;column-gap:18px;row-gap:4px}
 .cu-track{height:6px;border-radius:3px;background:var(--ac-bd);overflow:hidden}.cu-track span{display:block;height:100%;background:var(--ac)}
@@ -536,8 +538,8 @@ body{
 .cs-tbl td{padding:5px 3px;border-bottom:1px solid var(--pa-border);text-align:center;vertical-align:top}
 .cs-nm{text-align:left!important;white-space:nowrap}
 .cs-sel{font-family:inherit;font-size:12px;padding:4px 2px;border-radius:7px;border:1px solid var(--pa-border2);background:#fff;width:100%;min-width:78px}
-.cs-d.off .cs-sel{background:#fde7e9;border-color:#f3b2b8;color:#b3261e;font-weight:700}
-.cs-d.range .cs-sel{background:#fff4e0;border-color:#f3d3a6;color:#8a4b00;font-weight:700}
+.cs-d.off .cs-sel{background:var(--bad-bg);border-color:#f3b2b8;color:var(--bad);font-weight:700}
+.cs-d.range .cs-sel{background:var(--warn-bg);border-color:#f3d3a6;color:#8a4b00;font-weight:700}
 .cs-d.cl{opacity:.55}
 .cs-rg{display:flex;align-items:center;gap:2px;margin-top:3px;justify-content:center}
 .cs-tm{width:46px;font-family:inherit;font-size:11.5px;padding:3px 2px;text-align:center;border:1px solid var(--pa-border2);border-radius:6px}
@@ -550,6 +552,22 @@ body{
 .tw-cur{font-size:10.5px;font-weight:700;color:var(--ac-dk);background:var(--ac-lt);border-radius:999px;padding:1px 7px;margin-left:4px}
 .inst-ol{margin:4px 0 0 18px;padding:0;font-size:13.5px;line-height:1.7}
 .off-badge{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:9000;background:#3a2a33;color:#fff;font-size:12.5px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.25);max-width:92vw;text-align:center}
+.sm-panel{position:absolute;top:44px;right:0;z-index:100;background:#fff;border:1px solid #e6e2e5;border-radius:14px;box-shadow:0 14px 36px rgba(20,10,16,.16);padding:8px;width:560px;max-width:calc(100vw - 24px);max-height:calc(100vh - 120px);overflow-y:auto;animation:dlgIn .18s ease}
+.sm-panel[style*="block"]{display:grid!important;grid-template-columns:1fr 1fr;column-gap:6px}
+.sm-col{min-width:0}
+.sm-grp{padding:10px 10px 4px;font-size:10.5px;font-weight:700;color:#9a9398;text-transform:uppercase;letter-spacing:.07em}
+.sm-item{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border:none;background:none;border-radius:9px;font-family:inherit;font-size:13px;font-weight:600;color:#2a2328;text-align:left;cursor:pointer}
+.sm-item:hover{background:#f5f3f4}
+.sm-ic{width:18px;height:18px;flex-shrink:0;fill:none;stroke:#8a838a;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.sm-item:hover .sm-ic{stroke:#2a2328}
+.sm-tx{display:flex;flex-direction:column;min-width:0;flex:1}
+.sm-tx small{font-size:11px;font-weight:500;color:#9a9398;margin-top:1px}
+.sm-xl{cursor:default}.sm-xl:hover{background:none}
+.sm-chips{display:flex;gap:4px}
+.sm-chips button{font-family:inherit;font-size:11.5px;font-weight:600;color:#4a4248;background:#f5f3f4;border:1px solid #e6e2e5;border-radius:7px;padding:4px 8px;cursor:pointer}
+.sm-chips button:hover{background:#ebe7ea;color:#2a2328}
+.sm-dot{width:8px;height:8px;border-radius:50%;background:#c8c8c8;flex-shrink:0}
+@media (max-width:640px){ .sm-panel[style*="block"]{grid-template-columns:1fr} .sm-panel{right:-6px} }
 .menu-mobile-only{display:none!important}
 .tstep{display:inline-flex;align-items:center;border:1px solid var(--pa-border2);border-radius:8px;overflow:hidden;background:#fff;vertical-align:middle}
 .tstep input{border:none!important;border-radius:0!important;box-shadow:none!important;text-align:center;margin:0}
@@ -607,7 +625,7 @@ body{
 .sec-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0 4px}
 .sec-row .fl-inp{flex:1 1 180px}
 .sec-badge{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:999px}
-.sec-badge.ok{background:#e7f6e7;color:#107c10}.sec-badge.ko{background:#fff4e0;color:#b35c00}
+.sec-badge.ok{background:var(--ok-bg);color:var(--ok)}.sec-badge.ko{background:var(--warn-bg);color:var(--warn)}
 .link-btn{background:none;border:none;padding:0;font:inherit;color:var(--pa-blue);font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
 .week-table td.collab-td,.week-table th:first-child{position:sticky;left:0;z-index:2;background:var(--pa-surface,#fff)}
 /* ══ TÉLÉPHONE ══ */
@@ -693,27 +711,27 @@ body{
 }
 @media (max-width:400px){ .cmd-btn[data-xs]::after{content:attr(data-xs)} .cmd-logo-text{max-width:80px} }
 /* ══ THÈMES DE COULEURS (choisis par magasin) ══ */
-:root{--ac:#e91e8c;--ac-rgb:233,30,140;--ac2-rgb:244,114,182;--ac-dk:#c2185b;--ac-dk-rgb:194,24,91;--ac-dk2:#9d0a5e;--ac-lt:#fff0f7;--ac-bd:#f1d3e3;--ac-bg2:#fbf4f8;--ac-tx:#b0125f;
-  --hd1:#1a0812;--hd2:#2a0a1a;--hd3:#3d0a28;--hd-soft-rgb:255,200,230;--hd-tx:#ffffff;
-  --pa-border:#f8dcea;--pa-border2:#f0b0cc;--pa-blue-mid:#ffb8d9;--pa-text:#2a0a20;--pa-text2:#4a1030;--pa-muted:#a05a7a;--pa-muted2:#cc8aaa;--pa-bg:#fff0f7;--pa-dark:#1a0812;--pa-dark2:#2a0a1a}
-html[data-theme="rose"]{--ac:#e91e8c;--ac-rgb:233,30,140;--ac2-rgb:244,114,182;--ac-dk:#c2185b;--ac-dk-rgb:194,24,91;--ac-dk2:#9d0a5e;--ac-lt:#fff0f7;--ac-bd:#f1d3e3;--ac-bg2:#fbf4f8;--ac-tx:#b0125f;
-  --hd1:#1a0812;--hd2:#2a0a1a;--hd3:#3d0a28;--hd-soft-rgb:255,200,230;--hd-tx:#ffffff;
-  --pa-border:#f8dcea;--pa-border2:#f0b0cc;--pa-blue-mid:#ffb8d9;--pa-text:#2a0a20;--pa-text2:#4a1030;--pa-muted:#a05a7a;--pa-muted2:#cc8aaa;--pa-bg:#fff0f7;--pa-dark:#1a0812;--pa-dark2:#2a0a1a}
+:root{--ac:#c94f86;--ac-rgb:201,79,134;--ac2-rgb:224,146,182;--ac-dk:#a93f6e;--ac-dk-rgb:169,63,110;--ac-dk2:#8a3259;--ac-lt:#fbf2f6;--ac-bd:#efdce5;--ac-bg2:#fcf8fa;--ac-tx:#9a3a64;
+  --hd1:#1e141a;--hd2:#2a1c24;--hd3:#372530;--hd-soft-rgb:240,214,226;--hd-tx:#ffffff;
+  --pa-border:#e9e4e7;--pa-border2:#d7d0d4;--pa-blue-mid:#e8c9d7;--pa-text:#1f1a1d;--pa-text2:#433b40;--pa-muted:#766b72;--pa-muted2:#a89ea4;--pa-bg:#f6f4f5;--pa-dark:#1a0812;--pa-dark2:#2a0a1a}
+html[data-theme="rose"]{--ac:#c94f86;--ac-rgb:201,79,134;--ac2-rgb:224,146,182;--ac-dk:#a93f6e;--ac-dk-rgb:169,63,110;--ac-dk2:#8a3259;--ac-lt:#fbf2f6;--ac-bd:#efdce5;--ac-bg2:#fcf8fa;--ac-tx:#9a3a64;
+  --hd1:#1e141a;--hd2:#2a1c24;--hd3:#372530;--hd-soft-rgb:240,214,226;--hd-tx:#ffffff;
+  --pa-border:#e9e4e7;--pa-border2:#d7d0d4;--pa-blue-mid:#e8c9d7;--pa-text:#1f1a1d;--pa-text2:#433b40;--pa-muted:#766b72;--pa-muted2:#a89ea4;--pa-bg:#f6f4f5;--pa-dark:#1a0812;--pa-dark2:#2a0a1a}
 html[data-theme="marine"]{--ac:#1f4e8c;--ac-rgb:31,78,140;--ac2-rgb:96,140,210;--ac-dk:#173d6e;--ac-dk-rgb:23,61,110;--ac-dk2:#0f2a4d;--ac-lt:#edf3fb;--ac-bd:#d3dff0;--ac-bg2:#f5f8fc;--ac-tx:#1a4478;
   --hd1:#08142a;--hd2:#0d1f3d;--hd3:#152e57;--hd-soft-rgb:200,216,242;--hd-tx:#ffffff;
-  --pa-border:#dbe4f1;--pa-border2:#b3c6e2;--pa-blue-mid:#b9cdea;--pa-text:#0f1e33;--pa-text2:#23395c;--pa-muted:#5b7190;--pa-muted2:#98aac2;--pa-bg:#eef3fa;--pa-dark:#08142a;--pa-dark2:#0d1f3d}
+  --pa-border:#e3e8ef;--pa-border2:#cdd5e0;--pa-blue-mid:#b9cdea;--pa-text:#141b26;--pa-text2:#36404f;--pa-muted:#66728a;--pa-muted2:#9ea7b8;--pa-bg:#f4f6f9;--pa-dark:#08142a;--pa-dark2:#0d1f3d}
 html[data-theme="noir"]{--ac:#1c1c1c;--ac-rgb:28,28,28;--ac2-rgb:120,120,120;--ac-dk:#000000;--ac-dk-rgb:0,0,0;--ac-dk2:#000000;--ac-lt:#f1f1f1;--ac-bd:#dedede;--ac-bg2:#f7f7f7;--ac-tx:#111111;
   --hd1:#050505;--hd2:#121212;--hd3:#222222;--hd-soft-rgb:215,215,215;--hd-tx:#ffffff;
-  --pa-border:#e2e2e2;--pa-border2:#c4c4c4;--pa-blue-mid:#cfcfcf;--pa-text:#111111;--pa-text2:#333333;--pa-muted:#6b6b6b;--pa-muted2:#a3a3a3;--pa-bg:#f2f2f2;--pa-dark:#050505;--pa-dark2:#121212}
+  --pa-border:#e6e6e6;--pa-border2:#d0d0d0;--pa-blue-mid:#cfcfcf;--pa-text:#161616;--pa-text2:#3a3a3a;--pa-muted:#6e6e6e;--pa-muted2:#a3a3a3;--pa-bg:#f5f5f5;--pa-dark:#050505;--pa-dark2:#121212}
 html[data-theme="blanc"]{--ac:#2f2f2f;--ac-rgb:47,47,47;--ac2-rgb:150,150,150;--ac-dk:#1a1a1a;--ac-dk-rgb:26,26,26;--ac-dk2:#111111;--ac-lt:#f3f3f3;--ac-bd:#e3e3e3;--ac-bg2:#fafafa;--ac-tx:#1a1a1a;
   --hd1:#ffffff;--hd2:#fbfbfb;--hd3:#f4f4f4;--hd-soft-rgb:90,90,90;--hd-tx:#1a1a1a;
-  --pa-border:#e6e6e6;--pa-border2:#cfcfcf;--pa-blue-mid:#d6d6d6;--pa-text:#141414;--pa-text2:#353535;--pa-muted:#707070;--pa-muted2:#a8a8a8;--pa-bg:#fafafa;--pa-dark:#ffffff;--pa-dark2:#fbfbfb}
+  --pa-border:#e8e8e8;--pa-border2:#d3d3d3;--pa-blue-mid:#d6d6d6;--pa-text:#161616;--pa-text2:#3a3a3a;--pa-muted:#707070;--pa-muted2:#a6a6a6;--pa-bg:#f7f7f7;--pa-dark:#ffffff;--pa-dark2:#fbfbfb}
 html[data-theme="beige"]{--ac:#8b6b4a;--ac-rgb:139,107,74;--ac2-rgb:196,166,128;--ac-dk:#6f5438;--ac-dk-rgb:111,84,56;--ac-dk2:#54402a;--ac-lt:#f6efe4;--ac-bd:#e8dccb;--ac-bg2:#fbf8f3;--ac-tx:#6f5438;
   --hd1:#f3ebdf;--hd2:#ebdfcd;--hd3:#e2d2bb;--hd-soft-rgb:95,72,48;--hd-tx:#2f2418;
   --pa-border:#eadfce;--pa-border2:#d6c3a6;--pa-blue-mid:#dcc9ab;--pa-text:#2f2418;--pa-text2:#4a3a28;--pa-muted:#8a7560;--pa-muted2:#b9a68f;--pa-bg:#f8f3ea;--pa-dark:#f3ebdf;--pa-dark2:#ebdfcd}
 html[data-theme="vert"]{--ac:#1f5e3f;--ac-rgb:31,94,63;--ac2-rgb:92,160,122;--ac-dk:#174a31;--ac-dk-rgb:23,74,49;--ac-dk2:#0f3322;--ac-lt:#ecf5ef;--ac-bd:#d2e4d8;--ac-bg2:#f5faf7;--ac-tx:#1a5337;
   --hd1:#081a12;--hd2:#0f2a1d;--hd3:#173d2a;--hd-soft-rgb:200,230,212;--hd-tx:#ffffff;
-  --pa-border:#d8e8de;--pa-border2:#aacbb7;--pa-blue-mid:#b5d6c2;--pa-text:#0f2218;--pa-text2:#1e3a2a;--pa-muted:#58766a;--pa-muted2:#97b2a3;--pa-bg:#eef6f1;--pa-dark:#081a12;--pa-dark2:#0f2a1d}
+  --pa-border:#e2e8e4;--pa-border2:#cbd6cf;--pa-blue-mid:#b5d6c2;--pa-text:#15201a;--pa-text2:#35433b;--pa-muted:#65766c;--pa-muted2:#9daaa2;--pa-bg:#f4f6f5;--pa-dark:#081a12;--pa-dark2:#0f2a1d}
 /* En-tête clair (blanc, beige) : textes et boutons foncés */
 html[data-hd="light"] .cmd-bar{border-bottom:1px solid rgba(0,0,0,.08);box-shadow:0 2px 10px rgba(0,0,0,.06)}
 html[data-hd="light"] .cmd-btn,html[data-hd="light"] .cmd-nav,html[data-hd="light"] .cmd-week,html[data-hd="light"] .user-badge,html[data-hd="light"] .mobile-menu-btn{background:rgba(0,0,0,.035);border-color:rgba(0,0,0,.12);color:var(--hd-tx)}
@@ -962,7 +980,7 @@ body{background-color:var(--pa-bg)}
 .pv-cell-r{color:#999;font-style:italic;text-align:center;font-weight:600}
 .pv-cell-w{text-align:center;font-weight:600;line-height:1.25}
 .pv-cell-cp{color:#b8860b;text-align:center;font-weight:700;background:#fff8e1}
-.pv-cell-mal{color:#c0392b;text-align:center;font-weight:700;background:#fbe5e2}
+.pv-cell-mal{color:var(--bad);text-align:center;font-weight:700;background:#fbe5e2}
 .pv-total-row td{background:#1a1a1a!important;color:#fff!important;font-weight:700;text-align:center;font-size:8.5pt}
 .pv-total-row td:first-child{text-align:left;padding-left:3mm}
 
@@ -1139,8 +1157,8 @@ body{background-color:var(--pa-bg)}
 .pin-key:hover{background:linear-gradient(135deg,var(--ac),var(--ac-dk));color:#fff;border-color:var(--ac);transform:scale(1.03);box-shadow:0 0 14px rgba(var(--ac-rgb),.35)}
 .pin-key:active{transform:scale(.93)}
 .pin-key.del{font-size:13px;color:#aaa}
-.pin-key.del:hover{background:#fde7e9;color:#c0392b;border-color:#f0b8b8}
-.login-error{color:#c0392b;font-size:12px;text-align:center;min-height:18px;margin-top:8px;font-weight:500}
+.pin-key.del:hover{background:var(--bad-bg);color:var(--bad);border-color:#f0b8b8}
+.login-error{color:var(--bad);font-size:12px;text-align:center;min-height:18px;margin-top:8px;font-weight:500}
 .login-back{display:flex;align-items:center;gap:6px;margin-bottom:16px;cursor:pointer;color:#aaa;font-size:12px;font-weight:600;width:fit-content;transition:.15s}
 .login-back:hover{color:#1a1a1a}
 .login-back-arrow{font-size:16px}
@@ -1165,7 +1183,7 @@ body{background-color:var(--pa-bg)}
 .um-name{font-size:13px;font-weight:700;color:var(--pa-text)}
 .um-meta{font-size:11px;color:var(--pa-muted);margin-top:1px}
 .um-role{padding:3px 10px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.02em}
-.um-role.admin{background:#e6f4e6;color:#2d7a2d}
+.um-role.admin{background:#e6f4e6;color:var(--ok)}
 .um-role.viewer{background:var(--pa-blue-light);color:var(--pa-blue-dark)}
 .um-role.editor{background:var(--pa-yellow-bg);color:var(--pa-yellow)}
 .um-del{background:none;border:1px solid var(--pa-border2);color:var(--pa-muted);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;transition:.2s}
@@ -1226,6 +1244,49 @@ body{background-color:var(--pa-bg)}
 @keyframes lockSlideDown{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
 .lock-pulse{width:9px;height:9px;border-radius:50%;background:#c4b5fd;display:inline-block;margin-right:8px;animation:lockPulse 1.4s infinite}
 @keyframes lockPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
+
+/* ══════════ HARMONISATION VISUELLE ══════════
+   Règle : neutre pour la structure, couleur du thème pour la sélection et l'action,
+   vert / orange / rouge / violet uniquement pour un état (OK, attention, problème, manque). */
+body{background:var(--pa-bg)!important}
+.app,.content{background:var(--pa-bg)}
+.wb{background:var(--pa-bg)}
+/* Onglets et sélections : aplat simple, sans dégradé ni halo */
+.nav-tab.active,.wp-cell.active,.pivot-item.active,.day-tog.on{background:var(--ac)!important;box-shadow:none!important;border-color:var(--ac)!important}
+.cmd-btn.primary{background:var(--ac)!important;box-shadow:none!important}
+.cmd-btn.primary:hover{background:var(--ac-dk)!important}
+.store-card-icon,.store-card-badge{background:var(--ac)!important;box-shadow:none!important}
+.toast{background:#2a2528}
+/* En-têtes de blocs : surface claire + filet de couleur, texte foncé */
+.detail-hdr,.week-panel-hdr{background:var(--pa-surface)!important;border-bottom:1px solid var(--pa-border);box-shadow:inset 4px 0 0 var(--ac)!important;padding:12px 20px}
+.detail-title,.week-panel-title{color:var(--pa-text)!important;font-size:15px}
+.dm-lbl,.week-kpi-l{color:var(--pa-muted)!important}
+.dm-val,.week-kpi-v{color:var(--pa-text)}
+/* Tableaux : lignes de total en gris clair, pas en aplat sombre */
+.week-table tr.total-row td{background:var(--pa-surface2)!important;color:var(--pa-text)!important;border-top:2px solid var(--pa-border2)!important}
+.week-table tr.total-row td *{color:inherit}
+.week-table td{border-bottom:1px solid var(--pa-border)}
+.week-table tr:not(.total-row):hover td{background:var(--pa-surface2)}
+.week-table th.day-th.active-day{background:var(--ac-lt);color:var(--ac-tx)}
+.wc-t{color:var(--pa-text2)!important;font-weight:600}
+.wc-bar{opacity:.3}
+/* Pastilles de durée : neutres (la couleur est réservée aux états) */
+.b-work{background:var(--pa-surface2)!important;color:var(--pa-text)!important;border:1px solid var(--pa-border2)!important}
+.b-mal{background:var(--bad-bg)!important;color:var(--bad)!important;border-color:transparent!important}
+.b-cp{background:var(--pa-yellow-bg)!important;color:var(--pa-yellow)!important;border-color:transparent!important}
+/* Cartes et champs */
+.wb-card,.wb-line,.cu-tbl tfoot td{border-color:var(--pa-border)}
+.wb-card.sel{background:var(--ac)!important;border-color:var(--ac)!important;box-shadow:none!important}
+.wb-status{background:color-mix(in srgb,var(--pc) 11%,transparent)}
+.kpi-card.hi{background:var(--ac-lt);border-color:var(--ac-bd)}
+.labor-banner{background:var(--bad-bg);border-color:color-mix(in srgb,var(--bad) 25%,transparent)}
+/* Titres de section : couleur de thème foncée, discrète */
+.wb-wt,.cs-sec,.cu-head b{color:var(--ac-tx)}
+/* Mobile : cartes du planning sur fond blanc, bordure neutre */
+@media (max-width:768px){
+  .fused-table tr{border-color:var(--pa-border)!important}
+  .detail-hdr,.week-panel-hdr{padding:10px 14px}
+}
 </style>
 <body>
 
@@ -1322,8 +1383,8 @@ body{background-color:var(--pa-bg)}
     <div id="loginPhase5" style="display:none">
       <div class="login-back" onclick="loginShowPhase(4)"><span class="login-back-arrow">‹</span> Retour</div>
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
-        <div style="width:32px;height:32px;background:#2d7a2d;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px">🛡</div>
-        <div><div class="login-title" style="margin:0">Compte Administrateur</div><div style="font-size:11px;color:#2d7a2d;font-weight:600">Accès complet</div></div>
+        <div style="width:32px;height:32px;background:var(--ok);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px">🛡</div>
+        <div><div class="login-title" style="margin:0">Compte Administrateur</div><div style="font-size:11px;color:var(--ok);font-weight:600">Accès complet</div></div>
       </div>
       <div class="fl-row">
         <label class="fl-label">Prénom / nom</label>
@@ -1334,7 +1395,7 @@ body{background-color:var(--pa-bg)}
         <div style="display:flex;gap:7px;flex-wrap:wrap" id="adminUserColors"></div>
       </div>
       <div style="font-size:11px;color:#aaa;margin-bottom:14px">Vous choisirez un code PIN à l'étape suivante</div>
-      <button class="fl-btn primary" style="width:100%;justify-content:center;background:#2d7a2d;border-color:#2d7a2d" onclick="loginCreateAdmin()">Créer le compte admin →</button>
+      <button class="fl-btn primary" style="width:100%;justify-content:center;background:var(--ok);border-color:var(--ok)" onclick="loginCreateAdmin()">Créer le compte admin →</button>
       <div class="login-error" id="adminCreateError"></div>
     </div>
   </div>
@@ -1412,30 +1473,32 @@ body{background-color:var(--pa-bg)}
     <button class="cmd-btn" onclick="manualRefresh()" id="refreshBtn" data-short="Actualiser" data-xs="MàJ" aria-label="Actualiser" title="Charger la dernière version sauvegardée"><span class="cmd-ic">🔄</span> <span class="cmd-btn-label">Actualiser</span></button>
     <div style="position:relative">
       <button class="cmd-btn" onclick="toggleSettingsMenu()" id="settingsMenuBtn" data-short="Options" aria-label="Options"><span class="cmd-ic">⚙</span> <span class="cmd-btn-label">Options</span> <span class="cmd-caret">▾</span></button>
-      <div id="settingsMenu" style="display:none;position:absolute;top:44px;right:0;background:#fff;border:1px solid #d0dce8;border-radius:12px;box-shadow:0 12px 32px rgba(0,78,120,.18);z-index:100;min-width:250px;max-height:calc(100vh - 130px);overflow-y:auto;animation:dlgIn .2s ease">
-        <div class="sm-grp">Planning</div>
-        <div class="sm-item sm-hi" onclick="closeSettingsMenu();openAIAnalysis()">🤖 Analyse IA de la semaine</div>
-        <div class="sm-item" onclick="closeSettingsMenu();openTplManager()">🕒 Plages types</div>
-        <div class="sm-item" onclick="closeSettingsMenu();openTypeWeeks()">🔁 Semaines types &amp; cycles</div>
-        <div class="sm-item" onclick="closeSettingsMenu();openRegional()">🏬 Vue région</div>
-        <div class="sm-item" onclick="closeSettingsMenu();openConstraints()">📌 Contraintes &amp; disponibilités</div>
-        <div class="sm-item" onclick="closeSettingsMenu();openEnvelope()">💶 Enveloppe d’heures mensuelle</div>
-        <div class="sm-item" onclick="closeSettingsMenu();openCumul()">📈 Cumul exercice &amp; base annuelle</div>
-        <div class="sm-grp">Exports &amp; réglages</div>
-        <div class="sm-item" onclick="closeSettingsMenu();installApp()">📲 Installer l’application</div>
-        <div onclick="openExportModal();closeSettingsMenu()" style="padding:11px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#1a2535;font-weight:600;border-bottom:1px solid #f0f4f9" onmouseover="this.style.background='#e8f1fb'" onmouseout="this.style.background='#fff'">📤 Exporter les données</div>
-        <div class="menu-mobile-only" onclick="printWeek();closeSettingsMenu()" style="padding:11px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#1a2535;font-weight:600;border-bottom:1px solid #f0f4f9">🖨 Imprimer la semaine</div>
-        <div onclick="exportExcel('week');closeSettingsMenu()" style="padding:11px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#1a2535;font-weight:600;border-bottom:1px solid #f0f4f9" onmouseover="this.style.background='var(--ac-lt)'" onmouseout="this.style.background=''">📗 Excel — semaine</div>
-        <div onclick="exportExcel('month');closeSettingsMenu()" style="padding:11px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#1a2535;font-weight:600;border-bottom:1px solid #f0f4f9" onmouseover="this.style.background='var(--ac-lt)'" onmouseout="this.style.background=''">📗 Excel — mois</div>
-        <div onclick="exportExcel('full');closeSettingsMenu()" style="padding:11px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#1a2535;font-weight:600;border-bottom:1px solid #f0f4f9" onmouseover="this.style.background='var(--ac-lt)'" onmouseout="this.style.background=''">📗 Excel — exercice / année</div>
-        <div onclick="openHoursPeaks();closeSettingsMenu()" style="padding:11px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#1a2535;font-weight:600;border-bottom:1px solid #f0f4f9" onmouseover="this.style.background='var(--ac-lt)'" onmouseout="this.style.background=''">⏱ Ouverture & pics d'affluence</div>
-        <div onclick="openSecurity();closeSettingsMenu()" style="padding:11px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#1a2535;font-weight:600;border-bottom:1px solid #f0f4f9">🔐 Sécurité</div>
-        <div onclick="openVersionHistory();closeSettingsMenu()" style="padding:11px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#1a2535;font-weight:600;border-bottom:1px solid #f0f4f9" onmouseover="this.style.background='var(--ac-lt)'" onmouseout="this.style.background=''">🕘 Historique des versions</div>
-        <div onclick="openGHConfig();closeSettingsMenu()" style="padding:11px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#1a2535;font-weight:600;border-bottom:1px solid #f0f4f9" onmouseover="this.style.background='#e8f1fb'" onmouseout="this.style.background='#fff'">
-          ⬡ GitHub — multi-postes
-          <span id="ghStatusDot" style="width:7px;height:7px;border-radius:50%;background:#c8c8c8;margin-left:auto"></span>
+      <div id="settingsMenu" class="sm-panel" style="display:none" role="menu">
+        <div class="sm-col">
+          <div class="sm-grp">Planifier</div>
+          <button type="button" class="sm-item" onclick="closeSettingsMenu();openAIAnalysis()"><svg class="sm-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg><span class="sm-tx"><span>Analyse IA de la semaine</span><small>Couverture, productivité, planning optimisé</small></span></button>
+          <button type="button" class="sm-item" onclick="closeSettingsMenu();openTypeWeeks()"><svg class="sm-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.7-5.7L20 8.6"/><path d="M20 4v4.6h-4.6"/><path d="M20 12a8 8 0 0 1-13.7 5.7L4 15.4"/><path d="M4 20v-4.6h4.6"/></svg><span class="sm-tx"><span>Semaines types &amp; cycles</span></span></button>
+          <button type="button" class="sm-item" onclick="closeSettingsMenu();openTplManager()"><svg class="sm-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><span class="sm-tx"><span>Plages types</span></span></button>
+          <button type="button" class="sm-item" onclick="closeSettingsMenu();openConstraints()"><svg class="sm-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 0 1 12 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg><span class="sm-tx"><span>Contraintes &amp; disponibilités</span></span></button>
+          <button type="button" class="sm-item" onclick="closeSettingsMenu();openHoursPeaks()"><svg class="sm-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20V13M10 20V8M15 20v-5M20 20V5"/></svg><span class="sm-tx"><span>Ouverture &amp; pics d’affluence</span></span></button>
+          <div class="sm-grp">Suivre</div>
+          <button type="button" class="sm-item" onclick="closeSettingsMenu();openCumul()"><svg class="sm-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19l5-6 4 3 7-9"/><path d="M15 7h5v5"/></svg><span class="sm-tx"><span>Cumul exercice</span><small>Base annuelle par collaborateur</small></span></button>
+          <button type="button" class="sm-item" onclick="closeSettingsMenu();openEnvelope()"><svg class="sm-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><circle cx="16.5" cy="14.5" r="1.2"/></svg><span class="sm-tx"><span>Enveloppe d’heures mensuelle</span></span></button>
+          <button type="button" class="sm-item" onclick="closeSettingsMenu();openRegional()"><svg class="sm-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9l1.5-5h13L20 9"/><path d="M4 9h16v11H4z"/><path d="M9 20v-6h6v6"/></svg><span class="sm-tx"><span>Vue région</span></span></button>
         </div>
-        <div onclick="openStoreEditor();closeSettingsMenu()" style="padding:11px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#1a2535;font-weight:600" onmouseover="this.style.background='var(--ac-lt)'" onmouseout="this.style.background='#fff'">🏪 Paramètres du magasin</div>
+        <div class="sm-col">
+          <div class="sm-grp">Exporter</div>
+          <button type="button" class="sm-item menu-mobile-only" onclick="closeSettingsMenu();printWeek()"><svg class="sm-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 9V4h10v5"/><rect x="4" y="9" width="16" height="8" rx="1.5"/><path d="M7 14h10v6H7z"/></svg><span class="sm-tx"><span>Imprimer la semaine</span></span></button>
+          <div class="sm-item sm-xl"><svg class="sm-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 9h16M4 15h16M10 3v18"/></svg><span class="sm-tx"><span>Excel</span></span>
+            <span class="sm-chips"><button type="button" onclick="closeSettingsMenu();exportExcel('week')">Semaine</button><button type="button" onclick="closeSettingsMenu();exportExcel('month')">Mois</button><button type="button" onclick="closeSettingsMenu();exportExcel('full')">Exercice</button></span></div>
+          <button type="button" class="sm-item" onclick="closeSettingsMenu();openExportModal()"><svg class="sm-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7.5 7.5L12 3l4.5 4.5"/><path d="M4 14v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/></svg><span class="sm-tx"><span>Exporter les données</span></span></button>
+          <div class="sm-grp">Paramètres</div>
+          <button type="button" class="sm-item" onclick="closeSettingsMenu();openStoreEditor()"><svg class="sm-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg><span class="sm-tx"><span>Paramètres du magasin</span><small>Nom, exercice, couleurs</small></span></button>
+          <button type="button" class="sm-item" onclick="closeSettingsMenu();openGHConfig()"><svg class="sm-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg><span class="sm-tx"><span>GitHub — multi-postes</span></span><span id="ghStatusDot" class="sm-dot"></span></button>
+          <button type="button" class="sm-item" onclick="closeSettingsMenu();openSecurity()"><svg class="sm-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span class="sm-tx"><span>Sécurité</span></span></button>
+          <button type="button" class="sm-item" onclick="closeSettingsMenu();openVersionHistory()"><svg class="sm-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 8v4l3 2"/></svg><span class="sm-tx"><span>Historique des versions</span></span></button>
+          <button type="button" class="sm-item" onclick="closeSettingsMenu();installApp()"><svg class="sm-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg><span class="sm-tx"><span>Installer l’application</span></span></button>
+        </div>
       </div>
     </div>
     <button class="cmd-btn primary" onclick="saveData()" data-short="Enregistrer" data-xs="Sauver" aria-label="Enregistrer"><span class="cmd-ic">💾</span> <span class="cmd-btn-label">Enregistrer</span></button>
@@ -2711,7 +2774,7 @@ function updateLastSaveInfo(){
 }
 setInterval(()=>{ try{ updateLastSaveInfo(); }catch(e){} }, 30000);
 // ── Thèmes de couleurs ──
-const THEMES=[['rose','Rose (actuel)','#e91e8c','#1a0812'],['marine','Bleu marine','#1f4e8c','#0d1f3d'],['noir','Noir','#1c1c1c','#050505'],
+const THEMES=[['rose','Rose','#c94f86','#1e141a'],['marine','Bleu marine','#1f4e8c','#0d1f3d'],['noir','Noir','#1c1c1c','#050505'],
   ['blanc','Blanc','#2f2f2f','#ffffff'],['beige','Beige','#8b6b4a','#ebdfcd'],['vert','Vert foncé','#1f5e3f','#0f2a1d']];
 function applyTheme(t){
   t = t || (getCurrentStore()?.theme) || 'rose';
@@ -3027,7 +3090,7 @@ const calcH=s=>s.statut!=='work'?0:Math.max(0,t2h(s.fin)-t2h(s.debut)-(s.pause||
 // ══════════════════════════════════════
 var NP_TYPES = {
   REU:  {lbl:'Réunion',   color:'#6b5b95', floor:false},
-  MERCH:{lbl:'Merch',     color:'#c27c0e', floor:true},
+  MERCH:{lbl:'Merch',     color:'var(--warn)', floor:true},
   CDSH: {lbl:'CDSH',      color:'#1f7a8c', floor:false},
   ADMIN:{lbl:'Admin',     color:'#7f8c8d', floor:false},
   FORM: {lbl:'Formation', color:'#2e86c1', floor:false},
@@ -3562,7 +3625,7 @@ function fillHBudget(){
   saveStoreField('hBudget',B); openEnvelope(); try{ renderContent(); }catch(e){}
 }
 function periodMonths(){ const out=[]; getWeekList().forEach(s=>{ [0,6].forEach(j=>{ const k=monthKey(dateOfDay(PLANNING_YEAR,s,j)); if(!out.includes(k)) out.push(k); }); }); return out.sort(); }
-function envStatus(plan,bud){ if(!bud) return {col:'var(--pa-muted)',txt:'—'}; const r=plan/bud; return r>1.0001?{col:'#c62828',txt:'Dépassé'}:r>0.95?{col:'#b35c00',txt:'Presque plein'}:{col:'#0f7b3a',txt:'OK'}; }
+function envStatus(plan,bud){ if(!bud) return {col:'var(--pa-muted)',txt:'—'}; const r=plan/bud; return r>1.0001?{col:'var(--bad)',txt:'Dépassé'}:r>0.95?{col:'var(--warn)',txt:'Presque plein'}:{col:'var(--ok)',txt:'OK'}; }
 function openEnvelope(){
   const M=monthHoursMap(), B=hBudgetOf(), cur=weekMonthKey(cW), f0=v=>Math.round(v).toLocaleString('fr-FR');
   let T={b:0,p:0,d:0}, rows='';
@@ -3646,10 +3709,10 @@ function openCumul(){
   let rows='', T={b:0,p:0,d:0,t:0,e:0,tot:0,r:0};
   COLLS.forEach((c,ci)=>{
     const s=cumulStats(ci,P); T.b+=s.baseAn; T.p+=s.basePer; T.d+=s.hDate; T.t+=s.theoDate; T.e+=s.ecartDate; T.tot+=s.hTot; T.r+=s.reste;
-    const ec=Math.abs(s.ecartDate)<Math.max(4,s.theoDate*.02)?'#0f7b3a':s.ecartDate>0?'#b35c00':'#c62828';
+    const ec=Math.abs(s.ecartDate)<Math.max(4,s.theoDate*.02)?'var(--ok)':s.ecartDate>0?'var(--warn)':'var(--bad)';
     const pDone=s.basePer>0?Math.min(100,s.hDate/s.basePer*100):0, pPlan=s.basePer>0?Math.min(100,s.hTot/s.basePer*100):0;
     const ry=s.restW>0?`${s.rythme.toFixed(1).replace('.',',')} h/sem <span class="cu-sub">(base ${c.base} h)</span>`:'—';
-    const ryc=s.restW>0 && s.rythme>c.base*1.1?'#c62828':s.restW>0 && s.rythme<c.base*.9?'#5b3fb0':'inherit';
+    const ryc=s.restW>0 && s.rythme>c.base*1.1?'var(--bad)':s.restW>0 && s.rythme<c.base*.9?'var(--need)':'inherit';
     rows+=`<tr>
       <td><div><span class="cu-av" style="background:${c.color}">${ini(c.nom)}</span><b>${esc(c.nom)}</b><div class="cu-sub">${c.base} h/sem</div></div></td>
       <td><div><input class="fl-inp cu-in" type="text" inputmode="numeric" value="${s.auto?'':s.baseAn}" placeholder="${s.baseAn} (auto)" onchange="setBaseAn(${ci},this.value)" title="Base d'heures annuelle du contrat. Vide = base hebdo × ${P.total} semaines">${P.tracked<P.total?`<div class="cu-sub">soit ${f0(s.basePer)} h sur la période</div>`:''}</div></td>
@@ -3657,12 +3720,12 @@ function openCumul(){
       <td>${f0(s.theoDate)} h</td>
       <td><b style="color:${ec}">${sg(s.ecartDate)} h</b></td>
       <td>${f0(s.hTot)} h</td>
-      <td><b style="color:${s.reste<0?'#b35c00':'inherit'}">${s.reste<0?'dépassé de '+f0(-s.reste):f0(s.reste)} h</b></td>
+      <td><b style="color:${s.reste<0?'var(--warn)':'inherit'}">${s.reste<0?'dépassé de '+f0(-s.reste):f0(s.reste)} h</b></td>
       <td style="color:${ryc}"><span>${ry}</span></td>
       <td>${s.cp?s.cp+' j CP':''}${s.cp&&s.mal?' · ':''}${s.mal?s.mal+' j MAL':''}${!s.cp&&!s.mal?'—':''}</td>
     </tr>`;
   });
-  const ecT=T.e>=0?'#b35c00':'#c62828';
+  const ecT=T.e>=0?'var(--warn)':'var(--bad)';
   const body=`<div class="cu-head">
       <div class="cu-row1"><b>${lbl}</b>
         <label class="cu-opt">Suivi depuis <select class="fl-inp" style="padding:4px 6px;font-size:12.5px;width:auto" onchange="setCumulStart(this.value)"><option value="0">Automatique (S${cumulAutoStart(P.wl)})</option>${opts}</select></label>
@@ -3925,15 +3988,15 @@ function renderWeekBand(sem, dayIdx, laborBanner){
     let col='var(--pa-muted2)', tag='';
     if(closed){ tag='Fermé'; }
     else if(r!=null){
-      if(r<0.85){ col='#c62828'; tag='Trop d’heures'; }
-      else if(r<1){ col='#b35c00'; tag='Sous budget'; }
-      else if(r>1.5){ col='#5b3fb0'; tag='Tendu'; }
-      else { col='#0f7b3a'; tag='OK'; }
+      if(r<0.85){ col='var(--bad)'; tag='Trop d’heures'; }
+      else if(r<1){ col='var(--warn)'; tag='Sous budget'; }
+      else if(r>1.5){ col='var(--need)'; tag='Tendu'; }
+      else { col='var(--ok)'; tag='OK'; }
     }
     let ecart='', dc='inherit';
     if(ideal!=null && !closed){
       const small=Math.abs(diff)<1;
-      dc= small?'#0f7b3a': diff>0?'#c62828':'#5b3fb0';
+      dc= small?'var(--ok)': diff>0?'var(--bad)':'var(--need)';
       ecart= small?'≈':(diff>0?'+':'−')+f1(Math.abs(diff))+' h';
     }
     const tip=`${JOURS[j]} — ${tag||'—'}${obj>0?` · CA ${eur(obj)}`:''}${ideal!=null&&!closed?` · idéal ${f1(ideal)} h selon le CA (écart ${diff>0?'+':'−'}${f1(Math.abs(diff))} h : ${diff>0?'heures en trop':'heures manquantes'})`:''}${r!=null?` · prod. ${Math.round(c.prod)} €/h`:''}`;
@@ -3949,14 +4012,14 @@ function renderWeekBand(sem, dayIdx, laborBanner){
   const under=days.filter(d=>d.diff!=null&&d.diff<=-1&&!d.closed).sort((a,b)=>a.diff-b.diff);
   const lst=a=>a.slice(0,3).map(d=>`<span style="white-space:nowrap">${JCOURT[d.j]} ${f1(Math.abs(d.diff))}</span>`).join(' · ');
   const wr = pb>0&&ws.pH>0&&objTot>0 ? ws.prodMoy/pb : null;
-  const wcol = wr==null?'var(--pa-muted)': wr>=1?'#0f7b3a': wr>=0.85?'#b35c00':'#c62828';
+  const wcol = wr==null?'var(--pa-muted)': wr>=1?'var(--ok)': wr>=0.85?'var(--warn)':'var(--bad)';
   const pctTxt = wr==null ? '' : Math.abs(wr-1)<0.005 ? '= objectif'
     : `${wr>1?'+':'−'}${Math.round(Math.abs(wr-1)*100)} % ${wr>1?'au-dessus':'sous'} l’obj.`;
   const rebal = objTot<=0 ? `<div class="wb-reb wb-it muted">Saisissez le budget CA par jour pour voir la répartition idéale.</div>`
     : (over.length||under.length) ? `<div class="wb-reb wb-it" title="Mêmes heures, réparties selon le budget CA de chaque jour"><span class="wb-reb-l">Rééquilibrer</span>
-        ${over.length?`<span><span class="wb-rl">Retirer</span> <b style="color:#c62828">${lst(over)} h</b></span>`:''}
-        ${under.length?`<span><span class="wb-rl">Ajouter</span> <b style="color:#5b3fb0">${lst(under)} h</b></span>`:''}</div>`
-    : `<div class="wb-reb wb-it" style="color:#0f7b3a;font-weight:700">✓ Heures bien réparties selon le CA</div>`;
+        ${over.length?`<span><span class="wb-rl">Retirer</span> <b style="color:var(--bad)">${lst(over)} h</b></span>`:''}
+        ${under.length?`<span><span class="wb-rl">Ajouter</span> <b style="color:var(--need)">${lst(under)} h</b></span>`:''}</div>`
+    : `<div class="wb-reb wb-it" style="color:var(--ok);font-weight:700">✓ Heures bien réparties selon le CA</div>`;
   const optBtn = objTot>0&&(over.length||under.length) ? `<button type="button" class="wb-opt" onclick="openOptimizer()" title="Voir le planning optimisé (indicatif)">✨ Optimiser</button>` : '';
   const week = (cls)=>`<div class="wb-line ${cls}">
         <span class="wb-wt" title="${weekRangeLabel(PLANNING_YEAR,sem)}">${fullWeekLabel(sem)}</span>
@@ -3989,8 +4052,8 @@ function renderContent(){
 
   const calc=calcJ(cW,cD);
   const dayData=s.jours[cD];
-  const pc=calc.prod>=s.prod_budget?'#fff':calc.prod>=s.prod_budget*.85?'#ffe8d4':'#fde7e9';
-  const pcTxt=calc.prod>=s.prod_budget?'#fff':calc.prod>=s.prod_budget*.85?'var(--pa-orange)':'var(--pa-red)';
+  const pc=calc.prod>=s.prod_budget?'#fff':calc.prod>=s.prod_budget*.85?'#ffe8d4':'var(--bad-bg)';
+  const pcTxt=calc.prod>=s.prod_budget?'var(--ok)':calc.prod>=s.prod_budget*.85?'var(--warn)':'var(--bad)';
 
   const chips=TPLS.length>0
     ?TPLS.map(t=>`<div class="tpl-chip" onclick="openAM('${t.id}')"><div class="tpl-dot" style="background:${t.color}"></div>${t.name}</div>`).join('')
@@ -4139,7 +4202,7 @@ function renderContent(){
     const under=US.dem[q]>0&&counts[q]<US.dem[q];
     if(counts[q]>0||under){
       const left=(q/GANTT_SLOTS*100).toFixed(2);
-      const col=under?'#d13438':counts[q]>=5?'#107c10':counts[q]>=3?'#0078d4':'#ca5010';
+      const col=under?'var(--bad)':counts[q]>=5?'var(--ok)':counts[q]>=3?'var(--info)':'var(--warn)';
       const op=under?0.85:(0.15+counts[q]/maxCount*0.65);
       countSegs+=`<div class="gantt-seg" style="left:${left}%;width:${(100/GANTT_SLOTS).toFixed(2)}%;background:${col};opacity:${op.toFixed(2)};height:100%"></div>`;
     }
@@ -4171,7 +4234,7 @@ function renderContent(){
     <td class="c-bar" style="padding:4px 8px"><div style="display:flex;height:18px;align-items:center;border-top:1px dashed var(--pa-border2)"><div style="position:relative;flex:1;height:14px;background:var(--pa-surface2);border:1px solid var(--pa-border);border-radius:2px;overflow:hidden">${nowLine}${countSegs}${countNums}</div></div></td>
     <td class="c-heb" data-l="Hebdo équipe" style="text-align:center;font-weight:700;font-family:monospace;border-left:2px solid var(--pa-blue-mid)">${teamWH.toFixed(1)}h</td>
     <td class="c-ecart" data-l="Écart contrats" style="text-align:center;font-weight:700;color:${teamDiffCol};font-size:12px">${teamDiffStr}</td>
-    <td class="t-leg" style="font-size:9px;color:var(--pa-muted);text-align:center;line-height:1.2"><span style="color:#107c10">●</span>5+ <span style="color:#0078d4">●</span>3-4 <span style="color:#ca5010">●</span>1-2</td>
+    <td class="t-leg" style="font-size:9px;color:var(--pa-muted);text-align:center;line-height:1.2"><span style="color:var(--ok)">●</span>5+ <span style="color:var(--info)">●</span>3-4 <span style="color:var(--warn)">●</span>1-2</td>
   </tr>
   <tr class="cover-tr"><td colspan="9" class="cover-line">
     <span>Effectif minimum : ${stepper(`<input type="number" min="1" max="20" value="${US.min}" onchange="setMinStaff(this.value)" class="min-inp">`)} pers.</span>
@@ -4196,7 +4259,7 @@ function renderWeekPanel(sem){
   const s   = DATA[sem];
   const wc  = calcS(sem);
   const pct = s.prod_budget>0?Math.min(wc.prodMoy/s.prod_budget*100,150):0;
-  const pcol= pct>=100?'#fff':pct>=85?'#ffe4b5':'#ffd0d0';
+  const pcol= pct>=100?'var(--ok)':pct>=85?'var(--warn)':'var(--bad)';
 
   // En-tête KPI
   const hdr=`<div class="week-panel-hdr">
@@ -4369,7 +4432,7 @@ function renderGantt(sem, ji){
     if(counts[q] > 0){
       const left = (q / GANTT_SLOTS * 100).toFixed(2);
       const pct  = (counts[q] / maxCount * 100).toFixed(0);
-      const col  = counts[q] >= 5 ? '#107c10' : counts[q] >= 3 ? '#0078d4' : counts[q] >= 1 ? '#ca5010' : '#ddd';
+      const col  = counts[q] >= 5 ? 'var(--ok)' : counts[q] >= 3 ? 'var(--info)' : counts[q] >= 1 ? 'var(--warn)' : '#ddd';
       countSegs += `<div class="gantt-seg" style="left:${left}%;width:${slotW.toFixed(2)}%;background:${col};opacity:${0.15 + counts[q]/maxCount*0.65};height:100%"
         title="${counts[q]} pers. à ${GANTT_START + q*0.25}h"></div>`;
     }
@@ -4406,9 +4469,9 @@ function renderGantt(sem, ji){
     <div class="detail-hdr" style="padding:10px 16px">
       <div class="detail-title" style="font-size:13px">📊 Présences au ¼h — ${JOURS[ji]} <span style="font-size:10px;font-weight:400;opacity:.8">· glissez les barres pour ajuster</span></div>
       <div style="font-size:11px;color:rgba(255,255,255,.75)">
-        <span style="display:inline-block;width:10px;height:10px;background:#107c10;border-radius:2px;margin-right:4px"></span>5+&nbsp;
-        <span style="display:inline-block;width:10px;height:10px;background:#0078d4;border-radius:2px;margin-right:4px"></span>3-4&nbsp;
-        <span style="display:inline-block;width:10px;height:10px;background:#ca5010;border-radius:2px;margin-right:4px"></span>1-2
+        <span style="display:inline-block;width:10px;height:10px;background:var(--ok);border-radius:2px;margin-right:4px"></span>5+&nbsp;
+        <span style="display:inline-block;width:10px;height:10px;background:var(--info);border-radius:2px;margin-right:4px"></span>3-4&nbsp;
+        <span style="display:inline-block;width:10px;height:10px;background:var(--warn);border-radius:2px;margin-right:4px"></span>1-2
       </div>
     </div>
     <div class="gantt-wrap">
@@ -4573,7 +4636,7 @@ function printWeek(){
   const WC  = getCollsForWeek(cW);
   const now = new Date().toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
   const pct = s.prod_budget>0?Math.min(wc.prodMoy/s.prod_budget*100,150):0;
-  const pcol= pct>=100?'#107c10':pct>=85?'#c97718':'#c0392b';
+  const pcol= pct>=100?'var(--ok)':pct>=85?'var(--warn)':'var(--bad)';
 
   // KPI row
   const kpiRow=`<div class="pv-kpi-row">
@@ -4616,7 +4679,7 @@ function printWeek(){
       </td>`;
     });
     const diff=rowH-c.base;
-    const ds=diff===0?'':`<div style="font-size:6.5pt;color:${diff>0?'#c97718':'#c0392b'}">${diff>0?'+':''}${diff.toFixed(1)}h</div>`;
+    const ds=diff===0?'':`<div style="font-size:6.5pt;color:${diff>0?'var(--warn)':'var(--bad)'}">${diff>0?'+':''}${diff.toFixed(1)}h</div>`;
     tbl+=`<td style="text-align:center;font-weight:700;font-size:9pt">${rowH.toFixed(1)}h${ds}</td>`;
     tbl+=`<td style="text-align:center;color:#666;font-size:8pt">${c.base}h</td></tr>`;
   });
@@ -4633,14 +4696,14 @@ function printWeek(){
     <div class="pv-header">
       <div>
         <div class="pv-logo">${STORE.name||'Planning Commercial'}</div>
-        <div style="font-size:9.5pt;color:#0078d4;margin-top:1mm;font-weight:600">${STORE.location||''} &nbsp;·&nbsp; ${fullWeekLabel(cW)} &nbsp;·&nbsp; ${weekRangeLabel(PLANNING_YEAR,cW)}</div>
+        <div style="font-size:9.5pt;color:var(--info);margin-top:1mm;font-weight:600">${STORE.location||''} &nbsp;·&nbsp; ${fullWeekLabel(cW)} &nbsp;·&nbsp; ${weekRangeLabel(PLANNING_YEAR,cW)}</div>
       </div>
       <div class="pv-meta">
         Prod. planifiée : <strong style="color:${pcol}">${wc.prodMoy.toFixed(0)} €/h (${pct.toFixed(0)}%)</strong><br>
         Imprimé le ${now}
       </div>
     </div>
-    ${window.__printTag?`<div style="margin-bottom:3mm;padding:2.5mm 3.5mm;border:1.5px dashed #c2185b;border-radius:2mm;font-size:9pt;color:#7a1147;background:#fff5fa"><strong>PROPOSITION INDICATIVE — planning optimisé par l'analyse IA, non appliqué.</strong> Score ${window.__printTag.before} → ${window.__printTag.after}/100 · pics couverts ${window.__printTag.peak} %${window.__printTag.keepHours?' · heures prévues de chacun conservées':''}.</div>`:''}
+    ${window.__printTag?`<div style="margin-bottom:3mm;padding:2.5mm 3.5mm;border:1.5px dashed var(--ac);border-radius:2mm;font-size:9pt;color:#7a1147;background:#fff5fa"><strong>PROPOSITION INDICATIVE — planning optimisé par l'analyse IA, non appliqué.</strong> Score ${window.__printTag.before} → ${window.__printTag.after}/100 · pics couverts ${window.__printTag.peak} %${window.__printTag.keepHours?' · heures prévues de chacun conservées':''}.</div>`:''}
     ${kpiRow}
     ${tbl}
     ${getNotes(cW).some(x=>x)?`<div style="margin-top:3mm;font-size:8.5pt;border:1px solid #e3c4d4;border-radius:2mm;padding:2mm 3mm"><strong>📝 Notes :</strong> ${getNotes(cW).map((n,j)=>n?`<span style="margin-right:4mm"><strong>${JCOURT[j]} ${dayNum(PLANNING_YEAR,cW,j)}</strong> ${esc(n)}</span>`:'').join('')}</div>`:''}
@@ -5339,7 +5402,7 @@ document.addEventListener('keydown',e=>{
 // ══════════════════════════════════════
 // USER MANAGEMENT SYSTEM
 // ══════════════════════════════════════
-const USER_COLORS = ['#c97f5a','#8ba888','#b08968','#9b7ba8','#d4a373','#7d8e9a','#a48b78','#8b6f5c','#2d7a2d','#a45a55'];
+const USER_COLORS = ['#c97f5a','#8ba888','#b08968','#9b7ba8','#d4a373','#7d8e9a','#a48b78','#8b6f5c','var(--ok)','#a45a55'];
 let USERS       = (()=>{try{const r=LS.getItem('atoll_users');if(r)return JSON.parse(r);}catch(e){}return[];})();
 let CURRENT_USER= (()=>{try{const r=LS.getItem('atoll_current');if(r)return JSON.parse(r);}catch(e){}return null;})();
 let pinBuffer='', pinTargetUser=null, pinMode='login';
@@ -6026,7 +6089,7 @@ function openTypeWeeks(){
     <div class="tw-len"><span>Longueur du cycle :</span>${[1,2,3,4].map(n=>`<button type="button" class="tw-lb${n===N?' on':''}" onclick="LS.setItem('atoll_twlen','${n}');openTypeWeeks()">${n===1?'1 semaine (type)':n+' semaines'}</button>`).join('')}</div>
     <div style="font-size:12px;color:var(--pa-muted);margin:8px 0 10px">${N===1?`« Mémoriser » enregistre les horaires de <strong>${fullWeekLabel(cW)}</strong> comme semaine habituelle.`
       :`« Mémoriser » enregistre <strong>S${srcWeeks[0]} à S${srcWeeks[N-1]||'?'}</strong> comme cycle de ${N} semaines (A, B${N>2?', C':''}${N>3?', D':''}) : fermetures en alternance, samedis un sur deux… Le cycle se répète ensuite automatiquement.`}
-      ${okLen?'':'<br><b style="color:#c62828">Pas assez de semaines après celle-ci dans la période.</b>'}</div>
+      ${okLen?'':'<br><b style="color:var(--bad)">Pas assez de semaines après celle-ci dans la période.</b>'}</div>
     <div style="text-align:right;margin-bottom:6px"><button class="fl-btn ghost" style="height:30px;padding:0 12px;font-size:12px;display:inline-flex" ${okLen?'':'disabled'} onclick="saveTypeWeekAll()">Mémoriser pour toute l'équipe</button></div>
     <table style="width:100%;border-collapse:collapse">${rows}</table>
     <div style="margin-top:16px;padding-top:12px;border-top:2px solid var(--pa-border);display:grid;grid-template-columns:1fr 110px;gap:10px;align-items:end">
@@ -6121,7 +6184,7 @@ function renderMonthlyContract(){
     const contAdj=Math.max(0,cont-abs*((c.base||0)/5));
     const diff=h-contAdj;
     const tol=Math.max(1,contAdj*0.03);
-    const st=Math.abs(diff)<=tol?{c:'var(--pa-green)',t:'= contrat'}:diff>0?{c:'#2b6cb0',t:'Au-dessus'}:{c:'var(--pa-muted)',t:'En dessous'};
+    const st=Math.abs(diff)<=tol?{c:'var(--pa-green)',t:'= contrat'}:diff>0?{c:'var(--info)',t:'Au-dessus'}:{c:'var(--pa-muted)',t:'En dessous'};
     const pct=contAdj>0?Math.min(130,h/contAdj*100):0;
     rows+=`<tr>
       <td style="padding:7px 8px;font-weight:600;white-space:nowrap"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${c.color};margin-right:6px"></span>${esc(c.nom)}</td>
@@ -6731,23 +6794,23 @@ function optimizeWeek(w, opts={}){
 }
 
 // ── Fenêtre d'analyse ──
-function scoreColor(s){ return s>=85?'#107c10':s>=65?'#c27c0e':'#d13438'; }
+function scoreColor(s){ return s>=85?'var(--ok)':s>=65?'var(--warn)':'var(--bad)'; }
 function openAIAnalysis(){
   try{ writeDataLS(); }catch(e){}
   const A=_analyzeWeek(cW); const P=buildProposals(A);
-  const lvlChip={crit:['#fde7e9','#d13438','Critique'],warn:['#fff4e0','#b35c00','À revoir'],info:['#eef4fb','#2b6cb0','Info'],ok:['#e7f6e7','#107c10','OK']};
+  const lvlChip={crit:['var(--bad-bg)','var(--bad)','Critique'],warn:['var(--warn-bg)','var(--warn)','À revoir'],info:['var(--info-bg)','var(--info)','Info'],ok:['var(--ok-bg)','var(--ok)','OK']};
   const tile=(l,v,sub,col)=>`<div class="ai-tile"><div class="ai-tl">${l}</div><div class="ai-tv" style="${col?`color:${col}`:''}">${v}</div><div class="ai-ts">${sub||''}</div></div>`;
   const dayRows=A.days.map(d=>{
     if(!d.open && d.tH<=0) return `<tr style="color:var(--pa-muted2)"><td>${JOURS[d.j]}</td><td colspan="6" style="font-style:italic">Fermé</td></tr>`;
-    const pc=d.obj>0&&d.pH>0?(d.prod>=A.pb?'var(--pa-green)':d.prod>=A.pb*.85?'#b35c00':'#d13438'):'var(--pa-muted)';
+    const pc=d.obj>0&&d.pH>0?(d.prod>=A.pb?'var(--pa-green)':d.prod>=A.pb*.85?'var(--warn)':'var(--bad)'):'var(--pa-muted)';
     const cov=d.runs.filter(r=>r.type==='min'), pk=d.peakRuns;
     return `<tr><td style="font-weight:700">${JOURS[d.j]}</td>
       <td style="text-align:right">${d.obj>0?Math.round(d.obj).toLocaleString('fr')+' €':'—'}</td>
       <td style="text-align:right">${d.pH.toFixed(1)}h${d.npH>0?`<div style="font-size:10px;color:var(--pa-muted)">+${d.npH.toFixed(1)}h NP</div>`:''}</td>
       <td style="text-align:right;color:var(--pa-muted)">${d.ideal!=null?d.ideal.toFixed(1)+'h':'—'}</td>
       <td style="text-align:right;font-weight:800;color:${pc}">${d.obj>0&&d.pH>0?d.prod.toFixed(0):'—'}</td>
-      <td>${cov.length?`<span style="color:#d13438;font-weight:700">⚠ ${cov.map(r=>`${fmtHM(r.from)}–${fmtHM(r.to)}`).join(', ')}</span>`:'<span style="color:var(--pa-green)">✓</span>'}</td>
-      <td>${pk.length?`<span style="color:#b35c00;font-weight:700">⚠ ${pk.map(r=>`${fmtHM(r.from)}–${fmtHM(r.to)} (${r.n}/${r.need})`).join(', ')}</span>`:(getPeaks(cW,d.j).length?'<span style="color:var(--pa-green)">✓</span>':'<span style="color:var(--pa-muted2)">—</span>')}</td></tr>`;
+      <td>${cov.length?`<span style="color:var(--bad);font-weight:700">⚠ ${cov.map(r=>`${fmtHM(r.from)}–${fmtHM(r.to)}`).join(', ')}</span>`:'<span style="color:var(--pa-green)">✓</span>'}</td>
+      <td>${pk.length?`<span style="color:var(--warn);font-weight:700">⚠ ${pk.map(r=>`${fmtHM(r.from)}–${fmtHM(r.to)} (${r.n}/${r.need})`).join(', ')}</span>`:(getPeaks(cW,d.j).length?'<span style="color:var(--pa-green)">✓</span>':'<span style="color:var(--pa-muted2)">—</span>')}</td></tr>`;
   }).join('');
   const crit=P.filter(p=>p.lvl==='crit').length, warn=P.filter(p=>p.lvl==='warn').length;
   const summary = A.score>=85?'Planning solide.':A.score>=65?'Planning correct, quelques ajustements à faire.':'Planning à retravailler.';
@@ -6766,11 +6829,11 @@ function openAIAnalysis(){
     </div>
     <div class="ai-tiles">
       ${tile('Heures planifiées',A.tH.toFixed(1)+'h',`dont ${A.npH.toFixed(1)}h non productives`)}
-      ${tile('Productivité',A.obj>0&&A.pH>0?A.prod.toFixed(0)+' €/h':'—',`budget ${A.pb} €/h${A.reqPH!=null?` · besoin ${A.reqPH.toFixed(0)}h prod.`:''}`,A.obj>0&&A.pH>0?(A.prod>=A.pb?'var(--pa-green)':'#d13438'):'')}
-      ${tile('Sous le minimum',A.gapH>0?A.gapH.toFixed(1)+'h':'0h',`minimum ${getMinStaff()} en surface`,A.gapH>0?'#d13438':'var(--pa-green)')}
-      ${tile('Pics couverts',Math.round(A.peakCov*100)+'%',A.peakShortH>0?`manque ${A.peakShortH.toFixed(1)}h × personne`:'tous les pics',A.peakCov<1?'#b35c00':'var(--pa-green)')}
+      ${tile('Productivité',A.obj>0&&A.pH>0?A.prod.toFixed(0)+' €/h':'—',`budget ${A.pb} €/h${A.reqPH!=null?` · besoin ${A.reqPH.toFixed(0)}h prod.`:''}`,A.obj>0&&A.pH>0?(A.prod>=A.pb?'var(--pa-green)':'var(--bad)'):'')}
+      ${tile('Sous le minimum',A.gapH>0?A.gapH.toFixed(1)+'h':'0h',`minimum ${getMinStaff()} en surface`,A.gapH>0?'var(--bad)':'var(--pa-green)')}
+      ${tile('Pics couverts',Math.round(A.peakCov*100)+'%',A.peakShortH>0?`manque ${A.peakShortH.toFixed(1)}h × personne`:'tous les pics',A.peakCov<1?'var(--warn)':'var(--pa-green)')}
       ${tile('Hors contrat',(A.contracts.filter(c=>Math.abs(c.diff)>=1).length)+' pers.','écarts voulus · pour information','')}
-      ${tile('Alertes légales',A.labor.length,A.labor.length?'à corriger':'aucune',A.labor.length?'#d13438':'var(--pa-green)')}
+      ${tile('Alertes légales',A.labor.length,A.labor.length?'à corriger':'aucune',A.labor.length?'var(--bad)':'var(--pa-green)')}
     </div>
     <div class="ai-sec">Jour par jour</div>
     <div style="overflow-x:auto"><table class="ai-table rt">
@@ -6799,7 +6862,7 @@ function openOptimizer(keepRest, keepHours){
   _OPT={w:cW,wk:res.wk};
   const WC=getCollsForWeek(cW);
   const cmp=(l,a,b,better,fmt)=>{ const good=better==='none'?false:better==='low'?b<a-0.01:b>a+0.01, bad=better==='none'?false:better==='low'?b>a+0.01:b<a-0.01;
-    return `<tr><td>${l}</td><td style="text-align:right">${fmt(a)}</td><td style="text-align:right;font-weight:800;color:${good?'var(--pa-green)':bad?'#d13438':'inherit'}">${fmt(b)}</td></tr>`; };
+    return `<tr><td>${l}</td><td style="text-align:right">${fmt(a)}</td><td style="text-align:right;font-weight:800;color:${good?'var(--pa-green)':bad?'var(--bad)':'inherit'}">${fmt(b)}</td></tr>`; };
   const h=x=>x.toFixed(1)+'h';
   const grid=WC.map((c,ci)=>{
     let tot=0;
@@ -6835,9 +6898,9 @@ function openOptimizer(keepRest, keepHours){
       <label><input type="checkbox" ${keepRest?'checked':''} onchange="openOptimizer(this.checked,_OPTO.keepHours)"> Garder les jours de repos déjà posés</label>
     </div>
     <div style="font-size:11px;color:var(--pa-muted);margin-bottom:10px">Conservés dans tous les cas : congés, maladies et heures non productives (réunion, CDSH…). ${keepHours?'Chaque collaborateur garde son volume d\'heures de la semaine ; seuls les horaires et les jours changent':'Les heures sont ramenées au contrat de chacun'}, pour couvrir le minimum de ${getMinStaff()} personnes, les pics, et suivre le budget CA de chaque jour.</div>
-    ${res.notes.length?`<div style="font-size:12px;color:#b35c00;margin-bottom:8px">${res.notes.map(esc).join('<br>')}</div>`:''}
+    ${res.notes.length?`<div style="font-size:12px;color:var(--warn);margin-bottom:8px">${res.notes.map(esc).join('<br>')}</div>`:''}
     ${after.reqPH!=null && after.pH>after.reqPH*1.05?`<div class="opt-info">📊 Les heures de l'équipe représentent <strong>${after.pH.toFixed(0)}h productives</strong> cette semaine, alors que le budget CA en justifie <strong>${after.reqPH.toFixed(0)}h</strong> à ${after.pb} €/h. La productivité maximale atteignable est donc d'environ <strong>${after.prod.toFixed(0)} €/h</strong> : le planning proposé répartit ces heures au mieux selon le CA de chaque jour. Leviers au-delà du planning : poser des congés ou des récupérations, prêter des heures à un autre magasin, ou moduler les contrats sur les semaines fortes.</div>`:''}
-    ${after.gapH>0?`<div style="font-size:12px;color:#d13438;font-weight:600;margin-bottom:8px">⚠ Avec les heures et absences actuelles, ${after.gapH.toFixed(1)}h restent sous le minimum : il manque des heures (renfort, heures complémentaires) ou des collaborateurs disponibles.</div>`:''}
+    ${after.gapH>0?`<div style="font-size:12px;color:var(--bad);font-weight:600;margin-bottom:8px">⚠ Avec les heures et absences actuelles, ${after.gapH.toFixed(1)}h restent sous le minimum : il manque des heures (renfort, heures complémentaires) ou des collaborateurs disponibles.</div>`:''}
     <div style="overflow-x:auto"><table class="ai-table opt-grid rt"><thead><tr><th>Collaborateur</th>${JOURS.map((d,j)=>`<th>${JCOURT[j]} ${dayNum(PLANNING_YEAR,cW,j)}</th>`).join('')}</tr></thead><tbody>${grid}</tbody></table></div>
     <div style="font-size:11px;color:var(--pa-muted);margin-top:6px">Cases surlignées = modifiées. Après application, Ctrl+Z (ou ↶ Annuler) rétablit votre planning.</div>`;
   openModal('dlgOpt','✨ Planning optimisé (indicatif) — '+fullWeekLabel(cW),body,980,
@@ -6901,7 +6964,7 @@ function renderHP(){
       </div>
       ${isW?'':`<div class="hp-min"><span>Minimum en surface</span>${stepper(`<input class="hp-n" type="number" min="1" max="20" value="${HP.min}" onchange="HP.min=+this.value||2;hpTl()">`,'sm')}<span>pers.</span></div>`}
     </div>
-    <div class="hp-help">${isW?`Pics spécifiques à cette semaine (soldes, événement, fête…) : ils remplacent les pics habituels pour ${fullWeekLabel(cW)} seulement.${HP.wpeaks&&Array.isArray(DATA[cW].peaks)?` <button type="button" class="link-btn" onclick="HP.wpeaks=null;HP.wReset=true;HP.wEdited=false;HP.scope='store';renderHP()" style="color:#d13438">Revenir aux pics habituels</button>`:''}`
+    <div class="hp-help">${isW?`Pics spécifiques à cette semaine (soldes, événement, fête…) : ils remplacent les pics habituels pour ${fullWeekLabel(cW)} seulement.${HP.wpeaks&&Array.isArray(DATA[cW].peaks)?` <button type="button" class="link-btn" onclick="HP.wpeaks=null;HP.wReset=true;HP.wEdited=false;HP.scope='store';renderHP()" style="color:var(--bad)">Revenir aux pics habituels</button>`:''}`
       :'Un pic fixe le nombre de personnes à avoir en surface sur la plage. La barre montre la journée : ouverture en clair, pics en couleur.'}
       <button type="button" class="link-btn" style="margin-left:6px" onclick="hpCopyMonday()">Copier le lundi sur tous les jours ouverts</button></div>
     <div class="hpc-grid">${cards}</div>`;
@@ -7044,7 +7107,7 @@ ${JSON.stringify(data)}`;
     out.innerHTML=`<div class="ai-claude"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><div style="font-weight:800">💬 Commentaire de Claude</div>
       <button type="button" class="link-btn" style="font-size:11px;color:var(--pa-muted)" onclick="LS.removeItem('atoll_ai');aiClaudeComment()">Changer de clé</button></div><div style="font-size:13px;line-height:1.55">${html}</div></div>`;
   }catch(e){
-    out.innerHTML=`<div class="ai-claude"><div style="color:#d13438;font-weight:700">Commentaire indisponible : ${esc(e.message)}</div>
+    out.innerHTML=`<div class="ai-claude"><div style="color:var(--bad);font-weight:700">Commentaire indisponible : ${esc(e.message)}</div>
       <div style="font-size:12px;color:var(--pa-muted);margin-top:4px">L'analyse ci-dessus reste valable. <button type="button" class="link-btn" onclick="LS.removeItem('atoll_ai');aiClaudeComment()">Changer de clé</button></div></div>`;
   }
 }
@@ -7099,7 +7162,7 @@ function askTeamKey(code){
   if(_askingKey) return; _askingKey=true;
   const el=openModal('dlgKey','🔐 Planning protégé',`
     <div style="font-size:13px;color:var(--pa-text2);line-height:1.55;margin-bottom:12px">Les données de ce planning sont <strong>chiffrées</strong>. Saisissez la <strong>clé d'équipe</strong> (demandez-la à votre directeur ou utilisez le lien de configuration). Elle n'est demandée qu'une fois sur cet appareil.</div>
-    ${code==='BAD_KEY'?'<div style="color:#d13438;font-weight:700;font-size:13px;margin-bottom:8px">Clé incorrecte, réessayez.</div>':''}
+    ${code==='BAD_KEY'?'<div style="color:var(--bad);font-weight:700;font-size:13px;margin-bottom:8px">Clé incorrecte, réessayez.</div>':''}
     <input class="fl-inp" id="teamKeyInp" type="password" autocomplete="off" placeholder="Clé d'équipe" onkeydown="if(event.key==='Enter')unlockWithKey()">`,440,
     `<button class="fl-btn primary" onclick="unlockWithKey()">Déverrouiller</button>`);
   el.style.zIndex='10050';
@@ -7187,7 +7250,7 @@ function openSecurity(){
         <button class="fl-btn primary" onclick="secSaveKey()">${tk?'Changer':'Activer'}</button></div>
         <div class="sec-t" style="font-size:11px">Même clé sur tous les postes : elle est incluse automatiquement dans le lien de configuration (Options → GitHub → Partager). Conservez-la en lieu sûr : sans elle, les données chiffrées ne peuvent pas être relues.</div>
         ${tk?`<button type="button" class="link-btn" onclick="setTeamKey('');openSecurity();toast('Clé retirée de cet appareil')">Retirer la clé de cet appareil</button>`:''}`
-        :'<div class="sec-t" style="color:#d13438">Chiffrement indisponible sur cette page (ouvrez le planning en https).</div>'}
+        :'<div class="sec-t" style="color:var(--bad)">Chiffrement indisponible sur cette page (ouvrez le planning en https).</div>'}
     </div>
     <div class="sec-card">
       <div class="sec-h">🔗 Liens collaborateurs</div>
