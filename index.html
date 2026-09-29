@@ -2041,6 +2041,17 @@ function toArchive(raw, year, mode){
   }
   return arch;
 }
+// Format « ancien » (semaines 1→53) écrit en plus dans le fichier GitHub :
+// les postes qui ont encore l'ancienne version de l'appli le lisent sans rien perdre.
+function legacyWeeks(arch, st, colls){
+  const out={}, year=st?.year||PLANNING_YEAR, mode=st?.fiscalMode||'calendar', n=(colls&&colls.length)||0;
+  for(let s=1;s<=53;s++){
+    const wk=arch[`${weekYear(s,year,mode)}-${s}`];
+    out[s]= wk || {histo:0,objectif:0,prod_budget:180,hObj:0,objJours:new Array(7).fill(0),histoJours:new Array(7).fill(0),
+      jours:JOURS.map((_,ji)=>({collaborateurs:Array.from({length:n},()=>mkSlot(ji))}))};
+  }
+  return out;
+}
 function cleanTxt(v){ return String(v??'').replace(/[<>`"\\]/g,'').slice(0,80); }
 function sanitizeAll(){
   try{ (COLLS||[]).forEach(c=>{ c.nom=cleanTxt(c.nom); }); }catch(e){}
@@ -2701,8 +2712,11 @@ async function _ghPushOnce(silent=false, force=false, quietConflict=false){
       const d=LS.getItem(`atoll_v2_${st.id}`);
       const c=LS.getItem(`atoll_colls_${st.id}`);
       const t=LS.getItem(`atoll_tpl_${st.id}`);
+      const raw=d?JSON.parse(d):null, collsArr=c?JSON.parse(c):[];
+      const arch=raw?toArchive(raw, st.year||2026, st.fiscalMode||'calendar'):null;
       storesPayload[st.id]={
-        data:   d?JSON.parse(d):null,
+        data:   arch?legacyWeeks(arch, st, collsArr):null,   // lisible par l'ancienne version
+        archive: arch?{__v:4, weeks:arch}:null,                // format complet (toutes les années)
         colls:  c?JSON.parse(c):null,
         tpls:   t?JSON.parse(t):[],
         savedAt: new Date().toISOString(),
@@ -2764,7 +2778,8 @@ function ghApplyPayload(payload, keepDirty=false){
     if(payload.storesData){
       Object.entries(payload.storesData).forEach(([sid,sd])=>{
         if(dirty.has(sid)) return;
-        if(sd.data)  LS.setItem(`atoll_v2_${sid}`,JSON.stringify(sd.data));
+        if(sd.archive?.weeks) LS.setItem(`atoll_v2_${sid}`,JSON.stringify(sd.archive));
+        else if(sd.data)  LS.setItem(`atoll_v2_${sid}`,JSON.stringify(sd.data));
         if(sd.colls) LS.setItem(`atoll_colls_${sid}`,JSON.stringify(sd.colls));
         if(sd.tpls)  LS.setItem(`atoll_tpl_${sid}`,JSON.stringify(sd.tpls));
       });
@@ -5980,7 +5995,7 @@ async function renderCollabView(){
   else if(payload?.storesData?.[sid]){
     st=(payload.stores||[]).find(s=>s.id===sid)||{};
     const sd=payload.storesData[sid]; colls=sd.colls||[];
-    arch=toArchive(sd.data,st.year||2026,st.fiscalMode||'calendar'); saved=payload.saved_at;
+    arch=toArchive(sd.archive?.weeks?sd.archive:sd.data,st.year||2026,st.fiscalMode||'calendar'); saved=payload.saved_at;
   } else if(LS.getItem('atoll_stores') && STORES.find(s=>s.id===sid)){
     st=STORES.find(s=>s.id===sid); arch=readStoreArchive(st);
     try{ colls=JSON.parse(LS.getItem(`atoll_colls_${st.id}`)||'[]'); }catch(e){}
