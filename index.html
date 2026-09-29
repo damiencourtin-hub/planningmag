@@ -465,50 +465,41 @@ body{
 .ls-dirty{color:#ffb454;font-weight:700;margin-left:4px}
 @media (max-width:1100px){ .last-save{max-width:260px} }
 @media (max-width:768px){ .last-save{display:none} }
-.wb{margin:-16px -16px 12px;padding:12px 14px;background:var(--pa-bg,var(--ac-bg2))}
-@media (min-height:900px) and (min-width:1201px){ .wb{position:sticky;top:-16px;z-index:8;box-shadow:0 6px 14px -10px rgba(120,20,70,.35)} }
-.wb-row{display:flex;gap:10px;align-items:stretch}
-.wb-days{flex:1;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;min-width:0}
-.wb-card{box-sizing:border-box;display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;padding:10px 11px 9px;border-radius:14px;border:1px solid var(--ac-bd);background:#fff;color:var(--pa-text);font-family:inherit;cursor:pointer;min-width:0;transition:transform .15s,box-shadow .15s}
-.wb-card:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(var(--ac-dk-rgb),.12)}
-.wb-card.sel{background:var(--ac-dk);border-color:var(--ac-dk);color:#fff;box-shadow:0 6px 16px rgba(var(--ac-dk-rgb),.28)}
+.wb{margin:-16px -16px 12px;padding:8px 14px;background:var(--pa-bg,var(--ac-bg2));position:sticky;top:-16px;z-index:8;box-shadow:0 6px 14px -10px rgba(var(--ac-dk-rgb),.35)}
+.wb-days{flex:1;display:grid;grid-template-columns:repeat(7,minmax(104px,1fr));gap:6px;min-width:0;overflow-x:auto;scrollbar-width:thin}
+.wb-card{box-sizing:border-box;display:flex;flex-direction:column;gap:2px;text-align:left;padding:6px 9px 6px;border-radius:11px;border:1px solid var(--ac-bd);background:#fff;color:var(--pa-text);font-family:inherit;cursor:pointer;min-width:0;transition:box-shadow .15s,border-color .15s}
+.wb-card:hover{border-color:var(--ac);box-shadow:0 3px 10px rgba(var(--ac-dk-rgb),.12)}
+.wb-card.sel{background:var(--ac-dk);border-color:var(--ac-dk);color:#fff;box-shadow:0 4px 12px rgba(var(--ac-dk-rgb),.28)}
 .wb-card.closed{background:var(--ac-bg2);border-style:dashed;color:var(--pa-muted2)}
-.wb-top{display:flex;justify-content:space-between;align-items:center;width:100%;gap:4px}
-.wb-day{font-size:15px;font-weight:800;white-space:nowrap}
-.wb-tag{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;padding:2px 6px;border-radius:999px;color:var(--pc);background:color-mix(in srgb,var(--pc) 12%,transparent);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.wb-card.sel .wb-tag{background:#fff}
-.wb-ca{font-size:11.5px;font-weight:600;opacity:.8;margin-top:3px;white-space:nowrap}
-.wb-h{font-size:23px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
-.wb-ideal{font-size:11.5px;font-weight:600;opacity:.8;white-space:nowrap}
-.wb-tagline{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--pc);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
-.wb-card.sel .wb-tagline{color:#fff;opacity:.9}
+.wb-pv{font-size:12.5px}
+.wb-card.sel .wb-pv{color:#fff!important}
+.wb-r1,.wb-r2,.wb-r3{display:flex;align-items:baseline;justify-content:space-between;gap:6px;white-space:nowrap}
+.wb-day{font-size:13px;font-weight:800}
 .wb-note{font-size:11px}
-.wb-delta{font-size:11.5px;font-weight:800;padding:2px 7px;white-space:nowrap;border-radius:999px;color:var(--dc);background:color-mix(in srgb,var(--dc) 12%,transparent)}
-.wb-card.sel .wb-delta{background:#fff}
-.wb-prod{display:flex;align-items:center;gap:7px;width:100%;margin-top:5px}
-.wb-pv{font-size:13px;font-weight:800;color:var(--pc);white-space:nowrap}
-.wb-card.sel .wb-pv{color:#fff}
-.wb-track{flex:1;height:5px;border-radius:3px;background:var(--ac-bd);overflow:hidden;display:block}
-.wb-card.sel .wb-track{background:rgba(255,255,255,.28)}
-.wb-bar{display:block;height:100%;border-radius:3px;background:var(--pc)}
-.wb-card.sel .wb-bar{background:#fff}
-.wb-week{width:270px;flex-shrink:0;box-sizing:border-box;background:#fff;border:1px solid var(--ac-bd);border-radius:14px;padding:11px 14px;display:flex;flex-direction:column;gap:6px}
-.wb-wt{font-size:11.5px;font-weight:800;color:var(--ac-tx);text-transform:uppercase;letter-spacing:.06em}
-.wb-wd{font-size:12px;color:var(--pa-muted);margin-top:-5px}
-.wb-kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.wb-kl{font-size:10px;font-weight:700;color:var(--pa-muted);text-transform:uppercase;letter-spacing:.05em}
-.wb-kv{font-size:18px;font-weight:800}
-.wb-wprod{display:flex;align-items:baseline;gap:7px;padding-top:6px;border-top:1px solid var(--ac-bd);flex-wrap:wrap}
-.wb-kb{font-size:11.5px;color:var(--pa-muted)}
-.wb-reb{font-size:11.5px;line-height:1.35;font-weight:600}
-.wb-reb.muted{color:var(--pa-muted2);font-weight:500}
-.wb-reb-l{font-size:10px;font-weight:800;color:var(--pa-muted);text-transform:uppercase;letter-spacing:.05em}
-.wb-arrow{color:var(--pa-muted2)}
-.wb-opt{margin-top:auto;min-height:34px;border-radius:10px;border:1px solid var(--ac);background:var(--ac-lt);color:var(--ac-dk);font-family:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
+.wb-status{font-size:10.5px;font-weight:800;padding:1px 6px;margin-top:2px;border-radius:999px;text-align:center;color:var(--pc);background:color-mix(in srgb,var(--pc) 13%,transparent);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wb-card.sel .wb-status{background:#fff}
+.wb-h{font-size:18px;font-weight:800;letter-spacing:-.01em;line-height:1.15}
+.wb-ca{font-size:11.5px;font-weight:600;opacity:.75}
+.wb-r3{font-size:11.5px;justify-content:space-between;border-top:1px solid var(--ac-bd);padding-top:3px;margin-top:1px}
+.wb-r3>span{opacity:.75}
+.wb-card.sel .wb-r3{border-top-color:rgba(255,255,255,.3)}
+.wb-card.sel .wb-r3 b{color:#fff!important}
+.wb-line{display:flex;flex-wrap:wrap;align-items:center;column-gap:14px;row-gap:3px;margin-bottom:6px;padding:5px 10px;background:#fff;border:1px solid var(--ac-bd);border-radius:10px;font-size:12.5px}
+.wb-wt{font-size:12.5px;font-weight:800;color:var(--ac-tx);text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.wb-it{white-space:nowrap}
+.wb-it b{font-size:13.5px}
+.wb-it+.wb-it,.wb-wt+.wb-it{padding-left:14px;border-left:1px solid var(--ac-bd)}
+.wb-kl{font-size:11.5px;font-weight:600;color:var(--pa-muted)}
+.wb-pct{font-size:11px;font-weight:800;color:var(--wc);background:color-mix(in srgb,var(--wc) 12%,transparent);border-radius:999px;padding:1px 7px;white-space:nowrap}
+.wb-reb{display:inline-flex;flex-wrap:wrap;column-gap:8px;align-items:baseline;font-size:12px}
+.wb-reb.muted{color:var(--pa-muted2);font-weight:500;white-space:normal}
+.wb-reb-l{font-size:10.5px;font-weight:800;color:var(--pa-muted);text-transform:uppercase;letter-spacing:.04em}
+.wb-rl{color:var(--pa-muted);font-weight:600}
+.wb-opt{margin-left:auto;flex-shrink:0;height:26px;padding:0 10px;border-radius:8px;border:1px solid var(--ac);background:var(--ac-lt);color:var(--ac-dk);font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
 .wb-opt:hover{background:var(--ac);color:#fff}
-@media (max-width:1200px){ .wb-row{flex-direction:column} .wb-week{width:auto;display:grid;grid-template-columns:auto auto 1fr;align-items:center;column-gap:18px} .wb-wd{margin-top:0} .wb-reb,.wb-opt,.wb-wprod{grid-column:1/-1} }
-@media (max-width:1100px) and (min-width:769px){ .wb-days{grid-template-columns:repeat(7,minmax(92px,1fr));overflow-x:auto;padding-bottom:4px} .wb-card{padding:9px 8px 8px} .wb-h{font-size:21px} }
-@media (max-width:768px){ .wb-days{grid-template-columns:repeat(7,minmax(112px,1fr));overflow-x:auto;padding-bottom:4px;scroll-snap-type:x mandatory} .wb-card{scroll-snap-align:start} .wb-week{display:flex;align-items:stretch;text-align:left} }
+.wb-line-m{display:none}
+@media (max-width:1180px){ .wb-days{grid-template-columns:repeat(7,minmax(112px,1fr));padding-bottom:3px} .wb-card{padding:5px 8px} .wb-h{font-size:16.5px} .wb-pv{font-size:11.5px} .wb-r3{font-size:11px} .wb-ca{font-size:10.5px} }
+@media (max-width:860px){ .wb{padding:6px 10px} .wb-line-d{display:none} .wb-line-m{display:flex;margin:0 0 12px} .wb-it+.wb-it,.wb-wt+.wb-it{border-left:none;padding-left:0} .wb-days{grid-template-columns:repeat(7,minmax(112px,1fr));scroll-snap-type:x mandatory;padding-bottom:3px} .wb-card{scroll-snap-align:start} }
 .cmd-ic{font-size:15px;line-height:1}
 /* Glisser au doigt (téléphone, iPad) : la barre capte le geste au lieu de faire défiler la page */
 .gantt-bar .gantt-body,.gantt-handle,.gantt-pausebar .gantt-body,.gantt-pausebar .gantt-handle{touch-action:none}
@@ -572,7 +563,6 @@ body{
 .sec-badge{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:999px}
 .sec-badge.ok{background:#e7f6e7;color:#107c10}.sec-badge.ko{background:#fff4e0;color:#b35c00}
 .link-btn{background:none;border:none;padding:0;font:inherit;color:var(--pa-blue);font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
-.wb-top{flex-wrap:wrap;row-gap:3px}
 .week-table td.collab-td,.week-table th:first-child{position:sticky;left:0;z-index:2;background:var(--pa-surface,#fff)}
 /* ══ TÉLÉPHONE ══ */
 @media (max-width:768px){
@@ -3581,49 +3571,47 @@ function renderWeekBand(sem, dayIdx, laborBanner){
       else if(r>1.5){ col='#5b3fb0'; tag='Tendu'; }
       else { col='#0f7b3a'; tag='OK'; }
     }
-    const pct = r!=null ? Math.min(100, r/2*100) : 0;
-    let delta='';
+    let ecart='', dc='inherit';
     if(ideal!=null && !closed){
       const small=Math.abs(diff)<1;
-      const dc= small?'#0f7b3a': diff>0?'#c62828':'#5b3fb0';
-      delta=`<span class="wb-delta" style="--dc:${dc}" title="${small?'Heures en ligne avec le budget CA':(diff>0?'Heures en trop':'Heures manquantes')} par rapport à une répartition selon le CA">${small?'≈':(diff>0?'+':'−')+f1(Math.abs(diff))+' h'}</span>`;
+      dc= small?'#0f7b3a': diff>0?'#c62828':'#5b3fb0';
+      ecart= small?'≈':(diff>0?'+':'−')+f1(Math.abs(diff))+' h';
     }
-    const tip=`${JOURS[j]} — ${tag||'—'}${ideal!=null&&!closed?` · idéal ${f1(ideal)} h selon le CA (écart ${diff>0?'+':'−'}${f1(Math.abs(diff))} h)`:''}`;
+    const tip=`${JOURS[j]} — ${tag||'—'}${obj>0?` · CA ${eur(obj)}`:''}${ideal!=null&&!closed?` · idéal ${f1(ideal)} h selon le CA (écart ${diff>0?'+':'−'}${f1(Math.abs(diff))} h : ${diff>0?'heures en trop':'heures manquantes'})`:''}${r!=null?` · prod. ${Math.round(c.prod)} €/h`:''}`;
     return `<button type="button" class="wb-card${sel?' sel':''}${closed?' closed':''}" onclick="setDay(${j})" style="--pc:${col}" title="${esc(tip)}">
-      <span class="wb-top"><span class="wb-day">${JCOURT[j]} ${dayNum(PLANNING_YEAR,sem,j)}${note?' <span class="wb-note">📝</span>':''}</span>${closed?'<span class="wb-tag">Fermé</span>':delta}</span>
-      <span class="wb-ca">${closed?'&nbsp;':obj>0?'CA '+eur(obj):'CA —'}</span>
-      <span class="wb-h">${closed&&c.tH<=0?'—':f1(c.tH)+' h'}</span>
-      <span class="wb-ideal">${ideal!=null&&!closed?`idéal ${f1(ideal)} h`:'&nbsp;'}</span>
-      <span class="wb-prod"><span class="wb-pv">${r!=null?Math.round(c.prod)+' €/h':'—'}</span><span class="wb-track"><span class="wb-bar" style="width:${pct}%"></span></span></span>
-      ${tag&&!closed?`<span class="wb-tagline">${tag}</span>`:''}
+      <span class="wb-r1"><span class="wb-day">${JCOURT[j]} ${dayNum(PLANNING_YEAR,sem,j)}${note?' <span class="wb-note">📝</span>':''}</span><span class="wb-ca">${closed?'':obj>0?eur(obj):''}</span></span>
+      <span class="wb-r2"><span class="wb-h">${closed&&c.tH<=0?'—':f1(c.tH)+'&nbsp;h'}</span>${closed?'':`<b class="wb-pv" style="color:${r!=null?col:'inherit'}">${r!=null?Math.round(c.prod)+' €/h':'—'}</b>`}</span>
+      ${closed?'':`<span class="wb-r3"><span>idéal <b>${ideal!=null?f1(ideal)+' h':'—'}</b></span>${ecart?`<b style="color:${dc}">${ecart}</b>`:''}</span>`}
+      ${tag?`<span class="wb-status">${tag}</span>`:''}
     </button>`;
   }).join('');
   // Rééquilibrage suggéré
   const over=days.filter(d=>d.diff!=null&&d.diff>=1&&!d.closed).sort((a,b)=>b.diff-a.diff);
   const under=days.filter(d=>d.diff!=null&&d.diff<=-1&&!d.closed).sort((a,b)=>a.diff-b.diff);
-  const lst=a=>a.slice(0,3).map(d=>`${JCOURT[d.j]} ${d.diff>0?'+':'−'}${f1(Math.abs(d.diff))} h`).join(', ');
+  const lst=a=>a.slice(0,3).map(d=>`<span style="white-space:nowrap">${JCOURT[d.j]} ${f1(Math.abs(d.diff))}</span>`).join(' · ');
   const wr = pb>0&&ws.pH>0&&objTot>0 ? ws.prodMoy/pb : null;
   const wcol = wr==null?'var(--pa-muted)': wr>=1?'#0f7b3a': wr>=0.85?'#b35c00':'#c62828';
-  const rebal = objTot<=0 ? `<div class="wb-reb muted">Saisissez le budget CA par jour pour voir la répartition idéale.</div>`
-    : (over.length||under.length) ? `<div class="wb-reb"><span class="wb-reb-l">Rééquilibrer</span> <span style="color:#c62828">${lst(over)||'—'}</span> <span class="wb-arrow">→</span> <span style="color:#5b3fb0">${lst(under)||'—'}</span></div>`
-    : `<div class="wb-reb" style="color:#0f7b3a;font-weight:700">✓ Heures bien réparties selon le CA</div>`;
+  const pctTxt = wr==null ? '' : Math.abs(wr-1)<0.005 ? '= objectif'
+    : `${wr>1?'+':'−'}${Math.round(Math.abs(wr-1)*100)} % ${wr>1?'au-dessus':'sous'} l’obj.`;
+  const rebal = objTot<=0 ? `<div class="wb-reb wb-it muted">Saisissez le budget CA par jour pour voir la répartition idéale.</div>`
+    : (over.length||under.length) ? `<div class="wb-reb wb-it" title="Mêmes heures, réparties selon le budget CA de chaque jour"><span class="wb-reb-l">Rééquilibrer</span>
+        ${over.length?`<span><span class="wb-rl">Retirer</span> <b style="color:#c62828">${lst(over)} h</b></span>`:''}
+        ${under.length?`<span><span class="wb-rl">Ajouter</span> <b style="color:#5b3fb0">${lst(under)} h</b></span>`:''}</div>`
+    : `<div class="wb-reb wb-it" style="color:#0f7b3a;font-weight:700">✓ Heures bien réparties selon le CA</div>`;
+  const optBtn = objTot>0&&(over.length||under.length) ? `<button type="button" class="wb-opt" onclick="openOptimizer()" title="Voir le planning optimisé (indicatif)">✨ Optimiser</button>` : '';
+  const week = (cls)=>`<div class="wb-line ${cls}">
+        <span class="wb-wt" title="${weekRangeLabel(PLANNING_YEAR,sem)}">${fullWeekLabel(sem)}</span>
+        <span class="wb-it"><span class="wb-kl">CA</span> <b>${objTot>0?eur(objTot):'—'}</b></span>
+        <span class="wb-it"><span class="wb-kl">Heures</span> <b>${f1(ws.tH)} h</b></span>
+        <span class="wb-it" title="Productivité ${wr!=null?Math.round(ws.prodMoy):'—'} €/h ÷ objectif ${pb||'—'} €/h"><span class="wb-kl">Prod.</span> <b style="color:${wcol}">${wr!=null?Math.round(ws.prodMoy)+' €/h':'—'}</b> <span class="wb-kl">obj. ${pb||'—'}</span>${wr!=null?` <span class="wb-pct" style="--wc:${wcol}">${pctTxt}</span>`:''}</span>
+        ${rebal}
+        ${optBtn}
+      </div>`;
   return `<div class="wb">
     ${laborBanner}
-    <div class="wb-row">
-      <div class="wb-days">${cards}</div>
-      <div class="wb-week">
-        <div class="wb-wt">${fullWeekLabel(sem)}</div>
-        <div class="wb-wd">${weekRangeLabel(PLANNING_YEAR,sem)}</div>
-        <div class="wb-kpis">
-          <div><div class="wb-kl">Budget CA</div><div class="wb-kv">${objTot>0?eur(objTot):'—'}</div></div>
-          <div><div class="wb-kl">Heures</div><div class="wb-kv">${f1(ws.tH)} h</div></div>
-        </div>
-        <div class="wb-wprod"><span class="wb-kl">Prod.</span><span class="wb-kv" style="color:${wcol}">${wr!=null?Math.round(ws.prodMoy)+' €/h':'—'}</span><span class="wb-kb">budget ${pb||'—'}${wr!=null?` · <strong style="color:${wcol}">${wr>=1?'+':''}${Math.round((wr-1)*100)} %</strong>`:''}</span></div>
-        ${rebal}
-        ${objTot>0&&(over.length||under.length)?`<button type="button" class="wb-opt" onclick="openOptimizer()">✨ Voir le planning optimisé</button>`:''}
-      </div>
-    </div>
-  </div>`;
+    ${week('wb-line-d')}
+    <div class="wb-days">${cards}</div>
+  </div>${week('wb-line-m')}`;
 }
 function renderContent(){
   undoTrack();
