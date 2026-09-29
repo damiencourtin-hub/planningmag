@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://api.github.com https://api.anthropic.com; manifest-src 'self' blob: data:; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1a0812">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Planning">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Planning Commercial — Angers ATOLL</title>
 <meta name="theme-color" content="#1a1a1a">
@@ -136,7 +144,7 @@ body{
 }
 .cmd-bar-top{
   display:flex;align-items:center;
-  padding:0 14px 0 18px;gap:10px;flex:1;height:58px;
+  padding:0 14px 0 18px;gap:10px;flex:1;height:58px;min-width:0;
 }
 .cmd-bar-bottom{
   display:flex;align-items:center;
@@ -145,8 +153,14 @@ body{
 
 /* Écrans intermédiaires (iPad, petits PC) : deux lignes au lieu de couper les boutons */
 .cmd-btn{flex-shrink:0;white-space:nowrap}
+/* Barre trop étroite détectée par le script : passage sur deux lignes */
+@media (min-width:769px){
+  .cmd-bar.two-rows{flex-wrap:wrap}
+  .cmd-bar.two-rows .cmd-bar-top{flex:1 1 100%;height:54px}
+  .cmd-bar.two-rows .cmd-bar-bottom{flex:1 1 100%;height:auto;min-height:44px;padding:7px 14px 8px;justify-content:flex-end;flex-wrap:wrap;row-gap:6px;border-top:1px solid rgba(var(--ac2-rgb),.10)}
+}
 .cmd-logo-text{white-space:nowrap}
-@media (min-width:769px) and (max-width:1500px){
+@media (min-width:769px) and (max-width:1280px){
   .cmd-bar{flex-wrap:wrap}
   .cmd-bar-top{flex:1 1 100%;height:54px}
   .cmd-bar-bottom{flex:1 1 100%;height:auto;min-height:44px;padding:0 14px 8px;justify-content:flex-end;flex-wrap:wrap;row-gap:6px;border-top:1px solid rgba(var(--ac2-rgb),.10);padding-top:7px}
@@ -212,34 +226,17 @@ body{
 .cmd-btn.primary:hover{background:linear-gradient(135deg,#f43fa0,var(--ac));box-shadow:0 0 24px rgba(var(--ac-rgb),.45);transform:translateY(-1px)}
 
 /* ─── LAYOUT ─── */
-.app{display:grid;grid-template-columns:248px 14px 1fr;flex:1;overflow:hidden;transition:grid-template-columns .25s ease}
-.app.kpi-wide{grid-template-columns:420px 14px 1fr}
-.app.nav-collapsed{grid-template-columns:0 14px 1fr}
+.app{display:grid;grid-template-columns:248px 36px 1fr;flex:1;overflow:hidden;transition:grid-template-columns .25s ease}
+.app.kpi-wide{grid-template-columns:420px 36px 1fr}
+.app.nav-collapsed{grid-template-columns:0 36px 1fr}
 
 /* Poignée de pliage du panneau latéral */
-.nav-toggle{
-  background:var(--pa-surface);
-  border-right:1px solid var(--pa-border);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;
-  transition:background .2s ease;
-  position:relative;
-}
-.nav-toggle:hover{background:var(--pa-surface2)}
-.nav-toggle::before{
-  content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:4px;height:36px;background:var(--pa-border2);border-radius:999px;
-  transition:background .2s ease;
-}
-.nav-toggle:hover::before{background:var(--pa-muted)}
-.nav-toggle-icon{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:22px;height:22px;background:var(--pa-surface);border:1px solid var(--pa-border2);
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:11px;color:var(--pa-text2);font-weight:700;
-  opacity:0;transition:opacity .2s ease;
-}
-.nav-toggle:hover .nav-toggle-icon{opacity:1}
+.nav-toggle{background:var(--pa-surface);border-right:1px solid var(--pa-border);cursor:pointer;position:relative;transition:background .2s ease}
+.nav-toggle:hover{background:var(--ac-lt)}
+.nav-toggle-icon{position:sticky;top:14px;margin:14px auto 0;width:30px;height:30px;border-radius:50%;
+  background:var(--ac);color:#fff;border:2px solid #fff;box-shadow:0 2px 8px rgba(var(--ac-dk-rgb),.35);
+  display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:800;line-height:1;transition:transform .15s}
+.nav-toggle:hover .nav-toggle-icon{transform:scale(1.12)}
 
 /* ─── LEFT NAV ─── */
 .leftnav{
@@ -487,6 +484,8 @@ body{
 .wb-line{display:flex;flex-wrap:wrap;align-items:center;column-gap:14px;row-gap:3px;margin-bottom:6px;padding:5px 10px;background:#fff;border:1px solid var(--ac-bd);border-radius:10px;font-size:12.5px}
 .wb-wt{font-size:12.5px;font-weight:800;color:var(--ac-tx);text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
 .wb-it{white-space:nowrap}
+.wb-env{background:none;border:none;font:inherit;cursor:pointer;padding:0 0 0 14px;color:inherit}
+.wb-env:hover b{text-decoration:underline}
 .wb-it b{font-size:13.5px}
 .wb-it+.wb-it,.wb-wt+.wb-it{padding-left:14px;border-left:1px solid var(--ac-bd)}
 .wb-kl{font-size:11.5px;font-weight:600;color:var(--pa-muted)}
@@ -504,6 +503,53 @@ body{
 /* Glisser au doigt (téléphone, iPad) : la barre capte le geste au lieu de faire défiler la page */
 .gantt-bar .gantt-body,.gantt-handle,.gantt-pausebar .gantt-body,.gantt-pausebar .gantt-handle{touch-action:none}
 .gantt-handle{min-width:10px}
+.sm-grp{padding:9px 16px 4px;font-size:10.5px;font-weight:800;color:#8a7a86;text-transform:uppercase;letter-spacing:.06em;background:#faf7f9}
+.sm-item{padding:11px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#1a2535;font-weight:600;border-bottom:1px solid #f0f4f9}
+.sm-item:hover{background:var(--ac-lt)}
+.sm-hi{color:var(--ac-dk)}
+.cu-head{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;font-size:13px}
+.cu-row1{display:flex;flex-wrap:wrap;align-items:center;column-gap:18px;row-gap:4px}
+.cu-track{height:6px;border-radius:3px;background:var(--ac-bd);overflow:hidden}.cu-track span{display:block;height:100%;background:var(--ac)}
+.cu-opt{font-size:12.5px;color:var(--pa-text2);display:flex;gap:6px;align-items:center;cursor:pointer}
+.cu-tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.cu-tbl th{font-size:10px;text-transform:uppercase;letter-spacing:.03em;color:var(--pa-muted);text-align:right;padding:6px 6px;border-bottom:2px solid var(--ac-bd);white-space:nowrap}
+.cu-tbl th:first-child,.cu-tbl td:first-child{text-align:left}
+.cu-tbl td{padding:7px 6px;border-bottom:1px solid var(--pa-border);text-align:right;white-space:nowrap;vertical-align:middle}
+.cu-tbl tfoot td{border-top:2px solid var(--ac-bd);border-bottom:none;background:var(--ac-bg2)}
+.cu-av{display:inline-flex;width:22px;height:22px;border-radius:50%;color:#fff;font-size:9px;font-weight:800;align-items:center;justify-content:center;margin-right:7px;vertical-align:middle}
+.cu-sub{font-size:11px;color:var(--pa-muted);font-weight:500}
+.cu-tbl td:first-child .cu-sub{margin-left:29px}
+.cu-in{width:96px;text-align:right;padding:6px 8px!important;font-size:13px!important}
+.cu-bar{position:relative;height:4px;border-radius:2px;background:var(--ac-bd);margin-top:4px;min-width:80px;overflow:hidden}
+.cu-bar span{position:absolute;left:0;top:0;bottom:0;border-radius:2px}
+.cu-note{margin-top:12px;font-size:12px;line-height:1.5;color:var(--pa-muted);background:var(--ac-bg2);border-radius:10px;padding:10px 12px}
+@media (max-width:768px){ .cu-tbl td:first-child .cu-sub{margin-left:0} .cu-in{width:100px} }
+.cs-sec{font-size:12px;font-weight:800;color:var(--ac-tx);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.cs-fixed{font-size:12px;color:var(--pa-muted);background:var(--ac-bg2);border-radius:9px;padding:8px 10px;margin-bottom:8px;line-height:1.45}
+.cs-rule{display:flex;gap:9px;align-items:flex-start;padding:6px 2px;cursor:pointer;font-size:13px}
+.cs-rule input{margin-top:3px;accent-color:var(--ac)}
+.cs-rule small{display:block;color:var(--pa-muted);font-size:11.5px}
+.cs-pt{margin:2px 0 4px 26px;font-size:12.5px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.cs-tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.cs-tbl th{font-size:10.5px;text-transform:uppercase;color:var(--pa-muted);padding:5px 4px;border-bottom:2px solid var(--ac-bd);text-align:center}
+.cs-tbl th:first-child{text-align:left}
+.cs-tbl td{padding:5px 3px;border-bottom:1px solid var(--pa-border);text-align:center;vertical-align:top}
+.cs-nm{text-align:left!important;white-space:nowrap}
+.cs-sel{font-family:inherit;font-size:12px;padding:4px 2px;border-radius:7px;border:1px solid var(--pa-border2);background:#fff;width:100%;min-width:78px}
+.cs-d.off .cs-sel{background:#fde7e9;border-color:#f3b2b8;color:#b3261e;font-weight:700}
+.cs-d.range .cs-sel{background:#fff4e0;border-color:#f3d3a6;color:#8a4b00;font-weight:700}
+.cs-d.cl{opacity:.55}
+.cs-rg{display:flex;align-items:center;gap:2px;margin-top:3px;justify-content:center}
+.cs-tm{width:46px;font-family:inherit;font-size:11.5px;padding:3px 2px;text-align:center;border:1px solid var(--pa-border2);border-radius:6px}
+.env-cur td{background:var(--ac-bg2)}
+.env-st{font-size:11.5px;font-weight:800;color:var(--sc);background:color-mix(in srgb,var(--sc) 12%,transparent);border-radius:999px;padding:2px 8px;white-space:nowrap}
+.env-fill{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12.5px;margin:4px 0 12px}
+.tw-len{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:12.5px;font-weight:700}
+.tw-lb{font-family:inherit;font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;border:1px solid var(--ac-bd);background:#fff;color:var(--pa-text2);cursor:pointer}
+.tw-lb.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.tw-cur{font-size:10.5px;font-weight:700;color:var(--ac-dk);background:var(--ac-lt);border-radius:999px;padding:1px 7px;margin-left:4px}
+.inst-ol{margin:4px 0 0 18px;padding:0;font-size:13.5px;line-height:1.7}
+.off-badge{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:9000;background:#3a2a33;color:#fff;font-size:12.5px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.25);max-width:92vw;text-align:center}
 .menu-mobile-only{display:none!important}
 .tstep{display:inline-flex;align-items:center;border:1px solid var(--pa-border2);border-radius:8px;overflow:hidden;background:#fff;vertical-align:middle}
 .tstep input{border:none!important;border-radius:0!important;box-shadow:none!important;text-align:center;margin:0}
@@ -946,8 +992,8 @@ body{background-color:var(--pa-bg)}
 /* ─── RESPONSIVE / ADAPTATIF ─── */
 .wk-table-wrap{overflow-x:auto}
 @media (max-width: 1100px){
-  .app{grid-template-columns:220px 14px 1fr}
-  .app.kpi-wide{grid-template-columns:300px 14px 1fr}
+  .app{grid-template-columns:220px 36px 1fr}
+  .app.kpi-wide{grid-template-columns:300px 36px 1fr}
 }
 
 /* ══ MOBILE (≤ 768px) ══ */
@@ -1362,14 +1408,21 @@ body{background-color:var(--pa-bg)}
   </div>
   <!-- Ligne 2 : boutons actions -->
   <div class="cmd-bar-bottom">
-    <button class="cmd-btn ai" onclick="openAIAnalysis()" data-short="Analyse IA" data-xs="IA" aria-label="Analyse IA de la semaine" title="Analyse et optimisation de la semaine"><span class="cmd-ic">🤖</span> <span class="cmd-btn-label">Analyse IA</span></button>
-    <button class="cmd-btn" onclick="openTplManager()" data-short="Plages" aria-label="Plages types" title="Plages horaires types"><span class="cmd-ic">🕒</span> <span class="cmd-btn-label">Plages types</span></button>
-    <button class="cmd-btn" onclick="openRegional()" data-short="Région" aria-label="Vue régionale" title="Comparer tous les magasins sur la semaine"><span class="cmd-ic">🏬</span> <span class="cmd-btn-label">Région</span></button>
     <button class="cmd-btn cmd-print" onclick="printWeek()" data-short="Imprimer" aria-label="Imprimer la semaine"><span class="cmd-ic">🖨</span> <span class="cmd-btn-label">Imprimer</span></button>
     <button class="cmd-btn" onclick="manualRefresh()" id="refreshBtn" data-short="Actualiser" data-xs="MàJ" aria-label="Actualiser" title="Charger la dernière version sauvegardée"><span class="cmd-ic">🔄</span> <span class="cmd-btn-label">Actualiser</span></button>
     <div style="position:relative">
       <button class="cmd-btn" onclick="toggleSettingsMenu()" id="settingsMenuBtn" data-short="Options" aria-label="Options"><span class="cmd-ic">⚙</span> <span class="cmd-btn-label">Options</span> <span class="cmd-caret">▾</span></button>
-      <div id="settingsMenu" style="display:none;position:absolute;top:44px;right:0;background:#fff;border:1px solid #d0dce8;border-radius:12px;box-shadow:0 12px 32px rgba(0,78,120,.18);z-index:100;min-width:210px;overflow:hidden;animation:dlgIn .2s ease">
+      <div id="settingsMenu" style="display:none;position:absolute;top:44px;right:0;background:#fff;border:1px solid #d0dce8;border-radius:12px;box-shadow:0 12px 32px rgba(0,78,120,.18);z-index:100;min-width:250px;max-height:calc(100vh - 130px);overflow-y:auto;animation:dlgIn .2s ease">
+        <div class="sm-grp">Planning</div>
+        <div class="sm-item sm-hi" onclick="closeSettingsMenu();openAIAnalysis()">🤖 Analyse IA de la semaine</div>
+        <div class="sm-item" onclick="closeSettingsMenu();openTplManager()">🕒 Plages types</div>
+        <div class="sm-item" onclick="closeSettingsMenu();openTypeWeeks()">🔁 Semaines types &amp; cycles</div>
+        <div class="sm-item" onclick="closeSettingsMenu();openRegional()">🏬 Vue région</div>
+        <div class="sm-item" onclick="closeSettingsMenu();openConstraints()">📌 Contraintes &amp; disponibilités</div>
+        <div class="sm-item" onclick="closeSettingsMenu();openEnvelope()">💶 Enveloppe d’heures mensuelle</div>
+        <div class="sm-item" onclick="closeSettingsMenu();openCumul()">📈 Cumul exercice &amp; base annuelle</div>
+        <div class="sm-grp">Exports &amp; réglages</div>
+        <div class="sm-item" onclick="closeSettingsMenu();installApp()">📲 Installer l’application</div>
         <div onclick="openExportModal();closeSettingsMenu()" style="padding:11px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#1a2535;font-weight:600;border-bottom:1px solid #f0f4f9" onmouseover="this.style.background='#e8f1fb'" onmouseout="this.style.background='#fff'">📤 Exporter les données</div>
         <div class="menu-mobile-only" onclick="printWeek();closeSettingsMenu()" style="padding:11px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#1a2535;font-weight:600;border-bottom:1px solid #f0f4f9">🖨 Imprimer la semaine</div>
         <div onclick="exportExcel('week');closeSettingsMenu()" style="padding:11px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#1a2535;font-weight:600;border-bottom:1px solid #f0f4f9" onmouseover="this.style.background='var(--ac-lt)'" onmouseout="this.style.background=''">📗 Excel — semaine</div>
@@ -1405,7 +1458,7 @@ body{background-color:var(--pa-bg)}
   </div>
 
   <!-- ══ TOGGLE PANEL ══ -->
-  <div class="nav-toggle" onclick="toggleNav()" title="Masquer / afficher le panneau">
+  <div class="nav-toggle" onclick="toggleNav()" title="Masquer / afficher le panneau de gauche" role="button" aria-label="Masquer ou afficher le panneau de gauche">
     <div class="nav-toggle-icon" id="navToggleIcon">‹</div>
   </div>
 
@@ -2273,7 +2326,7 @@ async function saveData(){
   toast('💾 Enregistrement…','var(--pa-muted)');
   if(GH.config.token && GH.config.user && GH.config.repo){
     const pushed = await ghPush(true, true);
-    if(!pushed){ toast('⚠ Enregistré sur cet appareil, mais pas sur GitHub (connexion ?). Réessayez 💾','var(--pa-orange)'); updateLastSaveInfo(); return; }
+    if(!pushed){ const why=ghErrText(GH.lastErr); ghLog('err','Enregistrement refusé : '+why); toast('⚠ Enregistré sur cet appareil seulement — '+why,'var(--pa-orange)'); try{ alert('Le planning est enregistré sur cet appareil, mais PAS sur GitHub.\n\nRaison : '+why+'\n\nLes autres postes ne verront pas ces modifications tant que ce n\'est pas réglé.'); }catch(e){} updateLastSaveInfo(); return; }
     await lockRelease(); // libérer le verrou → les autres peuvent éditer
     showSaveIndicator('gh');
     toast('✅ Planning enregistré et synchronisé');
@@ -2615,7 +2668,7 @@ function ghHeaders(){
   };
 }
 function ghFetch(url, opts={}){
-  return fetch(url, { ...opts, mode:'cors', credentials:'omit' });
+  return fetch(url, { cache:'no-store', ...opts, mode:'cors', credentials:'omit' });
 }
 function ghLog(type,msg){
   const time=new Date().toLocaleTimeString('fr-FR');
@@ -2681,10 +2734,21 @@ function markSynced(id){ LS.setItem('atoll_sync_'+id, storeSig(id)); }
 // Modifications locales pas encore envoyées sur GitHub ?
 function isDirty(id){ const s0=getSyncSig(id); return s0!=null && s0!==storeSig(id); }
 // Envoi avec nouvel essai : si un autre poste a enregistré au même moment (conflit), on relit, on fusionne et on renvoie
+function ghErrText(st){
+  return ({401:'jeton GitHub refusé (invalide ou expiré) — recréez-le puis Options → GitHub',
+    403:'ce jeton n\'a pas le droit d\'écrire dans le dépôt — cochez « repo » (jeton classique) ou « Contents : Read and write »',
+    404:'dépôt introuvable avec ce jeton — vérifiez le pseudo, le nom du dépôt et l\'accès du jeton',
+    409:'le fichier a changé pendant l\'envoi — cliquez sur 🔄 Actualiser puis 💾',
+    422:'le fichier a changé pendant l\'envoi — cliquez sur 🔄 Actualiser puis 💾',
+    net:'pas de connexion à GitHub (réseau ou pare-feu)', key:'clé d\'équipe manquante ou incorrecte',
+    nocfg:'GitHub n\'est pas configuré sur ce poste'})[st] || ('erreur GitHub '+st);
+}
 async function ghPush(silent=false, force=false){
+  GH.lastErr=null;
   for(let attempt=0; attempt<3; attempt++){
     const st = await _ghPushOnce(silent && attempt===0 ? true : silent, force, attempt<2);
     if(st==='ok') return true;
+    GH.lastErr=st;
     if(st!==409 && st!==422) { if(st==='nocfg') return false; break; }
     await new Promise(r=>setTimeout(r, 500+Math.random()*700));
   }
@@ -2945,8 +3009,8 @@ async function ghTestAndSave(){
   res.style.display='block';res.textContent='🔍 Test en cours…';res.style.color='var(--pa-muted)';
   try{
     const r=await ghFetch(`https://api.github.com/repos/${GH.config.user}/${GH.config.repo}`,{headers:ghHeaders()});
-    if(r.ok){const d=await r.json();res.style.color='var(--pa-green)';res.textContent=`✅ Repo trouvé : "${d.full_name}"`;ghUpdateDot(true);toast('✓ Config GitHub sauvegardée');}
-    else{res.style.color='var(--pa-red)';res.textContent=`❌ Erreur ${r.status} — Vérifiez le token et le nom du repo`;}
+    if(r.ok){const d=await r.json(); const canW=d.permissions?d.permissions.push!==false:true; res.style.color=canW?'var(--pa-green)':'var(--pa-orange)'; res.textContent=canW?`✅ Repo trouvé : "${d.full_name}" — lecture et écriture autorisées`:`⚠ Repo trouvé : "${d.full_name}", mais ce jeton est en LECTURE SEULE : les enregistrements n'iront pas sur GitHub. Créez un jeton avec la case « repo » cochée.`;ghUpdateDot(canW);toast(canW?'✓ Config GitHub sauvegardée':'⚠ Jeton en lecture seule',canW?undefined:'var(--pa-orange)');}
+    else{res.style.color='var(--pa-red)';res.textContent=`❌ Erreur ${r.status} — ${ghErrText(r.status)}`;}
   }catch(e){res.style.color='var(--pa-red)';res.textContent='❌ Erreur réseau : '+e.message;}
 }
 
@@ -3083,36 +3147,85 @@ const LABOR = {
   minBreakH: 1/3      // 20 minutes
 };
 
+// Règles propres au magasin (réglables dans Options → Contraintes & règles)
+function laborCfg(){ const L=(getCurrentStore()||{}).labor||{}; return {pt:!!L.pt, ptPct:+L.ptPct||10, cons:L.cons!==false, rest35:L.rest35!==false}; }
+// Semaine voisine (±1) : dans la période affichée ou dans l'archive
+function weekRel(sem, delta){
+  try{
+    const m=dateOfDay(PLANNING_YEAR,sem,0); const d=new Date(m); d.setDate(m.getDate()+7*delta);
+    const {year,week}=isoWeekOf(d);
+    if(DATA[week] && DATA_YEARS[week]===year) return DATA[week];
+    return ARCHIVE[`${year}-${week}`]||null;
+  }catch(e){ return null; }
+}
+function slotOf(wk,j,ci){ return wk?.jours?.[j]?.collaborateurs?.[ci]||null; }
+function worked(sl){ return !!sl && sl.statut==='work' && calcH(sl)>0; }
+// Disponibilités : dispo[j] = {t:'all'|'off'|'range', d, f}
+function dispoOf(ci,j){ const d=COLLS[ci]?.dispo?.[j]; return d&&d.t?d:{t:'all'}; }
+function dispoTxt(d){ return d.t==='off'?'indisponible':d.t==='range'?`dispo ${d.d}–${d.f}`:'disponible'; }
+
 // Vérifie une semaine pour un collaborateur → liste d'infractions
 function checkLabor(sem, ci){
-  const issues=[];
+  const issues=[], C=laborCfg(), wk=DATA[sem];
   let weekH=0, restDays=0;
   for(let j=0;j<7;j++){
-    const slot=DATA[sem].jours[j].collaborateurs[ci];
+    const slot=wk.jours[j].collaborateurs[ci];
     const h=calcH(slot);
     weekH+=h;
     if(slot.statut!=='work'||h<=0){ restDays++; continue; }
-    // 10h max / jour
     if(h>LABOR.maxDailyH)
       issues.push({ji:j,code:'JOUR',msg:`${JCOURT[j]} : ${h.toFixed(1)}h travaillées > ${LABOR.maxDailyH}h max/jour`});
-    // pause 20 min si amplitude > 6h
     const span=t2h(slot.fin)-t2h(slot.debut);
     if(span>LABOR.breakAfterH && (slot.pause||0)<LABOR.minBreakH)
       issues.push({ji:j,code:'PAUSE',msg:`${JCOURT[j]} : pause < 20 min pour plus de 6h de présence`});
-    // repos quotidien 11h vs veille
-    if(j>0){
-      const prev=DATA[sem].jours[j-1].collaborateurs[ci];
-      if(prev.statut==='work'&&calcH(prev)>0){
-        const rest=(24-t2h(prev.fin))+t2h(slot.debut);
-        if(rest<LABOR.minDailyRest)
-          issues.push({ji:j,code:'REPOS11',msg:`${JCOURT[j]} : ${rest.toFixed(1)}h de repos depuis la veille < 11h`});
-      }
+    // repos quotidien 11h vs veille (y compris dimanche de la semaine précédente)
+    const prev = j>0 ? wk.jours[j-1].collaborateurs[ci] : slotOf(weekRel(sem,-1),6,ci);
+    if(worked(prev)){
+      const rest=(24-t2h(prev.fin))+t2h(slot.debut);
+      if(rest<LABOR.minDailyRest)
+        issues.push({ji:j,code:'REPOS11',msg:`${JCOURT[j]} : ${rest.toFixed(1)}h de repos depuis ${j>0?'la veille':'dimanche dernier'} < 11h`});
     }
+    // disponibilités du collaborateur
+    const dp=dispoOf(ci,j);
+    if(dp.t==='off') issues.push({ji:j,code:'DISPO',msg:`${JCOURT[j]} : planifié alors qu'indisponible`});
+    else if(dp.t==='range' && (t2h(slot.debut)<t2h(dp.d)-1e-6 || t2h(slot.fin)>t2h(dp.f)+1e-6))
+      issues.push({ji:j,code:'DISPO',msg:`${JCOURT[j]} : ${slot.debut}–${slot.fin} hors disponibilité (${dp.d}–${dp.f})`});
   }
   if(weekH>LABOR.maxWeeklyH)
     issues.push({ji:-1,code:'HEBDO',msg:`${weekH.toFixed(1)}h sur la semaine > ${LABOR.maxWeeklyH}h max`});
   if(restDays<1)
     issues.push({ji:-1,code:'JREPOS',msg:'Aucun jour de repos dans la semaine'});
+  // plus de 6 jours travaillés d'affilée (en tenant compte de la fin de semaine précédente)
+  if(C.cons){
+    const pw=weekRel(sem,-1); let run=0;
+    for(let j=6;j>=0;j--){ if(worked(slotOf(pw,j,ci))) run++; else break; }
+    for(let j=0;j<7;j++){
+      if(worked(wk.jours[j].collaborateurs[ci])){ run++; if(run===7){ issues.push({ji:j,code:'CONSEC',msg:`${JCOURT[j]} : 7e jour travaillé d'affilée (6 maximum)`}); } }
+      else run=0;
+    }
+  }
+  // repos hebdomadaire : 35h consécutives (24h + 11h)
+  if(C.rest35 && restDays>=1){
+    const pts=[]; // [début, fin] en heures depuis lundi 0h de la semaine
+    const pw=weekRel(sem,-1), nw=weekRel(sem,1);
+    for(let j=4;j<7;j++){ const sl=slotOf(pw,j,ci); if(worked(sl)) pts.push([t2h(sl.debut)+(j-7)*24, t2h(sl.fin)+(j-7)*24]); }
+    for(let j=0;j<7;j++){ const sl=wk.jours[j].collaborateurs[ci]; if(worked(sl)) pts.push([t2h(sl.debut)+j*24, t2h(sl.fin)+j*24]); }
+    for(let j=0;j<3;j++){ const sl=slotOf(nw,j,ci); if(worked(sl)) pts.push([t2h(sl.debut)+(j+7)*24, t2h(sl.fin)+(j+7)*24]); }
+    pts.sort((a,b)=>a[0]-b[0]);
+    if(pts.length){
+      const seq=[[-1e3,-1e3],...pts,[1e3,1e3]];   // avant/après : pas de travail connu = repos
+      let maxGap=0;
+      for(let i=1;i<seq.length;i++){ const a=seq[i-1][1], b=seq[i][0]; if(b>0 && a<168) maxGap=Math.max(maxGap, b-a); }
+      if(maxGap<35) issues.push({ji:-1,code:'REPOS35',msg:`Repos hebdomadaire le plus long : ${maxGap.toFixed(1)}h (35h consécutives minimum)`});
+    }
+  }
+  // temps partiel : heures complémentaires (option)
+  const base=+(getCollsForWeek(sem)[ci]?.base)||0;
+  if(C.pt && base>0 && base<35){
+    const cmax=base*(1+C.ptPct/100);
+    if(weekH>=35) issues.push({ji:-1,code:'PARTIEL',msg:`Temps partiel : ${weekH.toFixed(1)}h atteint la durée légale (35h)`});
+    else if(weekH>cmax+1e-6) issues.push({ji:-1,code:'PARTIEL',msg:`Temps partiel : ${(weekH-base).toFixed(1)}h complémentaires > ${C.ptPct} % du contrat (${(cmax-base).toFixed(1)}h)`});
+  }
   return issues;
 }
 
@@ -3198,6 +3311,16 @@ function switchTab(m){
   renderNav();
 }
 
+function fitCmdBar(){
+  const bar=document.querySelector('.cmd-bar'); if(!bar) return;
+  if(window.innerWidth<=768){ bar.classList.remove('two-rows'); return; }
+  bar.classList.remove('two-rows');
+  const bot=bar.querySelector('.cmd-bar-bottom'), top=bar.querySelector('.cmd-bar-top');
+  const over = (bot && bot.getBoundingClientRect().right > window.innerWidth+1) || (top && top.scrollWidth > top.clientWidth+2);
+  if(over) bar.classList.add('two-rows');
+}
+window.addEventListener('resize',()=>{ clearTimeout(window._fitT); window._fitT=setTimeout(fitCmdBar,80); });
+setInterval(fitCmdBar, 3000); setTimeout(fitCmdBar, 600);
 function toggleNav(){
   const app=document.querySelector('.app');
   const collapsed=app.classList.toggle('nav-collapsed');
@@ -3286,7 +3409,10 @@ function renderCumul(){
     <div style="font-size:10px;font-weight:700;color:var(--pa-blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
       <span id='recapLblTxt'>📊 Récap</span>
       <span id='recapRangeTxt' style="color:var(--pa-muted);font-weight:400;font-size:9px">S1 → S53</span>
-    </div>`;
+    </div>
+    <button type="button" onclick="openCumul()" style="width:100%;margin:0 0 10px;padding:8px;border-radius:9px;border:1px solid var(--ac);background:var(--ac-lt);color:var(--ac-dk);font-family:inherit;font-size:12px;font-weight:700;cursor:pointer">📈 Cumul exercice &amp; base annuelle</button>
+    <div style="font-size:10px;color:var(--pa-muted);margin:-4px 0 8px">Réalisé à date · écart vs base annuelle au prorata</div>`;
+  const _P=periodInfo();
 
   COLLS.forEach((c,ci)=>{
     // Heures par mois + cumul annuel
@@ -3301,12 +3427,11 @@ function renderCumul(){
     }
     // Pour l'affichage, utiliser le nom/couleur de la semaine courante
     const displayC = getCollsForWeek(cW)[ci] || c;
-    // Écart calculé uniquement sur les semaines réellement planifiées
-    const annBase=c.base*weeksWorked;
-    const diff=annH-annBase;
-    const diffCol=Math.abs(diff)<0.5?'var(--pa-green)':diff>0?'var(--pa-orange)':'var(--pa-red)';
+    // Écart à date : réalisé depuis le début de l'exercice vs base annuelle au prorata
+    const _s=cumulStats(ci,_P), annBase=Math.round(_s.baseAn);
+    const diff=_s.ecartDate;
+    const diffCol=Math.abs(diff)<Math.max(4,_s.theoDate*.02)?'var(--pa-green)':diff>0?'var(--pa-orange)':'var(--pa-red)';
     const diffStr=(diff>=0?'+':'')+diff.toFixed(0);
-    const pct=annBase>0?Math.min(annH/annBase*100,120):0;
 
     // Détail mensuel : mini-barres normalisées sur la base mensuelle théorique
     let monthBars='';
@@ -3324,8 +3449,8 @@ function renderCumul(){
       <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
         <div style="width:20px;height:20px;border-radius:50%;background:${displayC.color};display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff;flex-shrink:0">${ini(displayC.nom)}</div>
         <div style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px;font-weight:600">${displayC.nom}</div>
-        <div style="font-size:11px;font-weight:700;font-family:monospace;color:var(--pa-text)" title="${weeksWorked} sem. travaillées · base ${annBase}h">${annH.toFixed(0)}h</div>
-        <div style="font-size:10px;font-weight:700;color:${diffCol};min-width:34px;text-align:right" title="Écart vs base sur ${weeksWorked} sem. planifiées">${diffStr}h</div>
+        <div style="font-size:11px;font-weight:700;font-family:monospace;color:var(--pa-text)" title="Réalisé à date ${_s.hDate.toFixed(0)} h · planifié sur l'exercice ${_s.hTot.toFixed(0)} h · base annuelle ${annBase} h${_s.auto?' (auto)':''}">${_s.hDate.toFixed(0)}h</div>
+        <div style="font-size:10px;font-weight:700;color:${diffCol};min-width:34px;text-align:right" title="Écart à date vs base annuelle au prorata (${_s.theoDate.toFixed(0)} h attendues)">${diffStr}h</div>
       </div>
       <div style="display:flex;gap:1px;align-items:flex-end">${monthBars}</div>
       <div style="display:flex;justify-content:space-between;font-size:8px;color:var(--pa-muted2);margin-top:1px">
@@ -3338,6 +3463,224 @@ function renderCumul(){
   return html;
 }
 
+
+
+
+// ══ APPLICATION INSTALLABLE ══
+let _installEvt=null;
+window.addEventListener('beforeinstallprompt', e=>{ e.preventDefault(); _installEvt=e; });
+window.addEventListener('appinstalled', ()=>{ _installEvt=null; toast('📲 Application installée'); });
+function isStandalone(){ return window.matchMedia?.('(display-mode: standalone)').matches || navigator.standalone===true; }
+async function installApp(){
+  if(isStandalone()){ toast('✓ Vous utilisez déjà l’application installée'); return; }
+  if(_installEvt){ _installEvt.prompt(); try{ await _installEvt.userChoice; }catch(e){} _installEvt=null; return; }
+  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+  const steps = ios
+    ? '<ol class="inst-ol"><li>Ouvrez le planning dans <b>Safari</b>.</li><li>Touchez <b>Partager</b> (carré avec une flèche ↑).</li><li>Choisissez <b>« Sur l’écran d’accueil »</b> puis <b>Ajouter</b>.</li></ol>'
+    : '<ol class="inst-ol"><li>Ouvrez le menu du navigateur <b>⋮</b> (Chrome, Edge).</li><li>Choisissez <b>« Installer l’application »</b> ou <b>« Ajouter à l’écran d’accueil »</b>.</li><li>Confirmez : l’icône Planning apparaît sur l’écran d’accueil / le bureau.</li></ol>';
+  openModal('dlgInst','📲 Installer l’application', `<div style="display:flex;gap:14px;align-items:center;margin-bottom:10px"><img src="icon-192.png" alt="" width="56" height="56" style="border-radius:13px" onerror="this.style.display='none'"><div style="font-size:13px;color:var(--pa-muted)">Le planning s’ouvre comme une application, en plein écran, et reste consultable sans réseau.</div></div>${steps}
+    <div class="cs-fixed" style="margin-top:10px">Sans réseau, on peut consulter et préparer le planning ; l’enregistrement sur GitHub se fait dès que la connexion revient (bouton 💾).</div>`, 460);
+}
+function updateOnlineBadge(){
+  const off=!navigator.onLine; document.body.classList.toggle('is-offline', off);
+  let b=document.getElementById('offBadge');
+  if(off && !b){ b=document.createElement('div'); b.id='offBadge'; b.className='off-badge'; b.textContent='📴 Hors connexion — consultation, enregistrement GitHub au retour du réseau'; document.body.appendChild(b); }
+  if(!off && b) b.remove();
+}
+window.addEventListener('offline', ()=>{ updateOnlineBadge(); toast('📴 Hors connexion','var(--pa-orange)'); });
+window.addEventListener('online', ()=>{ updateOnlineBadge(); toast('✓ Connexion rétablie — pensez à 💾 si vous avez modifié le planning'); });
+setTimeout(updateOnlineBadge, 800);
+// ══ CONTRAINTES : RÈGLES LÉGALES & DISPONIBILITÉS ══
+function saveStoreField(k,v){
+  const i=STORES.findIndex(s=>s.id===CURRENT_STORE_ID); if(i<0) return;
+  STORES[i]={...STORES[i],[k]:v}; LS.setItem('atoll_stores',JSON.stringify(STORES)); STORE=getCurrentStore();
+  try{ saveLocal(); }catch(e){}
+}
+function setLaborCfg(k,v){ const L={...((getCurrentStore()||{}).labor||{})}; L[k]=v; saveStoreField('labor',L); openConstraints(); try{ renderContent(); }catch(e){} }
+function setDispo(ci,j,field,v){
+  const c=COLLS[ci]; if(!c) return;
+  const d=Array.isArray(c.dispo)?c.dispo.map(x=>({...x})):[...Array(7)].map(()=>({t:'all'}));
+  if(field==='t'){ d[j]={t:v}; if(v==='range'){ const H=storeHours()[j]; d[j].d=H.closed?'10:00':H.o; d[j].f=H.closed?'19:00':H.c; } }
+  else { const inp={value:v,dataset:{},defaultValue:d[j][field]||'10:00'}; normTime(inp); d[j][field]=inp.value||d[j][field]; }
+  c.dispo=d.every(x=>x.t==='all')?undefined:d; if(!c.dispo) delete c.dispo;
+  persistColls(); try{ saveLocal(); }catch(e){}
+  openConstraints(); try{ renderContent(); }catch(e){}
+}
+function openConstraints(){
+  const C=laborCfg(), keep=document.getElementById('dlgConsBody')?.scrollTop||0;
+  const chk=(k,on,txt,sub)=>`<label class="cs-rule"><input type="checkbox" ${on?'checked':''} onchange="setLaborCfg('${k}',this.checked)"><span><b>${txt}</b>${sub?`<small>${sub}</small>`:''}</span></label>`;
+  const rules=`<div class="cs-sec">⚖️ Règles contrôlées</div>
+    <div class="cs-fixed">Toujours contrôlé : 10 h de travail max par jour · pause d'au moins 20 min au-delà de 6 h · 11 h de repos entre deux journées (y compris d'une semaine à l'autre) · 48 h max par semaine · au moins un jour de repos.</div>
+    ${chk('cons',C.cons,'6 jours travaillés d’affilée maximum','Compte aussi la fin de la semaine précédente')}
+    ${chk('rest35',C.rest35,'Repos hebdomadaire de 35 h consécutives','24 h + 11 h de repos quotidien')}
+    ${chk('pt',C.pt,'Temps partiel : plafond d’heures complémentaires','Alerte au-delà du plafond, ou si la semaine atteint 35 h')}
+    ${C.pt?`<div class="cs-pt">Plafond : <select class="fl-inp" style="width:auto;padding:4px 8px" onchange="setLaborCfg('ptPct',+this.value)">${[10,20,33].map(v=>`<option value="${v}"${C.ptPct===v?' selected':''}>${v===33?'1/3':v+' %'} du contrat</option>`).join('')}</select> <small>selon votre convention collective</small></div>`:''}`;
+  const opt=(v,cur,l)=>`<option value="${v}"${v===cur?' selected':''}>${l}</option>`;
+  const rows=COLLS.map((c,ci)=>{
+    const cells=[0,1,2,3,4,5,6].map(j=>{
+      const d=dispoOf(ci,j), closed=storeHours()[j].closed;
+      return `<td class="cs-d ${d.t}${closed?' cl':''}" data-l="${JCOURT[j]}"><select class="cs-sel" onchange="setDispo(${ci},${j},'t',this.value)">${opt('all',d.t,'✓ Libre')}${opt('off',d.t,'✕ Indispo')}${opt('range',d.t,'⏱ Plage')}</select>
+        ${d.t==='range'?`<div class="cs-rg"><input class="cs-tm" type="text" inputmode="numeric" maxlength="5" value="${d.d}" onchange="setDispo(${ci},${j},'d',this.value)"><span>→</span><input class="cs-tm" type="text" inputmode="numeric" maxlength="5" value="${d.f}" onchange="setDispo(${ci},${j},'f',this.value)"></div>`:''}</td>`;
+    }).join('');
+    return `<tr><td class="cs-nm"><div><span class="cu-av" style="background:${c.color}">${ini(c.nom)}</span><b>${esc(c.nom)}</b></div></td>${cells}</tr>`;
+  }).join('');
+  const body=`${rules}
+    <div class="cs-sec" style="margin-top:16px">📌 Disponibilités habituelles</div>
+    <div class="cs-fixed">Ex. étudiant disponible seulement le mercredi et le samedi, jour de repos fixe, départ avant 18 h… Le planning signale tout créneau hors disponibilité et l'optimiseur IA les respecte.</div>
+    <div style="overflow-x:auto"><table class="cs-tbl rt"><thead><tr><th>Collaborateur</th>${JCOURT.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div>`;
+  openModal('dlgCons','📌 Contraintes & règles',body,1000);
+  const sc=document.getElementById('dlgConsBody'); if(sc) sc.scrollTop=keep; try{ rtLabel(document.getElementById('dlgCons')); }catch(e){}
+}
+
+// ══ ENVELOPPE D'HEURES MENSUELLE ══
+const MOIS_LONG=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+function monthKey(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); }
+function monthLabel(k){ const [y,m]=k.split('-').map(Number); return MOIS_LONG[m-1]+' '+y; }
+function weekMonthKey(sem){ return monthKey(dateOfDay(PLANNING_YEAR,sem,3)); }   // mois du jeudi
+// Heures planifiées (et réalisées à date) par mois pour un magasin
+function monthHoursMap(st){
+  const isCur=!st||st.id===CURRENT_STORE_ID, today=new Date(); today.setHours(0,0,0,0);
+  const M={}, seen=new Set();
+  const add=(y,w,wk)=>{ if(!wk?.jours) return; const mon=isoWeekMonday(y,w);
+    for(let j=0;j<7;j++){ const d=new Date(mon); d.setDate(mon.getDate()+j); const k=monthKey(d);
+      let h=0; (wk.jours[j]?.collaborateurs||[]).forEach(s=>{ h+=calcH(s); });
+      const o=M[k]||(M[k]={plan:0,done:0}); o.plan+=h; if(d<=today) o.done+=h; } };
+  if(isCur){ getWeekList().forEach(s=>{ const y=DATA_YEARS[s]||weekYear(s); if(DATA[s]){ add(y,s,DATA[s]); seen.add(`${y}-${s}`); } }); }
+  const arch=isCur?ARCHIVE:readStoreArchive(st);
+  Object.keys(arch||{}).forEach(k=>{ if(seen.has(k)) return; const [y,w]=k.split('-').map(Number); add(y,w,arch[k]); });
+  return M;
+}
+function hBudgetOf(st){ return (st||getCurrentStore()||{}).hBudget||{}; }
+function setHBudget(k,v){
+  const n=Math.max(0,Math.round(+String(v).replace(',','.')||0));
+  const B={...hBudgetOf()}; if(n>0) B[k]=n; else delete B[k];
+  saveStoreField('hBudget',B); openEnvelope(); try{ renderContent(); }catch(e){}
+}
+function fillHBudget(){
+  const v=+document.getElementById('envAll')?.value||0; if(v<=0){ toast('⚠ Saisissez un nombre d’heures','var(--pa-orange)'); return; }
+  const B={...hBudgetOf()}; periodMonths().forEach(k=>{ if(!B[k]) B[k]=v; });
+  saveStoreField('hBudget',B); openEnvelope(); try{ renderContent(); }catch(e){}
+}
+function periodMonths(){ const out=[]; getWeekList().forEach(s=>{ [0,6].forEach(j=>{ const k=monthKey(dateOfDay(PLANNING_YEAR,s,j)); if(!out.includes(k)) out.push(k); }); }); return out.sort(); }
+function envStatus(plan,bud){ if(!bud) return {col:'var(--pa-muted)',txt:'—'}; const r=plan/bud; return r>1.0001?{col:'#c62828',txt:'Dépassé'}:r>0.95?{col:'#b35c00',txt:'Presque plein'}:{col:'#0f7b3a',txt:'OK'}; }
+function openEnvelope(){
+  const M=monthHoursMap(), B=hBudgetOf(), cur=weekMonthKey(cW), f0=v=>Math.round(v).toLocaleString('fr-FR');
+  let T={b:0,p:0,d:0}, rows='';
+  periodMonths().forEach(k=>{
+    const m=M[k]||{plan:0,done:0}, b=+B[k]||0; T.b+=b; T.p+=m.plan; T.d+=m.done;
+    const st=envStatus(m.plan,b), pct=b>0?Math.min(100,m.plan/b*100):0, pd=b>0?Math.min(100,m.done/b*100):0;
+    rows+=`<tr${k===cur?' class="env-cur"':''}>
+      <td><b style="text-transform:capitalize">${monthLabel(k)}</b></td>
+      <td><input class="fl-inp cu-in" type="text" inputmode="numeric" value="${b||''}" placeholder="—" onchange="setHBudget('${k}',this.value)"></td>
+      <td><b>${f0(m.plan)} h</b><div class="cu-bar"><span style="width:${pct}%;background:rgba(var(--ac-rgb),.3)"></span><span style="width:${pd}%;background:var(--ac)"></span></div></td>
+      <td>${f0(m.done)} h</td>
+      <td><b style="color:${st.col}">${b?(b-m.plan>=0?f0(b-m.plan)+' h':'−'+f0(m.plan-b)+' h'):'—'}</b></td>
+      <td><span class="env-st" style="--sc:${st.col}">${b?Math.round(m.plan/b*100)+' % · '+st.txt:'—'}</span></td></tr>`;
+  });
+  const body=`<div class="cs-fixed">Budget d'heures payées du magasin, mois par mois. « Planifié » = toutes les heures au planning du mois (réunions et merch compris) ; « Réalisé à date » = jours déjà passés.</div>
+    <div class="env-fill">Même budget pour les mois vides : <input id="envAll" class="fl-inp cu-in" type="text" inputmode="numeric" placeholder="ex. 820"> h <button class="fl-btn ghost" style="height:32px;padding:0 12px" onclick="fillHBudget()">Appliquer</button></div>
+    <div style="overflow-x:auto"><table class="cu-tbl rt">
+      <thead><tr><th>Mois</th><th>Budget heures</th><th>Planifié</th><th>Réalisé à date</th><th>Reste</th><th>Consommation</th></tr></thead>
+      <tbody>${rows}</tbody>
+      <tfoot><tr><td><b>Total</b></td><td><b>${f0(T.b)} h</b></td><td><b>${f0(T.p)} h</b></td><td>${f0(T.d)} h</td><td><b>${T.b?(T.b-T.p>=0?f0(T.b-T.p):'−'+f0(T.p-T.b))+' h':'—'}</b></td><td></td></tr></tfoot>
+    </table></div>`;
+  openModal('dlgEnv','💶 Enveloppe d’heures mensuelle',body,860);
+  try{ rtLabel(document.getElementById('dlgEnv')); }catch(e){}
+}
+// ══ CUMUL EXERCICE & BASE ANNUELLE ══
+// Début automatique du suivi : première semaine du bloc planifié en continu (on ignore les semaines isolées
+// séparées par 4 semaines vides ou plus, ex. un essai en janvier puis un vrai démarrage à la rentrée)
+function cumulAutoStart(wl){
+  const today=new Date(); today.setHours(0,0,0,0);
+  const has=s=>{ const d=DATA[s]; if(!d) return false;
+    for(let j=0;j<7;j++) if((d.jours[j]?.collaborateurs||[]).some(sl=>calcH(sl)>0||sl.statut==='CP'||sl.statut==='MAL')) return true; return false; };
+  let start=null, empty=0, first=null;
+  for(const s of wl){
+    if(dateOfDay(PLANNING_YEAR,s,0)>today && start!=null) break;
+    if(has(s)){ if(first==null) first=s; if(start==null||empty>=4) start=s; empty=0; } else empty++;
+  }
+  return start ?? first ?? wl[0];
+}
+function periodInfo(){
+  const today=new Date(); today.setHours(0,0,0,0);
+  const wl=getWeekList(), total=wl.length||1;
+  const saved=+LS.getItem(`atoll_cumul_start_${CURRENT_STORE_ID}`)||0;
+  const start = wl.includes(saved) ? saved : cumulAutoStart(wl);
+  const weeks=wl.slice(Math.max(0,wl.indexOf(start))).map(s=>({s, mon:dateOfDay(PLANNING_YEAR,s,0)}));
+  const done=weeks.filter(w=>w.mon<=today).length;         // semaines commencées depuis le début du suivi
+  return {weeks, done, total, tracked:weeks.length||1, start, auto:!wl.includes(saved), wl};
+}
+function setCumulStart(v){ LS.setItem(`atoll_cumul_start_${CURRENT_STORE_ID}`, String(+v||0)); openCumul(); try{ renderNav(); }catch(e){} }
+function cumulCP(){ return LS.getItem(`atoll_cumul_cp_${CURRENT_STORE_ID}`)==='1'; }
+function cumulStats(ci, P){
+  P=P||periodInfo(); const c=COLLS[ci]||{base:0};
+  const cpVal=cumulCP() ? (+c.base||0)/5 : 0;
+  let hDate=0,hTot=0,cp=0,mal=0;
+  P.weeks.forEach((w,i)=>{
+    const d=DATA[w.s]; if(!d) return; let wH=0;
+    for(let j=0;j<7;j++){ const sl=d.jours[j]?.collaborateurs?.[ci]; if(!sl) continue;
+      wH+=calcH(sl); if(sl.statut==='CP'){ cp++; wH+=cpVal; } else if(sl.statut==='MAL') mal++; }
+    hTot+=wH; if(i<P.done) hDate+=wH;
+  });
+  const auto=!(+c.baseAn>0), baseAn=auto ? Math.round((+c.base||0)*P.total) : +c.baseAn;
+  const basePer=baseAn*P.tracked/P.total;                   // base annuelle ramenée à la période suivie
+  const theoDate=baseAn*P.done/P.total, ecartDate=hDate-theoDate;
+  const restW=P.tracked-P.done, reste=basePer-hTot;
+  const rythme=restW>0 ? Math.max(0,(basePer-hDate)/restW) : 0;
+  return {c,baseAn,basePer,auto,hDate,hTot,theoDate,ecartDate,reste,restW,rythme,cp,mal,done:P.done,total:P.total};
+}
+function setBaseAn(ci,v){
+  v=Math.max(0,Math.round(+String(v).replace(',','.')||0));
+  if(!COLLS[ci]) return;
+  if(v>0) COLLS[ci].baseAn=v; else delete COLLS[ci].baseAn;
+  LS.setItem(`atoll_colls_${CURRENT_STORE_ID}`,JSON.stringify(COLLS));
+  try{ saveLocal(); }catch(e){}
+  openCumul(); try{ renderNav(); }catch(e){}
+}
+function toggleCumulCP(on){ LS.setItem(`atoll_cumul_cp_${CURRENT_STORE_ID}`,on?'1':'0'); openCumul(); try{ renderNav(); }catch(e){} }
+function openCumul(){
+  const P=periodInfo(), f0=v=>Math.round(v).toLocaleString('fr-FR'), sg=v=>(v>=0?'+':'−')+f0(Math.abs(v));
+  const pctP=Math.round(P.done/P.tracked*100);
+  const opts=P.wl.map(s=>`<option value="${s}"${s===P.start?' selected':''}>S${s} · ${weekRangeLabel(PLANNING_YEAR,s)}</option>`).join('');
+  const lbl=FISCAL_MODE==='fiscal'?exerciceLabel(PLANNING_YEAR,'fiscal'):'Année '+PLANNING_YEAR;
+  let rows='', T={b:0,p:0,d:0,t:0,e:0,tot:0,r:0};
+  COLLS.forEach((c,ci)=>{
+    const s=cumulStats(ci,P); T.b+=s.baseAn; T.p+=s.basePer; T.d+=s.hDate; T.t+=s.theoDate; T.e+=s.ecartDate; T.tot+=s.hTot; T.r+=s.reste;
+    const ec=Math.abs(s.ecartDate)<Math.max(4,s.theoDate*.02)?'#0f7b3a':s.ecartDate>0?'#b35c00':'#c62828';
+    const pDone=s.basePer>0?Math.min(100,s.hDate/s.basePer*100):0, pPlan=s.basePer>0?Math.min(100,s.hTot/s.basePer*100):0;
+    const ry=s.restW>0?`${s.rythme.toFixed(1).replace('.',',')} h/sem <span class="cu-sub">(base ${c.base} h)</span>`:'—';
+    const ryc=s.restW>0 && s.rythme>c.base*1.1?'#c62828':s.restW>0 && s.rythme<c.base*.9?'#5b3fb0':'inherit';
+    rows+=`<tr>
+      <td><div><span class="cu-av" style="background:${c.color}">${ini(c.nom)}</span><b>${esc(c.nom)}</b><div class="cu-sub">${c.base} h/sem</div></div></td>
+      <td><div><input class="fl-inp cu-in" type="text" inputmode="numeric" value="${s.auto?'':s.baseAn}" placeholder="${s.baseAn} (auto)" onchange="setBaseAn(${ci},this.value)" title="Base d'heures annuelle du contrat. Vide = base hebdo × ${P.total} semaines">${P.tracked<P.total?`<div class="cu-sub">soit ${f0(s.basePer)} h sur la période</div>`:''}</div></td>
+      <td><div><b>${f0(s.hDate)} h</b><div class="cu-bar"><span style="width:${pPlan}%;background:rgba(var(--ac-rgb),.25)"></span><span style="width:${pDone}%;background:var(--ac)"></span></div></div></td>
+      <td>${f0(s.theoDate)} h</td>
+      <td><b style="color:${ec}">${sg(s.ecartDate)} h</b></td>
+      <td>${f0(s.hTot)} h</td>
+      <td><b style="color:${s.reste<0?'#b35c00':'inherit'}">${s.reste<0?'dépassé de '+f0(-s.reste):f0(s.reste)} h</b></td>
+      <td style="color:${ryc}"><span>${ry}</span></td>
+      <td>${s.cp?s.cp+' j CP':''}${s.cp&&s.mal?' · ':''}${s.mal?s.mal+' j MAL':''}${!s.cp&&!s.mal?'—':''}</td>
+    </tr>`;
+  });
+  const ecT=T.e>=0?'#b35c00':'#c62828';
+  const body=`<div class="cu-head">
+      <div class="cu-row1"><b>${lbl}</b>
+        <label class="cu-opt">Suivi depuis <select class="fl-inp" style="padding:4px 6px;font-size:12.5px;width:auto" onchange="setCumulStart(this.value)"><option value="0">Automatique (S${cumulAutoStart(P.wl)})</option>${opts}</select></label>
+        <span>${P.done} semaine${P.done>1?'s':''} écoulée${P.done>1?'s':''} sur ${P.tracked} suivie${P.tracked>1?'s':''} (${pctP} %)</span></div>
+      <div class="cu-track"><span style="width:${pctP}%"></span></div>
+      <label class="cu-opt"><input type="checkbox" ${cumulCP()?'checked':''} onchange="toggleCumulCP(this.checked)"> Compter les jours de CP (base hebdo ÷ 5 par jour)</label>
+    </div>
+    <div style="overflow-x:auto"><table class="cu-tbl rt">
+      <thead><tr><th>Collaborateur</th><th>Base annuelle</th><th>Réalisé à date</th><th>Attendu à date</th><th>Écart à date</th><th>Planifié exercice</th><th>Reste à planifier</th><th>Rythme nécessaire</th><th>Absences</th></tr></thead>
+      <tbody>${rows}</tbody>
+      <tfoot><tr><td><b>Équipe</b></td><td><b>${f0(T.b)} h</b>${P.tracked<P.total?`<div class="cu-sub">${f0(T.p)} h sur la période</div>`:''}</td><td><b>${f0(T.d)} h</b></td><td>${f0(T.t)} h</td><td><b style="color:${ecT}">${sg(T.e)} h</b></td><td>${f0(T.tot)} h</td><td><b>${f0(T.r)} h</b></td><td></td><td></td></tr></tfoot>
+    </table></div>
+    <div class="cu-note"><b>Comment lire :</b> la base annuelle est ramenée à la période suivie dans l'appli (depuis S${P.start}). « Attendu à date » = base annuelle × semaines écoulées ÷ ${P.total}. « Écart à date » positif = heures d'avance sur le contrat, négatif = retard.
+    « Rythme nécessaire » = heures par semaine à planifier d'ici la fin de l'exercice pour tomber pile sur la base (rouge : plus que la base hebdo, violet : moins).
+    La base annuelle vide est calculée automatiquement (base hebdo × ${P.total} semaines) ; saisissez la base du contrat pour l'affiner.</div>`;
+  openModal('dlgCumul','📈 Cumul exercice & base annuelle',body,1200);
+  try{ rtLabel(document.getElementById('dlgCumul')); }catch(e){}
+}
 function renderKPI(){
   const s=DATA[cW],w=calcS(cW);
   const objTot=objSem(cW), histoTot=histoSem(cW);
@@ -3544,17 +3887,18 @@ function renderWeekContext(sem, dayIdx){
   let laborBanner='';
   if(laborAll.length){
     const nIssues=laborAll.reduce((a,x)=>a+x.issues.length,0);
+    const nDispo=laborAll.reduce((a,x)=>a+x.issues.filter(i=>i.code==='DISPO').length,0), nLeg=nIssues-nDispo;
     laborBanner=`<div class="labor-banner" onclick="this.classList.toggle('expanded')">
       <div style="display:flex;align-items:center;gap:8px">
         <span style="font-size:14px">⚖</span>
-        <strong>${nIssues} alerte${nIssues>1?'s':''} droit du travail</strong>
+        <strong>${nLeg?`${nLeg} alerte${nLeg>1?'s':''} droit du travail`:''}${nLeg&&nDispo?' · ':''}${nDispo?`📌 ${nDispo} hors disponibilité`:''}</strong>
         <span style="font-size:10px;color:var(--pa-muted);font-weight:500">— cliquez pour le détail</span>
       </div>
       <div class="labor-detail">${laborAll.map(x=>`
         <div style="display:flex;gap:7px;align-items:flex-start;padding:4px 0">
           <span style="width:9px;height:9px;border-radius:50%;background:${x.color};flex-shrink:0;margin-top:3px"></span>
           <div><strong style="font-size:11px">${x.nom}</strong>
-          ${x.issues.map(i=>`<div style="font-size:11px;color:var(--pa-text2)">· ${i.msg}</div>`).join('')}</div>
+          ${x.issues.map(i=>`<div style="font-size:11px;color:var(--pa-text2)">${i.code==='DISPO'?'📌':'·'} ${i.msg}</div>`).join('')}</div>
         </div>`).join('')}
       </div>
     </div>`;
@@ -3619,6 +3963,8 @@ function renderWeekBand(sem, dayIdx, laborBanner){
         <span class="wb-it"><span class="wb-kl">CA</span> <b>${objTot>0?eur(objTot):'—'}</b></span>
         <span class="wb-it"><span class="wb-kl">Heures</span> <b>${f1(ws.tH)} h</b></span>
         <span class="wb-it" title="Productivité ${wr!=null?Math.round(ws.prodMoy):'—'} €/h ÷ objectif ${pb||'—'} €/h"><span class="wb-kl">Prod.</span> <b style="color:${wcol}">${wr!=null?Math.round(ws.prodMoy)+' €/h':'—'}</b> <span class="wb-kl">obj. ${pb||'—'}</span>${wr!=null?` <span class="wb-pct" style="--wc:${wcol}">${pctTxt}</span>`:''}</span>
+        ${(()=>{ const k=weekMonthKey(sem), b=+hBudgetOf()[k]||0; if(!b) return ''; const m=(monthHoursMap()[k]||{plan:0}); const s=envStatus(m.plan,b);
+          return `<button type="button" class="wb-it wb-env" onclick="openEnvelope()" title="Enveloppe d'heures de ${monthLabel(k)} : ${Math.round(m.plan)} h planifiées pour ${b} h"><span class="wb-kl">Enveloppe ${MOIS_LONG[+k.split('-')[1]-1].slice(0,4)}.</span> <b style="color:${s.col}">${Math.round(m.plan)} / ${b} h</b></button>`; })()}
         ${rebal}
         ${optBtn}
       </div>`;
@@ -3680,7 +4026,7 @@ function renderContent(){
         <button class="tool-btn ai" onclick="openAIAnalysis()" title="Analyse et optimisation de la semaine">🤖 Analyse IA</button>
         <button class="tool-btn" id="undoBtn" onclick="undo()">↶ Annuler</button>
         <button class="tool-btn" onclick="openDuplicate()" title="Copier cette semaine sur les semaines suivantes">⧉ Dupliquer</button>
-        <button class="tool-btn" onclick="openTypeWeeks()" title="Horaires habituels par collaborateur">★ Semaines types</button>
+        <button class="tool-btn" onclick="openTypeWeeks()" title="Horaires habituels et cycles de travail par collaborateur">★ Semaines types &amp; cycles</button>
       </div></div>
     <table class="fl-table fused-table">
       <thead><tr>
@@ -5450,43 +5796,12 @@ try {
   // ── Appliquer config GitHub depuis URL si présente ──
   applyGHFromURL();
 
-  // ── Préparation PWA : manifest dynamique ──
-  try {
-    const svgIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#1a1a1a"/><text x="50" y="64" font-size="44" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="bold">P</text></svg>`;
-    const iconUrl = 'data:image/svg+xml;base64,'+btoa(svgIcon);
-    const manifest = {
-      name: (STORE.name||'Planning Commercial')+' — '+(STORE.location||''),
-      short_name: 'Planning',
-      start_url: location.href.split('#')[0],
-      display: 'standalone',
-      background_color: '#f5f5f5',
-      theme_color: '#1a1a1a',
-      icons: [{src: iconUrl, sizes: 'any', type: 'image/svg+xml', purpose: 'any'}]
-    };
-    const mBlob = new Blob([JSON.stringify(manifest)], {type:'application/json'});
-    const link = document.createElement('link');
-    link.rel = 'manifest';
-    link.href = URL.createObjectURL(mBlob);
-    document.head.appendChild(link);
-  } catch(e){ /* manifest non critique */ }
-
-  // ── Service worker (uniquement si servi en https, jamais en file:// ou iframe restrictive) ──
+  // ── Application installable : service worker (fichier sw.js à côté d'index.html) ──
   try {
     if('serviceWorker' in navigator && location.protocol==='https:'){
-      // SW minimal inline via blob : cache-first pour le document
-      const swCode = `
-        self.addEventListener('install', e=>self.skipWaiting());
-        self.addEventListener('activate', e=>self.clients.claim());
-        self.addEventListener('fetch', e=>{
-          if(e.request.mode==='navigate'){
-            e.respondWith(fetch(e.request).catch(()=>caches.match('planning-doc')));
-            e.waitUntil(caches.open('planning-v1').then(c=>fetch(e.request).then(r=>c.put('planning-doc', r)).catch(()=>{})));
-          }
-        });`;
-      const swBlob = new Blob([swCode], {type:'application/javascript'});
-      navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(()=>{});
+      navigator.serviceWorker.register('sw.js').catch(()=>{});
     }
-  } catch(e){ /* SW non critique */ }
+  } catch(e){ /* non critique */ }
 
   // Restaurer l'état du panneau latéral
   if(LS.getItem('atoll_nav_collapsed')==='1'){
@@ -5676,45 +5991,74 @@ function applyDuplicate(){
   toast(`⧉ ${fullWeekLabel(cW)} copiée sur ${t.length} semaine${t.length>1?'s':''}`);
 }
 
-// ══ 3. SEMAINES TYPES PAR COLLABORATEUR ══
+// ══ 3. SEMAINES TYPES & CYCLES DE TRAVAIL PAR COLLABORATEUR ══
+// c.typeWeek = semaine habituelle (cycle d'1 semaine) ; c.cycle = {n, anchor:'AAAA-MM-JJ' (lundi de la 1re semaine), weeks:[[7 créneaux]…]}
+function isoDay(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function cycleOf(c){ if(c?.cycle?.weeks?.length) return c.cycle; if(c?.typeWeek) return {n:1,anchor:null,weeks:[c.typeWeek]}; return null; }
+function cycleWeekFor(c, w){
+  const cy=cycleOf(c); if(!cy) return null; if(cy.n<=1||!cy.anchor) return {slots:cy.weeks[0],idx:0,n:1};
+  const a=new Date(cy.anchor+'T00:00:00'), m=dateOfDay(PLANNING_YEAR,w,0);
+  const k=Math.round((m-a)/(7*864e5)), idx=((k%cy.n)+cy.n)%cy.n;
+  return {slots:cy.weeks[idx], idx, n:cy.n};
+}
+function cleanSlotForTpl(s,ji){ s={...s}; delete s.ext; return (s.statut==='CP'||s.statut==='MAL')?{...mkSlot(ji),statut:'R'}:s; }
+function twLen(){ return Math.min(4,Math.max(1,+LS.getItem('atoll_twlen')||1)); }
 function openTypeWeeks(){
-  const WC=getCollsForWeek(cW);
-  const wl=getWeekList(); const rest=wl.length-wl.indexOf(cW)-1;
+  const WC=getCollsForWeek(cW), N=twLen();
+  const wl=getWeekList(); const i0=wl.indexOf(cW), rest=wl.length-i0-1;
+  const srcWeeks=wl.slice(i0,i0+N), okLen=srcWeeks.length===N;
   const rows=COLLS.map((c,ci)=>{
-    const tw=c.typeWeek; const th=tw?tw.reduce((a,s)=>a+calcH(s),0):0;
-    const desc=tw?tw.map((s,j)=>`${JCOURT[j]} ${slotText(s)||'—'}`).join(' · '):'';
+    const cy=cycleOf(c);
+    let desc='Pas de semaine type ni de cycle';
+    if(cy){ desc = cy.n>1 ? `<strong style="color:var(--pa-blue)">🔁 Cycle de ${cy.n} semaines</strong> · `+cy.weeks.map((wk,k)=>`${String.fromCharCode(65+k)} ${wk.reduce((a,s)=>a+calcH(s),0).toFixed(1)}h`).join(' · ')
+      : `<strong style="color:var(--pa-blue)">★ ${cy.weeks[0].reduce((a,s)=>a+calcH(s),0).toFixed(1)}h</strong> · `+esc(cy.weeks[0].map((s,j)=>`${JCOURT[j]} ${slotText(s)||'—'}`).join(' · ')); }
+    const now=cy&&cy.n>1?cycleWeekFor(c,cW):null;
     return `<tr style="border-bottom:1px solid var(--pa-border)">
-      <td style="padding:8px 4px"><input type="checkbox" class="twSel" value="${ci}" ${tw?'checked':'disabled'}></td>
-      <td style="padding:8px 4px"><div style="font-weight:700;font-size:13px">${esc((WC[ci]||c).nom)}</div>
-        <div style="font-size:10px;color:var(--pa-muted);max-width:300px">${tw?`<strong style="color:var(--pa-blue)">${th.toFixed(1)}h</strong> · ${esc(desc)}`:'Pas de semaine type'}</div></td>
+      <td style="padding:8px 4px"><input type="checkbox" class="twSel" value="${ci}" ${cy?'checked':'disabled'}></td>
+      <td style="padding:8px 4px"><div style="font-weight:700;font-size:13px">${esc((WC[ci]||c).nom)}${now?` <span class="tw-cur">S${cW} = semaine ${String.fromCharCode(65+now.idx)}</span>`:''}</div>
+        <div style="font-size:10.5px;color:var(--pa-muted);max-width:360px">${desc}</div></td>
       <td style="padding:8px 4px;text-align:right;white-space:nowrap">
-        <button class="fl-btn ghost" style="height:30px;padding:0 10px;font-size:12px;display:inline-flex" onclick="saveTypeWeek(${ci})">★ Mémoriser S${cW}</button>
-        ${tw?`<button class="fl-btn danger" style="height:30px;padding:0 8px;font-size:12px;display:inline-flex" onclick="clearTypeWeek(${ci})" title="Supprimer">✕</button>`:''}
+        <button class="fl-btn ghost" style="height:30px;padding:0 10px;font-size:12px;display:inline-flex" ${okLen?'':'disabled'} onclick="saveTypeWeek(${ci})">${N>1?'🔁':'★'} Mémoriser ${N>1?`S${srcWeeks[0]}→S${srcWeeks[N-1]}`:'S'+cW}</button>
+        ${cy?`<button class="fl-btn danger" style="height:30px;padding:0 8px;font-size:12px;display:inline-flex" onclick="clearTypeWeek(${ci})" title="Supprimer">✕</button>`:''}
       </td></tr>`;
   }).join('');
   const body=`
-    <div style="font-size:12px;color:var(--pa-muted);margin-bottom:10px">« Mémoriser » enregistre les horaires de <strong>${fullWeekLabel(cW)}</strong> comme semaine habituelle du collaborateur. Vous pouvez ensuite les appliquer sur n'importe quelle semaine.</div>
+    <div class="tw-len"><span>Longueur du cycle :</span>${[1,2,3,4].map(n=>`<button type="button" class="tw-lb${n===N?' on':''}" onclick="LS.setItem('atoll_twlen','${n}');openTypeWeeks()">${n===1?'1 semaine (type)':n+' semaines'}</button>`).join('')}</div>
+    <div style="font-size:12px;color:var(--pa-muted);margin:8px 0 10px">${N===1?`« Mémoriser » enregistre les horaires de <strong>${fullWeekLabel(cW)}</strong> comme semaine habituelle.`
+      :`« Mémoriser » enregistre <strong>S${srcWeeks[0]} à S${srcWeeks[N-1]||'?'}</strong> comme cycle de ${N} semaines (A, B${N>2?', C':''}${N>3?', D':''}) : fermetures en alternance, samedis un sur deux… Le cycle se répète ensuite automatiquement.`}
+      ${okLen?'':'<br><b style="color:#c62828">Pas assez de semaines après celle-ci dans la période.</b>'}</div>
+    <div style="text-align:right;margin-bottom:6px"><button class="fl-btn ghost" style="height:30px;padding:0 12px;font-size:12px;display:inline-flex" ${okLen?'':'disabled'} onclick="saveTypeWeekAll()">Mémoriser pour toute l'équipe</button></div>
     <table style="width:100%;border-collapse:collapse">${rows}</table>
     <div style="margin-top:16px;padding-top:12px;border-top:2px solid var(--pa-border);display:grid;grid-template-columns:1fr 110px;gap:10px;align-items:end">
       <div class="fl-row" style="margin:0"><label class="fl-label">Appliquer aux collaborateurs cochés sur</label>
-        <select class="fl-inp" id="twScope"><option value="0">${fullWeekLabel(cW)} uniquement</option>${rest>0?`<option value="1">${fullWeekLabel(cW)} et les suivantes…</option>`:''}</select></div>
-      <div class="fl-row" style="margin:0"><label class="fl-label">Nb semaines</label><input class="fl-inp" type="number" id="twCount" min="1" max="${rest+1}" value="${Math.min(4,rest+1)}"></div>
+        <select class="fl-inp" id="twScope"><option value="0">${fullWeekLabel(cW)} uniquement</option>${rest>0?`<option value="1" selected>${fullWeekLabel(cW)} et les suivantes…</option>`:''}</select></div>
+      <div class="fl-row" style="margin:0"><label class="fl-label">Nb semaines</label><input class="fl-inp" type="number" id="twCount" min="1" max="${rest+1}" value="${Math.min(8,rest+1)}"></div>
     </div>
     <label style="display:block;margin-top:10px;font-size:13px"><input type="checkbox" id="twOnlyEmpty" checked> Seulement si le collaborateur n'a pas encore d'horaires cette semaine-là (conseillé)</label>
-    <div style="font-size:11px;color:var(--pa-muted);margin-top:6px">Les congés et arrêts maladie déjà saisis sont toujours conservés.</div>`;
-  openModal('dlgTW','★ Semaines types',body,620,
+    <div style="font-size:11px;color:var(--pa-muted);margin-top:6px">Les congés et arrêts maladie déjà saisis sont toujours conservés. Un cycle reste aligné sur les semaines d'origine (la semaine A revient toutes les ${N>1?N:'n'} semaines).</div>`;
+  openModal('dlgTW','★ Semaines types & cycles',body,660,
     `<button class="fl-btn ghost" onclick="closeModal('dlgTW')">Fermer</button><button class="fl-btn primary" onclick="applyTypeWeeks()">Appliquer</button>`);
 }
 function persistColls(){ LS.setItem(`atoll_colls_${CURRENT_STORE_ID}`,JSON.stringify(COLLS)); }
-function saveTypeWeek(ci){
-  COLLS[ci].typeWeek=DATA[cW].jours.map((j,ji)=>{ const s={...j.collaborateurs[ci]}; return (s.statut==='CP'||s.statut==='MAL')?{...mkSlot(ji),statut:'R'}:s; });
-  persistColls(); openTypeWeeks();
-  toast(`★ Semaine type mémorisée pour ${COLLS[ci].nom}`);
+function _memo(ci,N,src){
+  const weeks=src.map(w=>DATA[w].jours.map((j,ji)=>cleanSlotForTpl(j.collaborateurs[ci],ji)));
+  if(N<=1){ COLLS[ci].typeWeek=weeks[0]; delete COLLS[ci].cycle; }
+  else { COLLS[ci].cycle={n:N, anchor:isoDay(dateOfDay(PLANNING_YEAR,src[0],0)), weeks}; COLLS[ci].typeWeek=weeks[0]; }
 }
-function clearTypeWeek(ci){ delete COLLS[ci].typeWeek; persistColls(); openTypeWeeks(); }
+function saveTypeWeek(ci){
+  const N=twLen(), wl=getWeekList(), i0=wl.indexOf(cW), src=wl.slice(i0,i0+N); if(src.length<N) return;
+  _memo(ci,N,src); persistColls(); try{ saveLocal(); }catch(e){} openTypeWeeks();
+  toast(N>1?`🔁 Cycle de ${N} semaines mémorisé pour ${COLLS[ci].nom}`:`★ Semaine type mémorisée pour ${COLLS[ci].nom}`);
+}
+function saveTypeWeekAll(){
+  const N=twLen(), wl=getWeekList(), i0=wl.indexOf(cW), src=wl.slice(i0,i0+N); if(src.length<N) return;
+  COLLS.forEach((c,ci)=>_memo(ci,N,src)); persistColls(); try{ saveLocal(); }catch(e){} openTypeWeeks();
+  toast(N>1?`🔁 Cycle de ${N} semaines mémorisé pour toute l'équipe`:'★ Semaines types mémorisées pour toute l\'équipe');
+}
+function clearTypeWeek(ci){ delete COLLS[ci].typeWeek; delete COLLS[ci].cycle; persistColls(); try{ saveLocal(); }catch(e){} openTypeWeeks(); }
 function applyTypeWeeks(){
-  const sel=[...document.querySelectorAll('.twSel:checked')].map(x=>+x.value).filter(ci=>COLLS[ci]?.typeWeek);
-  if(!sel.length){ toast('⚠ Cochez au moins un collaborateur avec une semaine type','var(--pa-orange)'); return; }
+  const sel=[...document.querySelectorAll('.twSel:checked')].map(x=>+x.value).filter(ci=>cycleOf(COLLS[ci]));
+  if(!sel.length){ toast('⚠ Cochez au moins un collaborateur avec une semaine type ou un cycle','var(--pa-orange)'); return; }
   const wl=getWeekList(); const i=wl.indexOf(cW);
   const n=document.getElementById('twScope').value==='1'?Math.max(1,+document.getElementById('twCount').value||1):1;
   const weeks=wl.slice(i,i+n);
@@ -5724,17 +6068,18 @@ function applyTypeWeeks(){
   weeks.forEach(w=>{
     sel.forEach(ci=>{
       if(onlyEmpty && weekHoursOf(DATA[w],ci)>0){ skipped++; return; }
-      COLLS[ci].typeWeek.forEach((tpl,ji)=>{
+      const cw=cycleWeekFor(COLLS[ci],w); if(!cw) return;
+      cw.slots.forEach((tpl,ji)=>{
         const cur=DATA[w].jours[ji].collaborateurs[ci];
         if(cur && (cur.statut==='CP'||cur.statut==='MAL')) return;
-        DATA[w].jours[ji].collaborateurs[ci]={...tpl};
+        DATA[w].jours[ji].collaborateurs[ci]=JSON.parse(JSON.stringify(tpl));
       });
       applied++;
     });
   });
   undoSync(weeks); writeDataLS(); try{ saveLocal(); }catch(e){}
   closeModal('dlgTW'); render();
-  toast(`★ ${applied} semaine${applied>1?'s':''} type appliquée${applied>1?'s':''}${skipped?` · ${skipped} ignorée${skipped>1?'s':''} (déjà planifiée${skipped>1?'s':''})`:''}`);
+  toast(`★ ${applied} semaine${applied>1?'s':''} appliquée${applied>1?'s':''}${skipped?` · ${skipped} ignorée${skipped>1?'s':''} (déjà planifiée${skipped>1?'s':''})`:''}`);
 }
 
 // ══ 4. NOTES DU JOUR ══
@@ -5818,7 +6163,8 @@ function openRegional(){
     const cont=cc.reduce((a,c)=>a+(+c.base||0),0);
     const obj=Array.isArray(wk?.objJours)?wk.objJours.reduce((a,b)=>a+(+b||0),0):0;
     const pb=wk?.prod_budget||180;
-    return {st,h,ph,cont,obj,prod:ph>0?obj/ph:0,pb,has:!!wk&&h>0,n:cc.length};
+    const mk=weekMonthKey(cW), mb=+hBudgetOf(st)[mk]||0; let mp=0; try{ mp=(monthHoursMap(st)[mk]||{plan:0}).plan; }catch(e){}
+    return {st,h,ph,cont,obj,prod:ph>0?obj/ph:0,pb,has:!!wk&&h>0,n:cc.length,mb,mp};
   });
   list.forEach(r=>{
     if(r.has){ tH+=r.h; tC+=r.cont; tO+=r.obj; tPH=(tPH||0)+r.ph; }
@@ -5831,6 +6177,7 @@ function openRegional(){
       <td style="padding:9px 8px;text-align:right;font-weight:700;color:${Math.abs(diff)<1?'var(--pa-green)':diff>0?'var(--pa-orange)':'var(--pa-red)'}">${r.h>0?(diff>0?'+':'')+diff.toFixed(1)+'h':'—'}</td>
       <td style="padding:9px 8px;text-align:right">${r.obj>0?Math.round(r.obj).toLocaleString('fr')+' €':'—'}</td>
       <td style="padding:9px 8px;text-align:right;font-weight:800;color:${r.h>0&&r.obj>0?pc:'var(--pa-muted)'}">${r.h>0&&r.obj>0?r.prod.toFixed(0):'—'}<span style="font-size:10px;color:var(--pa-muted);font-weight:500"> / ${r.pb}</span></td>
+      <td style="padding:9px 8px;text-align:right;font-weight:700;color:${r.mb?envStatus(r.mp,r.mb).col:'var(--pa-muted)'}">${r.mb?Math.round(r.mp)+' / '+r.mb+' h':'—'}</td>
     </tr>`;
   });
   const body=`
@@ -5841,14 +6188,14 @@ function openRegional(){
     </div>
     <div style="overflow-x:auto"><table class="rt" style="width:100%;border-collapse:collapse;font-size:13px">
       <thead><tr style="font-size:10px;color:var(--pa-muted);text-transform:uppercase;letter-spacing:.05em;border-bottom:2px solid var(--pa-border)">
-        <th style="text-align:left;padding:6px 8px">Magasin</th><th style="text-align:right;padding:6px 8px">Heures</th><th style="text-align:right;padding:6px 8px">Contrats</th><th style="text-align:right;padding:6px 8px">Écart</th><th style="text-align:right;padding:6px 8px">Budget CA</th><th style="text-align:right;padding:6px 8px">Prod. €/h</th></tr></thead>
+        <th style="text-align:left;padding:6px 8px">Magasin</th><th style="text-align:right;padding:6px 8px">Heures</th><th style="text-align:right;padding:6px 8px">Contrats</th><th style="text-align:right;padding:6px 8px">Écart</th><th style="text-align:right;padding:6px 8px">Budget CA</th><th style="text-align:right;padding:6px 8px">Prod. €/h</th><th style="text-align:right;padding:6px 8px">Enveloppe mois</th></tr></thead>
       <tbody>${rows}</tbody>
       <tfoot><tr style="border-top:2px solid var(--pa-border);font-weight:800">
         <td style="padding:9px 8px">Total région</td><td style="padding:9px 8px;text-align:right">${tH.toFixed(1)}h</td><td style="padding:9px 8px;text-align:right;color:var(--pa-muted)">${tC.toFixed(0)}h</td>
-        <td style="padding:9px 8px;text-align:right">${(tH-tC>0?'+':'')+(tH-tC).toFixed(1)}h</td><td style="padding:9px 8px;text-align:right">${Math.round(tO).toLocaleString('fr')} €</td><td style="padding:9px 8px;text-align:right">${tPH>0&&tO>0?(tO/tPH).toFixed(0):'—'}</td></tr></tfoot>
+        <td style="padding:9px 8px;text-align:right">${(tH-tC>0?'+':'')+(tH-tC).toFixed(1)}h</td><td style="padding:9px 8px;text-align:right">${Math.round(tO).toLocaleString('fr')} €</td><td style="padding:9px 8px;text-align:right">${tPH>0&&tO>0?(tO/tPH).toFixed(0):'—'}</td><td style="padding:9px 8px;text-align:right">${(()=>{ const b=list.reduce((a,r)=>a+r.mb,0), p=list.reduce((a,r)=>a+(r.mb?r.mp:0),0); return b?Math.round(p)+' / '+b+' h':'—'; })()}</td></tr></tfoot>
     </table></div>
     <div style="font-size:11px;color:var(--pa-muted);margin-top:10px">Cliquez sur un magasin pour l'ouvrir. Chiffres de la dernière actualisation : cliquez 🔄 Actualiser pour récupérer les saisies des autres magasins.</div>`;
-  openModal('dlgReg','🏬 Vue régionale',body,760);
+  openModal('dlgReg','🏬 Vue régionale',body,860);
 }
 
 // ══ 8. HISTORIQUE DES VERSIONS (GitHub) ══
@@ -6227,6 +6574,7 @@ function optimizeWeek(w, opts={}){
     for(let j=0;j<7;j++){
       const s=src.jours[j].collaborateurs[ci];
       if(s.statut==='CP'||s.statut==='MAL'){ lock[ci][j]='abs'; abs++; }
+      else if(dispoOf(ci,j).t==='off') lock[ci][j]='off';          // indisponible ce jour-là
       else if(opts.keepRest && s.statut==='R' && !Hs[j].closed) lock[ci][j]='rest';
       else lock[ci][j]=null;
       npFix[ci][j]=(s.statut==='work'&&Array.isArray(s.np))?JSON.parse(JSON.stringify(s.np)):[];
@@ -6276,7 +6624,10 @@ function optimizeWeek(w, opts={}){
     ds.sort((a,b2)=>Wt[b2]-Wt[a]).forEach(j=>{ lenQ[ci][j]=Math.min(40,b+(r>0?1:0)); if(r>0) r--; });
   }
   // Rééquilibrage : allonger les créneaux des jours à fort budget, raccourcir ceux des jours calmes
-  const maxQ=j=>Math.min(40, Hs[j].closed?40:Math.max(16,Math.round(openLen(j)*4)-(openLen(j)>6?4:0)));
+  const maxQ0=j=>Math.min(40, Hs[j].closed?40:Math.max(16,Math.round(openLen(j)*4)-(openLen(j)>6?4:0)));
+  // Plafond par personne : amplitude de disponibilité (pause déduite au-delà de 6h)
+  const dMaxQ=(ci,j)=>{ const d=dispoOf(ci,j); if(d.t!=='range') return maxQ0(j); const L=Math.round((t2h(d.f)-t2h(d.d))*4); return Math.max(4,Math.min(maxQ0(j), L>24?L-4:L)); };
+  const maxQ=j=>maxQ0(j);
   const npSpanQ=(ci,j)=>npFix[ci][j].length?Math.max(...npFix[ci][j].map(x=>toQ(t2h(x.f))))-Math.min(...npFix[ci][j].map(x=>toQ(t2h(x.d)))):0;
   if(hasObj){
     for(let it=0;it<800;it++){
@@ -6286,7 +6637,7 @@ function optimizeWeek(w, opts={}){
       for(let ci=0;ci<n;ci++){
         const ds=[0,1,2,3,4,5,6].filter(j=>works[ci][j]);
         for(const a of ds) for(const b of ds){
-          if(a===b||lenQ[ci][b]+2>maxQ(b)||lenQ[ci][a]-2<Math.max(20,npSpanQ(ci,a))) continue;
+          if(a===b||lenQ[ci][b]+2>dMaxQ(ci,b)||lenQ[ci][a]-2<Math.max(20,npSpanQ(ci,a))) continue;
           const g=ratio(a)-ratio(b); if(g>gain){ gain=g; best=[ci,a,b]; }
         }
       }
@@ -6298,9 +6649,9 @@ function optimizeWeek(w, opts={}){
   const notes=[];
   for(let ci=0;ci<n;ci++){
     let excess=0; const ds=[0,1,2,3,4,5,6].filter(j=>works[ci][j]);
-    ds.forEach(j=>{ const m=Math.max(npSpanQ(ci,j),maxQ(j)); if(lenQ[ci][j]>m){ excess+=lenQ[ci][j]-m; lenQ[ci][j]=m; } });
-    for(const j of ds){ if(excess<=0) break; const room=Math.max(npSpanQ(ci,j),maxQ(j))-lenQ[ci][j]; const add=Math.min(room,excess); lenQ[ci][j]+=add; excess-=add; }
-    if(excess>0) notes.push(`${WC[ci].nom} : ${excess/4}h de contrat non placées (jours de repos posés ou amplitude d'ouverture insuffisante).`);
+    ds.forEach(j=>{ const m=Math.max(npSpanQ(ci,j),dMaxQ(ci,j)); if(lenQ[ci][j]>m){ excess+=lenQ[ci][j]-m; lenQ[ci][j]=m; } });
+    for(const j of ds){ if(excess<=0) break; const room=Math.max(npSpanQ(ci,j),dMaxQ(ci,j))-lenQ[ci][j]; const add=Math.min(room,excess); lenQ[ci][j]+=add; excess-=add; }
+    if(excess>0) notes.push(`${WC[ci].nom} : ${excess/4}h de contrat non placées (repos posés, disponibilités ou amplitude d'ouverture insuffisante).`);
   }
   // Placement des créneaux jour par jour
   for(let j=0;j<7;j++){
@@ -6323,7 +6674,8 @@ function optimizeWeek(w, opts={}){
       const L=lenQ[ci][j]; const pq=L>24?4:0;           // pause 1h au-delà de 6h
       const span=L+pq;
       const nps=npFix[ci][j]; const npS=nps.length?Math.min(...nps.map(x=>toQ(t2h(x.d)))):null, npE=nps.length?Math.max(...nps.map(x=>toQ(t2h(x.f)))):null;
-      const lo=Math.max(0,Math.min(oQ,npS??oQ)), hi=Math.min(GANTT_SLOTS,Math.max(cQ,npE??cQ));
+      let lo=Math.max(0,Math.min(oQ,npS??oQ)), hi=Math.min(GANTT_SLOTS,Math.max(cQ,npE??cQ));
+      const dp=dispoOf(ci,j); if(dp.t==='range'){ lo=Math.max(lo,toQ(t2h(dp.d))); hi=Math.min(hi,toQ(t2h(dp.f))); if(hi-lo<span){ hi=Math.min(GANTT_SLOTS,lo+span); } }
       let best=null,bs=-Infinity;
       for(let s=lo;s+span<=hi;s++){
         const e=s+span;
