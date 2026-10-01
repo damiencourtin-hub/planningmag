@@ -166,10 +166,13 @@ body{
   .cmd-bar.two-rows .cmd-bar-bottom{flex:1 1 100%;height:auto;min-height:44px;padding:7px 14px 8px;justify-content:flex-end;flex-wrap:wrap;row-gap:6px;border-top:1px solid rgba(var(--ac2-rgb),.10)}
 }
 .cmd-logo-text{white-space:nowrap}
-@media (min-width:769px) and (max-width:1280px){
-  .cmd-bar{flex-wrap:wrap}
-  .cmd-bar-top{flex:1 1 100%;height:54px}
-  .cmd-bar-bottom{flex:1 1 100%;height:auto;min-height:44px;padding:0 14px 8px;justify-content:flex-end;flex-wrap:wrap;row-gap:6px;border-top:1px solid rgba(var(--ac2-rgb),.10);padding-top:7px}
+/* Une seule ligne sur ordinateur : la date de sauvegarde se raccourcit, puis les boutons passent en icônes */
+@media (min-width:769px){
+  .cmd-center{flex:1 1 auto;min-width:0}
+  .cmd-center>*{flex-shrink:0}
+  .cmd-center>.last-save{flex-shrink:1;min-width:0}
+  .cmd-bar.icons-only .cmd-bar-bottom .cmd-btn:not(.primary) .cmd-btn-label,.cmd-bar.icons-only .cmd-caret{display:none}
+  .cmd-bar.icons-only .cmd-bar-bottom .cmd-btn:not(.primary){padding-left:11px;padding-right:11px}
 }
 @media (max-width:768px){
   .cmd-bar{flex-direction:column;height:auto}
@@ -1418,6 +1421,44 @@ html.sb-mini #sbAlertCnt:not([hidden]){display:block;position:absolute;top:2px;r
 .cv-gap{fill:color-mix(in srgb,var(--warn) 22%,transparent)}.cv-gap.min{fill:color-mix(in srgb,var(--bad) 22%,transparent)}
 @media (max-width:768px){ .cov-chart-tr{display:none!important} }
 @media print{ .day-side{display:none!important} .day-wrap{display:block} }
+
+/* ══ Bandeau du jour compact (2 lignes) ══ */
+.dh2{display:flex;align-items:center;gap:14px;padding:9px 16px 9px 20px;border-bottom:1px solid var(--pa-border);box-shadow:inset 4px 0 0 var(--ac);background:var(--pa-surface)}
+.dh2-title{display:flex;flex-direction:column;line-height:1.15;flex-shrink:0}
+.dh2-title b{font-size:15px;font-weight:800;color:var(--pa-text);white-space:nowrap}
+.dh2-title span{font-size:11px;font-weight:600;color:var(--pa-muted);white-space:nowrap}
+.dh2-note{flex:1 1 auto;min-width:140px;display:flex;align-items:center;gap:6px;height:34px;padding:0 10px;border-radius:9px;border:1px dashed var(--pa-border2);background:var(--pa-surface2);cursor:text;font-size:13px}
+.dh2-note:focus-within{border-style:solid;border-color:var(--ac);background:var(--pa-surface)}
+.dh2-note.has{border-style:solid;border-color:var(--ac-bd);background:var(--ac-lt)}
+.dh2-note .note-inp{border:none!important;background:transparent!important;padding:0;font-size:13px;min-width:0;width:100%}
+.dh2-note .note-inp:not(:placeholder-shown){color:var(--ac-tx)}
+.dh2-kpis{display:flex;gap:4px;flex-shrink:0}
+.dh2-k{display:flex;flex-direction:column;align-items:flex-end;line-height:1.15;padding:3px 12px;border-left:1px solid var(--pa-border)}
+.dh2-k:first-child{border-left:none}
+.dh2-k small{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--pa-muted)}
+.dh2-k b{font-size:15px;font-weight:800;color:var(--pa-text);white-space:nowrap;font-variant-numeric:tabular-nums}
+.dh2-k em{font-style:normal;font-size:10.5px;color:var(--pa-muted);white-space:nowrap}
+.dh2-bar{display:flex;align-items:center;gap:8px;padding:6px 16px 6px 20px;background:var(--pa-surface2);border-bottom:1px solid var(--pa-border)}
+.dh2-lbl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--pa-muted);flex-shrink:0}
+.dh2-chips{display:flex;gap:5px;flex:1 1 auto;min-width:0;overflow-x:auto;scrollbar-width:thin;padding:1px 0}
+.dh2-chips .tpl-chip{padding:3px 10px;font-size:11.5px;gap:5px;flex-shrink:0;white-space:nowrap}
+.dh2-chips .tpl-chip:hover{transform:none}
+.dh2-chips .tpl-dot{width:7px;height:7px}
+.dh2-tools{display:flex;gap:5px;flex-shrink:0}
+.dh2-tools .tool-btn{height:28px;padding:0 9px;font-size:11.5px}
+@media (min-width:769px) and (max-width:1700px){ .dh2-tools .tool-btn .tl{display:none} .dh2-tools .tool-btn:not(.ai){min-width:32px;font-size:14px;padding:0 8px} }
+@media (max-width:1180px){ .dh2{flex-wrap:wrap;row-gap:8px} .dh2-note{order:3;flex-basis:100%} }
+@media (max-width:768px){
+  .dh2{padding:10px 12px 10px 14px}
+  .dh2-title{flex:1 1 100%}
+  .dh2-kpis{flex:1 1 100%;justify-content:space-between}
+  .dh2-k{align-items:flex-start;padding:2px 8px}
+  .dh2-bar{flex-wrap:wrap;padding:8px 12px}
+  .dh2-tools{order:-1;width:100%;flex-wrap:wrap}
+  .dh2-chips{flex-wrap:wrap;flex-basis:100%}
+  .dh2-tools .tool-btn{flex:1 1 auto;min-height:34px}
+}
+@media print{ .dh2-bar{display:none} .dh2-note:not(.has){display:none} }
 </style>
 <body>
 
@@ -3546,10 +3587,11 @@ function switchTab(m){
 function fitCmdBar(){
   const bar=document.querySelector('.cmd-bar'); if(!bar) return;
   if(window.innerWidth<=768){ bar.classList.remove('two-rows'); return; }
-  bar.classList.remove('two-rows');
+  bar.classList.remove('two-rows','icons-only');
   const bot=bar.querySelector('.cmd-bar-bottom'), top=bar.querySelector('.cmd-bar-top');
-  const over = (bot && bot.getBoundingClientRect().right > window.innerWidth+1) || (top && top.scrollWidth > top.clientWidth+2);
-  if(over) bar.classList.add('two-rows');
+  const isOver=()=>(bot && bot.getBoundingClientRect().right > window.innerWidth+1) || (top && top.scrollWidth > top.clientWidth+2);
+  if(isOver()) bar.classList.add('icons-only');
+  if(isOver()){ bar.classList.remove('icons-only'); bar.classList.add('two-rows'); }
 }
 window.addEventListener('resize',()=>{ clearTimeout(window._fitT); window._fitT=setTimeout(fitCmdBar,80); });
 setInterval(fitCmdBar, 3000); setTimeout(fitCmdBar, 600);
@@ -4387,23 +4429,25 @@ function renderContent(){
   const npBars=sl=>npList(sl).map(n=>{ const T=NP_TYPES[n.t]||{lbl:n.t,color:'#888'}; const l=_pct(t2h(n.d)), wd=(_pct(t2h(n.f))-l).toFixed(2);
     return `<div class="gantt-np" style="left:${l}%;width:${wd}%;--npc:${T.color}" title="${T.lbl} ${n.d}–${n.f}">${T.lbl}</div>`; }).join('');
 
+  const _f1=v=>(Math.round(v*10)/10).toLocaleString('fr',{maximumFractionDigits:1});
+  const _pb=s.prod_budget||0, _note=getNotes(cW)[cD]||'';
   let panel=`<div class="detail-card">
-    <div class="detail-hdr">
-      <div class="detail-title">${JOURS[cD]} ${dayLabelLong(PLANNING_YEAR,cW,cD)} ${weekYear(cW)} — ${fullWeekLabel(cW)}</div>
-      <div class="detail-meta">
-        <div class="dm-item"><div class="dm-lbl">Obj CA</div><div class="dm-val">${calc.obj.toLocaleString('fr',{maximumFractionDigits:0})}€</div></div>
-        <div class="dm-item"><div class="dm-lbl">Hrs plan.</div><div class="dm-val">${calc.tH.toFixed(2)}h</div></div>
-        ${calc.npH>0?`<div class="dm-item"><div class="dm-lbl">Non prod.</div><div class="dm-val">${calc.npH.toFixed(2)}h</div></div>`:''}
-        <div class="dm-item"><div class="dm-lbl">Prod plan.</div><div class="dm-val" style="color:${pcTxt}">${calc.tH>0?calc.prod.toFixed(1):'—'}</div></div>
+    <div class="dh2">
+      <div class="dh2-title"><b>${JOURS[cD]} ${dayLabelLong(PLANNING_YEAR,cW,cD)}</b><span>${fullWeekLabel(cW)}</span></div>
+      <label class="dh2-note${_note?' has':''}" title="Note du jour"><span aria-hidden="true">📝</span><input class="note-inp" value="${esc(_note)}" placeholder="Note du ${JOURS[cD].toLowerCase()} (livraison, inventaire, visite…)" onchange="setDayNote(this.value)" onkeydown="if(event.key==='Enter')this.blur()"></label>
+      <div class="dh2-kpis">
+        <div class="dh2-k"><small>Obj. CA</small><b>${calc.obj.toLocaleString('fr',{maximumFractionDigits:0})} €</b></div>
+        <div class="dh2-k"><small>Heures</small><b>${_f1(calc.tH)} h</b>${calc.npH>0?`<em>dont ${_f1(calc.npH)} h non prod.</em>`:''}</div>
+        <div class="dh2-k"><small>Productivité</small><b style="color:${calc.tH>0?pcTxt:'inherit'}">${calc.tH>0?Math.round(calc.prod)+' €/h':'—'}</b>${_pb?`<em>obj. ${_pb}</em>`:''}</div>
       </div>
     </div>
-    <div class="note-bar">📝 <input class="note-inp" value="${esc(getNotes(cW)[cD]||'')}" placeholder="Note du ${JOURS[cD].toLowerCase()} (livraison, inventaire, visite…)" onchange="setDayNote(this.value)" onkeydown="if(event.key==='Enter')this.blur()"></div>
-    <div class="tpl-bar"><span class="tpl-bar-lbl">🕒 Plages :</span>${chips}
-      <div class="tool-grp">
+    <div class="dh2-bar">
+      <span class="dh2-lbl">Plages</span><div class="dh2-chips">${chips}</div>
+      <div class="dh2-tools">
         <button class="tool-btn ai" onclick="openAIAnalysis()" title="Analyse et optimisation de la semaine">🤖 Analyse IA</button>
-        <button class="tool-btn" id="undoBtn" onclick="undo()">↶ Annuler</button>
-        <button class="tool-btn" onclick="openDuplicate()" title="Copier cette semaine sur les semaines suivantes">⧉ Dupliquer</button>
-        <button class="tool-btn" onclick="openTypeWeeks()" title="Horaires habituels et cycles de travail par collaborateur">★ Semaines types &amp; cycles</button>
+        <button class="tool-btn" id="undoBtn" onclick="undo()" title="Annuler la dernière modification (Ctrl+Z)">↶<span class="tl"> Annuler</span></button>
+        <button class="tool-btn" onclick="openDuplicate()" title="Copier cette semaine sur les semaines suivantes">⧉<span class="tl"> Dupliquer</span></button>
+        <button class="tool-btn" onclick="openTypeWeeks()" title="Horaires habituels et cycles de travail par collaborateur">★<span class="tl"> Semaines types</span></button>
       </div></div>
     <table class="fl-table fused-table">
       <thead><tr>
