@@ -1287,6 +1287,137 @@ body{background:var(--pa-bg)!important}
   .fused-table tr{border-color:var(--pa-border)!important}
   .detail-hdr,.week-panel-hdr{padding:10px 14px}
 }
+
+/* ══════════ MENU LATÉRAL ══════════ */
+:root{--sbw:232px}
+.sbar{position:fixed;left:0;top:0;bottom:0;width:var(--sbw);z-index:60;background:var(--hd1);color:rgba(var(--hd-soft-rgb),.82);display:flex;flex-direction:column;padding:12px 10px;gap:4px;border-right:1px solid rgba(0,0,0,.08);transition:width .2s ease, transform .25s ease}
+html[data-hd="light"] .sbar{background:#fff;color:#4a4248;border-right:1px solid var(--pa-border)}
+body{padding-left:var(--sbw);transition:padding-left .2s ease}
+.sb-brand{display:flex;align-items:center;gap:10px;padding:4px 6px 10px;color:var(--hd-tx);font-weight:800;font-size:15px}
+.sb-logo{width:30px;height:30px;border-radius:9px;background:var(--ac);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sb-logo .sb-ic{stroke:#fff}
+.sb-colbtn{margin-left:auto;width:28px;height:28px;border-radius:8px;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:inherit}
+.sb-colbtn:hover{background:rgba(127,127,127,.15)}
+.sb-store{display:flex;align-items:center;gap:9px;width:100%;padding:9px 10px;margin-bottom:6px;border-radius:10px;border:1px solid rgba(var(--hd-soft-rgb),.18);background:rgba(255,255,255,.04);color:var(--hd-tx);font-family:inherit;text-align:left;cursor:pointer}
+html[data-hd="light"] .sb-store{border-color:var(--pa-border);background:var(--pa-surface2)}
+.sb-store b{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px}
+.sb-store small{display:block;font-size:11px;opacity:.65}
+.sb-chev{margin-left:auto;opacity:.6}
+.sb-scroll{flex:1;overflow-y:auto;overflow-x:hidden;margin:0 -4px;padding:0 4px;scrollbar-width:thin}
+.sb-sec{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;opacity:.55;padding:12px 10px 4px;white-space:nowrap}
+.sb-it{display:flex;align-items:center;gap:10px;width:100%;padding:7px 10px;border:none;background:none;border-radius:8px;font-family:inherit;font-size:13px;font-weight:600;color:inherit;text-align:left;cursor:pointer;white-space:nowrap;position:relative}
+.sb-it:hover{background:rgba(127,127,127,.14);color:var(--hd-tx)}
+.sb-it.pan{color:var(--hd-tx)}.sb-it.pan::after{content:'';position:absolute;right:10px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--ac)}
+@media (min-width:1025px){html.sb-mini .sb-it.pan::after{right:6px;top:8px}}
+.sb-it.on{background:rgba(255,255,255,.09);color:var(--hd-tx);box-shadow:inset 3px 0 0 var(--ac)}
+html[data-hd="light"] .sb-it.on{background:var(--ac-lt);color:var(--ac-tx)}
+.sb-ic{width:18px;height:18px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.sb-lb{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.sb-cnt{margin-left:auto;background:var(--bad);color:#fff;font-size:10.5px;font-weight:700;border-radius:999px;padding:1px 7px}
+.sb-dot{margin-left:auto;width:8px;height:8px;border-radius:50%;background:#8a8a8a}
+.sb-xl{cursor:default}.sb-xl:hover{background:none}
+.sb-chips{display:flex;gap:4px}
+.sb-chips button{font-family:inherit;font-size:11px;font-weight:600;color:inherit;background:rgba(127,127,127,.14);border:none;border-radius:6px;padding:3px 7px;cursor:pointer}
+.sb-chips button:hover{background:var(--ac);color:#fff}
+.sb-user{display:flex;align-items:center;gap:9px;width:100%;padding:10px 8px 4px;margin-top:4px;border:none;border-top:1px solid rgba(var(--hd-soft-rgb),.14);background:none;color:var(--hd-tx);font-family:inherit;text-align:left;cursor:pointer}
+html[data-hd="light"] .sb-user{border-top-color:var(--pa-border)}
+.sb-user b{display:block;font-size:12.5px}.sb-user small{display:block;font-size:11px;opacity:.65}
+.sb-av{width:30px;height:30px;border-radius:50%;background:var(--ac);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sb-overlay{display:none}
+/* Mode réduit : icônes seules (ordinateur uniquement) */
+@media (min-width:1025px){
+html.sb-mini{--sbw:64px}
+html.sb-mini .sbar .sb-lb,html.sb-mini .sb-sec,html.sb-mini .sb-cnt{display:none}
+html.sb-mini .sb-sec{display:block;height:10px;padding:0;font-size:0;border-top:1px solid rgba(var(--hd-soft-rgb),.12);margin:8px 6px 6px}
+html.sb-mini .sb-brand{flex-direction:column;gap:6px;padding-bottom:6px}
+html.sb-mini .sb-colbtn{margin:0;transform:rotate(180deg)}
+html.sb-mini .sb-it,html.sb-mini .sb-store,html.sb-mini .sb-user{justify-content:center;padding-left:0;padding-right:0}
+html.sb-mini #sbAlertCnt:not([hidden]){display:block;position:absolute;top:2px;right:6px;padding:0 5px;font-size:9.5px}
+}
+/* Barre du haut : le magasin, le profil et le menu Options sont dans le menu latéral */
+@media (min-width:1025px){
+  .cmd-logo,#userBadge,#settingsMenuBtn{display:none!important}
+  .mobile-menu-btn{display:none!important}
+}
+/* Tablette et téléphone : menu latéral en tiroir, ouvert par ☰ */
+@media (max-width:1024px){
+  body{padding-left:0}
+  .sbar{transform:translateX(-102%);width:min(84vw,280px);z-index:300;box-shadow:6px 0 24px rgba(0,0,0,.3)}
+  .sbar.open{transform:none}
+  .sb-colbtn{display:none}
+  .sb-overlay.show{display:block;position:fixed;inset:0;background:rgba(10,0,20,.45);z-index:299}
+  .mobile-menu-btn{display:flex!important}
+}
+@media print{ .sbar,.sb-overlay{display:none!important} body{padding-left:0!important} }
+.al-row{display:flex;gap:10px;padding:10px 2px;border-bottom:1px solid var(--pa-border)}.al-row:last-child{border:none}
+.al-it{font-size:12.5px;color:var(--pa-text2);margin-top:3px}.al-it.d{color:var(--need)}
+
+/* Panneau gauche : piloté par le menu latéral (plus d'onglets ni de poignée en double) */
+.nav-tabs,.nav-toggle{display:none!important}
+.app{grid-template-columns:248px 1fr!important}
+.app.kpi-wide{grid-template-columns:420px 1fr!important}
+.app.nav-collapsed{grid-template-columns:0 1fr!important}
+@media (max-width:1100px) and (min-width:769px){ .app{grid-template-columns:220px 1fr!important} .app.kpi-wide{grid-template-columns:300px 1fr!important} .app.nav-collapsed{grid-template-columns:0 1fr!important} }
+@media (max-width:768px){ .app,.app.kpi-wide,.app.nav-collapsed{grid-template-columns:1fr!important} }
+.leftnav{border-right:1px solid var(--pa-border)}
+.app.nav-collapsed .leftnav{border-right:none;overflow:hidden}
+.nav-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 14px 10px;border-bottom:1px solid var(--pa-border);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--pa-text2);position:sticky;top:0;background:var(--pa-surface);z-index:2}
+.nav-head-x{width:28px;height:28px;border-radius:8px;border:1px solid var(--pa-border);background:var(--pa-surface);color:var(--pa-muted);cursor:pointer;font-size:12px;flex-shrink:0}
+.nav-head-x:hover{background:var(--pa-surface2);color:var(--pa-text)}
+
+/* ══ PLANNING JOUR : courbe + panneau de droite ══ */
+.day-wrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:14px;align-items:start}
+.day-main{min-width:0}
+.day-side{position:sticky;top:0;display:flex;flex-direction:column;gap:12px}
+.day-wrap.narrow{grid-template-columns:minmax(0,1fr)}
+.day-wrap.narrow .day-side{position:fixed;right:14px;top:72px;width:320px;max-height:calc(100vh - 90px);overflow:auto;z-index:400;
+  filter:drop-shadow(0 10px 28px rgba(0,0,0,.18));display:none}
+.day-wrap.narrow.has-sel .day-side{display:flex}
+.ds-grid .tstep{align-self:flex-start}
+.ds-card{background:var(--pa-surface);border:1px solid var(--pa-border);border-radius:12px;padding:12px 14px}
+.ds-h{display:flex;align-items:center;justify-content:space-between;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--pa-muted);margin-bottom:8px}
+.ds-x{border:none;background:none;color:var(--pa-muted);cursor:pointer;font-size:12px}
+.ds-empty{font-size:12.5px;color:var(--pa-text2);line-height:1.5}.ds-empty span{color:var(--pa-muted);font-size:11.5px}
+.ds-who{display:flex;gap:10px;align-items:center}.ds-who b{display:block;font-size:14px}.ds-who small{color:var(--pa-muted);font-size:11.5px}
+.ds-week{display:flex;justify-content:space-between;align-items:baseline;margin:10px 0 8px;padding:7px 10px;border-radius:9px;background:var(--pa-surface2);font-size:12.5px}
+.ds-sts{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:10px}
+.ds-st{font-family:inherit;font-size:11.5px;font-weight:700;padding:6px 2px;border-radius:8px;border:1px solid var(--pa-border2);background:var(--pa-surface);color:var(--pa-text2);cursor:pointer}
+.ds-st.on.work{background:var(--ac);border-color:var(--ac);color:#fff}.ds-st.on.R{background:var(--pa-surface2);border-color:var(--pa-text2)}
+.ds-st.on.CP{background:var(--pa-yellow-bg);color:var(--pa-yellow);border-color:var(--pa-yellow)}.ds-st.on.MAL{background:var(--bad-bg);color:var(--bad);border-color:var(--bad)}
+.ds-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ds-grid label{display:flex;flex-direction:column;gap:3px;font-size:10.5px;font-weight:700;color:var(--pa-muted);text-transform:uppercase;letter-spacing:.04em}
+.ds-in{width:52px;text-align:center;font-family:inherit;font-weight:700;font-size:13px;border:1px solid var(--pa-border2);border-radius:6px;padding:4px 2px}
+.ds-sel{font-family:inherit;font-size:12.5px;font-weight:600;padding:5px 6px;border:1px solid var(--pa-border2);border-radius:7px;background:var(--pa-surface)}
+.ds-na{font-size:12px;color:var(--pa-muted2);font-weight:500;text-transform:none;letter-spacing:0;padding:6px 0}
+.ds-dur{margin:9px 0 2px;font-size:12.5px;color:var(--pa-text2)}
+.ds-lb{font-size:10.5px;font-weight:700;color:var(--pa-muted);text-transform:uppercase;letter-spacing:.04em;margin:10px 0 4px}
+.ds-tpls,.ds-np{display:flex;flex-wrap:wrap;gap:4px}
+.ds-tpl{display:inline-flex;align-items:center;gap:5px;font-family:inherit;font-size:11.5px;font-weight:600;padding:4px 8px;border-radius:999px;border:1px solid var(--pa-border2);background:var(--pa-surface);cursor:pointer;color:var(--pa-text2)}
+.ds-tpl:hover{border-color:var(--ac)}.ds-tpl i{width:8px;height:8px;border-radius:50%}
+.ds-npi{font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:6px;color:#fff;background:var(--npc)}
+.ds-more{margin-top:12px;width:100%;font-family:inherit;font-size:12.5px;font-weight:600;padding:7px;border-radius:8px;border:1px solid var(--pa-border2);background:var(--pa-surface2);cursor:pointer;color:var(--pa-text2)}
+.ds-more:hover{border-color:var(--ac);color:var(--ac-tx)}
+.ds-ck{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;line-height:1.4;padding:4px 0}
+.ds-ck i{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0}.ds-ck i.ok{background:var(--ok)}.ds-ck i.warn{background:var(--warn)}.ds-ck i.bad{background:var(--bad)}
+.fused-table tr.sel-row td{background:var(--ac-lt)!important}
+.fused-table tr.sel-row td.c-emp{box-shadow:inset 3px 0 0 var(--ac)}
+.cov-chart-tr td{border-bottom:1px solid var(--pa-border)!important;background:var(--pa-surface)!important;vertical-align:top}
+.cv-lbl{display:flex;flex-direction:column;gap:3px;font-size:11px;color:var(--pa-muted);padding:4px 2px}
+.cv-lbl b{font-size:12px;color:var(--pa-text);text-transform:uppercase;letter-spacing:.04em}
+.cv-k{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:3px;margin-right:5px}
+.cv-k.a{background:var(--ac)}.cv-k.n{border-top:2px dashed var(--pa-text);height:0}.cv-k.g{height:9px;vertical-align:-1px;background:color-mix(in srgb,var(--warn) 30%,transparent)}
+.cv-ok{color:var(--ok);font-weight:700}.cv-bad{color:var(--warn);font-weight:700}
+.cv-cell{padding:6px 8px!important}
+.cv-wrap{position:relative;height:84px}
+.cv-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.cv-y{position:absolute;left:-16px;top:0;bottom:0;width:12px;font-size:9px;color:var(--pa-muted2)}.cv-y span{position:absolute;right:0;transform:translateY(-50%)}
+.cv-grid{stroke:var(--pa-border);stroke-width:.06}
+.cv-area{fill:rgba(var(--ac-rgb),.13)}
+.cv-line{fill:none;stroke:var(--ac);stroke-width:2}
+.cv-need{fill:none;stroke:var(--pa-text);stroke-width:1.4;stroke-dasharray:4 3;opacity:.75}
+.cv-gap{fill:color-mix(in srgb,var(--warn) 22%,transparent)}.cv-gap.min{fill:color-mix(in srgb,var(--bad) 22%,transparent)}
+@media (max-width:768px){ .cov-chart-tr{display:none!important} }
+@media print{ .day-side{display:none!important} .day-wrap{display:block} }
 </style>
 <body>
 
@@ -1437,10 +1568,45 @@ body{background:var(--pa-bg)!important}
 </div>
 
 <!-- ══ COMMAND BAR ══ -->
+<!-- ══ MENU LATÉRAL ══ -->
+<aside class="sbar" id="sbar" aria-label="Menu principal">
+  <div class="sb-brand"><span class="sb-logo"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><span class="sb-lb">Planning</span>
+    <button type="button" class="sb-colbtn" onclick="toggleSbar()" title="Réduire / agrandir le menu"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button></div>
+  <button type="button" class="sb-store" onclick="sbGo(event,()=>openStoreSelector())" title="Changer de magasin"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9l1.5-5h13L20 9"/><path d="M4 9h16v11H4z"/><path d="M9 20v-6h6v6"/></svg><span class="sb-lb"><b id="sbStoreName">—</b><small id="sbStoreLoc">—</small></span><span class="sb-lb sb-chev"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button>
+  <nav class="sb-scroll">
+    <div class="sb-sec">Planning</div>
+    <button type="button" class="sb-it" id="sbItPlanning" onclick="sbGo(event,()=>{sbPlanning()})" title="Planning"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span class="sb-lb">Planning</span></button>
+    <button type="button" class="sb-it" id="sbItweeks" onclick="sbGo(event,()=>{sbPanel('weeks')})" title="Calendrier des semaines"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span class="sb-lb">Calendrier des semaines</span></button>
+    <button type="button" class="sb-it" id="sbItkpi" onclick="sbGo(event,()=>{sbPanel('kpi')})" title="Indicateurs & objectifs"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span class="sb-lb">Indicateurs & objectifs</span></button>
+    <button type="button" class="sb-it" id="sbItequipe" onclick="sbGo(event,()=>{sbPanel('equipe')})" title="Équipe"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 20a6 6 0 0 0-3-5.2"/></svg><span class="sb-lb">Équipe</span></button>
+    <div class="sb-sec">Analyse</div>
+    <button type="button" class="sb-it" onclick="sbGo(event,()=>{openAIAnalysis()})" title="Analyse IA"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></svg><span class="sb-lb">Analyse IA</span></button>
+    <button type="button" class="sb-it" onclick="sbGo(event,()=>{openAlerts()})" title="Alertes"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9.5 17h-19z"/><path d="M12 10v4M12 17.5v.5"/></svg><span class="sb-lb">Alertes</span><span class="sb-cnt" id="sbAlertCnt" hidden>0</span></button>
+    <button type="button" class="sb-it" onclick="sbGo(event,()=>{openCumul()})" title="Compteurs d’heures"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19l5-6 4 3 7-9"/><path d="M15 7h5v5"/></svg><span class="sb-lb">Compteurs d’heures</span></button>
+    <button type="button" class="sb-it" onclick="sbGo(event,()=>{openEnvelope()})" title="Enveloppe d’heures"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><circle cx="16.5" cy="14.5" r="1.2"/></svg><span class="sb-lb">Enveloppe d’heures</span></button>
+    <button type="button" class="sb-it" onclick="sbGo(event,()=>{openRegional()})" title="Vue région"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9l1.5-5h13L20 9"/><path d="M4 9h16v11H4z"/><path d="M9 20v-6h6v6"/></svg><span class="sb-lb">Vue région</span></button>
+    <div class="sb-sec">Outils</div>
+    <button type="button" class="sb-it" onclick="sbGo(event,()=>{openTypeWeeks()})" title="Semaines types & cycles"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.7-5.7L20 8.6"/><path d="M20 4v4.6h-4.6"/><path d="M20 12a8 8 0 0 1-13.7 5.7L4 15.4"/><path d="M4 20v-4.6h4.6"/></svg><span class="sb-lb">Semaines types & cycles</span></button>
+    <button type="button" class="sb-it" onclick="sbGo(event,()=>{openTplManager()})" title="Plages types"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><span class="sb-lb">Plages types</span></button>
+    <button type="button" class="sb-it" onclick="sbGo(event,()=>{openConstraints()})" title="Contraintes & disponibilités"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 0 1 12 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg><span class="sb-lb">Contraintes & disponibilités</span></button>
+    <button type="button" class="sb-it" onclick="sbGo(event,()=>{openHoursPeaks()})" title="Ouverture & pics"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20V13M10 20V8M15 20v-5M20 20V5"/></svg><span class="sb-lb">Ouverture & pics</span></button>
+    <div class="sb-sec">Exports</div>
+    <div class="sb-it sb-xl" title="Excel"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 9h16M4 15h16M10 3v18"/></svg><span class="sb-lb sb-chips"><button type="button" onclick="sbGo(event,()=>exportExcel('week'))">Semaine</button><button type="button" onclick="sbGo(event,()=>exportExcel('month'))">Mois</button><button type="button" onclick="sbGo(event,()=>exportExcel('full'))">Exercice</button></span></div>
+    <button type="button" class="sb-it" onclick="sbGo(event,()=>{openExportModal()})" title="Exporter les données"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7.5 7.5L12 3l4.5 4.5"/><path d="M4 14v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/></svg><span class="sb-lb">Exporter les données</span></button>
+    <div class="sb-sec">Réglages</div>
+    <button type="button" class="sb-it" onclick="sbGo(event,()=>{openStoreEditor()})" title="Paramètres du magasin"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg><span class="sb-lb">Paramètres du magasin</span></button>
+    <button type="button" class="sb-it" onclick="sbGo(event,()=>{openGHConfig()})" title="GitHub — multi-postes"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg><span class="sb-lb">GitHub — multi-postes</span><span class="sb-dot" id="sbGhDot"></span></button>
+    <button type="button" class="sb-it" onclick="sbGo(event,()=>{openSecurity()})" title="Sécurité"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span class="sb-lb">Sécurité</span></button>
+    <button type="button" class="sb-it" onclick="sbGo(event,()=>{openVersionHistory()})" title="Historique des versions"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 8v4l3 2"/></svg><span class="sb-lb">Historique des versions</span></button>
+    <button type="button" class="sb-it" onclick="sbGo(event,()=>{installApp()})" title="Installer l’application"><svg class="sb-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg><span class="sb-lb">Installer l’application</span></button>
+  </nav>
+  <button type="button" class="sb-user" onclick="sbGo(event,()=>openUserManager())" title="Mon profil"><span class="sb-av" id="sbUserAv">?</span><span class="sb-lb"><b id="sbUserName">—</b><small id="sbUserRole">—</small></span></button>
+</aside>
+<div class="sb-overlay" id="sbOverlay" onclick="closeSbar()"></div>
 <div class="cmd-bar">
   <!-- Ligne 1 : logo + semaine + badge utilisateur -->
   <div class="cmd-bar-top">
-    <button class="mobile-menu-btn" onclick="toggleMobileNav()" id="mobileMenuBtn">☰</button>
+    <button class="mobile-menu-btn" onclick="toggleSbar()" id="mobileMenuBtn" aria-label="Menu">☰</button>
     <div class="cmd-logo">
       <div class="cmd-logo-icon">📋</div>
       <div>
@@ -1453,7 +1619,7 @@ body{background:var(--pa-bg)!important}
     </div>
     <div class="cmd-center">
       <button class="cmd-nav" onclick="changeWeek(-1)">‹</button>
-      <button class="cmd-week" id="weekLabel" onclick="switchTab('weeks')">S1</button>
+      <button class="cmd-week" id="weekLabel" onclick="if(isSbDrawer()){switchTab('weeks');openMobileNav();}else{switchTab('weeks');sbSync();}">S1</button>
       <button class="cmd-nav" onclick="changeWeek(1)">›</button>
     <button class="cmd-nav cmd-today" onclick="goToday()" title="Aller à aujourd'hui">Aujourd'hui</button>
       <span id="saveIndicator" style="font-size:11px;font-weight:600;margin-left:6px;opacity:0;transition:opacity 1s ease;pointer-events:none;color:rgba(var(--hd-soft-rgb),.7)"></span>
@@ -1512,6 +1678,7 @@ body{background:var(--pa-bg)!important}
 
   <!-- ══ LEFT PANEL ══ -->
   <div class="leftnav">
+    <div class="nav-head"><span id="navHeadTitle">Calendrier des semaines</span><button type="button" class="nav-head-x" onclick="sbClosePanel()" title="Fermer le panneau" aria-label="Fermer le panneau">✕</button></div>
     <div class="nav-tabs">
       <div class="nav-tab active" id="tab-weeks"  onclick="switchTab('weeks')">Semaines</div>
       <div class="nav-tab"        id="tab-kpi"    onclick="switchTab('kpi')">KPIs</div>
@@ -3315,6 +3482,7 @@ function toast(msg,col='var(--pa-green)'){
 // ══════════════════════════════════════
 function render(){
   sanitizeAll();
+  setTimeout(()=>{ try{ sbSync(); }catch(e){} },0);
   try{ applyTheme(); }catch(e){}
   try{ updateLastSaveInfo(); }catch(e){}
   // Resync STORE depuis STORES courant
@@ -3366,6 +3534,7 @@ function applyStoreLabels(){
 
 function switchTab(m){
   sbMode=m;
+  try{ navHeadTitle(m); }catch(e){}
   ['weeks','kpi','equipe'].forEach(k=>document.getElementById('tab-'+k).classList.toggle('active',k===m));
   const app=document.querySelector('.app');
   app.classList.toggle('kpi-wide', m==='kpi');
@@ -3390,6 +3559,8 @@ function toggleNav(){
   const icon=document.getElementById('navToggleIcon');
   if(icon) icon.textContent=collapsed?'›':'‹';
   LS.setItem('atoll_nav_collapsed', collapsed?'1':'0');
+  try{ sbSync(); }catch(e){}
+  try{ setTimeout(dayLayout,260); }catch(e){}
 }
 
 function renderNav(){
@@ -3529,6 +3700,60 @@ function renderCumul(){
 
 
 
+
+// ══ MENU LATÉRAL ══
+function sbClosePanel(){
+  if(isSbDrawer()){ try{ closeMobileNav(); }catch(e){} return; }
+  const app=document.querySelector('.app'); if(app && !app.classList.contains('nav-collapsed')) toggleNav();
+  sbSync();
+}
+function navHeadTitle(m){ const el=document.getElementById('navHeadTitle'); if(el) el.textContent={weeks:'Calendrier des semaines',kpi:'Indicateurs & objectifs',equipe:'Équipe'}[m]||''; }
+
+function isSbDrawer(){ return window.innerWidth<=1024; }
+function sbGo(e,fn){ try{ e&&e.stopPropagation(); }catch(_){}
+  if(isSbDrawer()) closeSbar();
+  try{ fn(); }catch(err){ console.error(err); } }
+function toggleSbar(){
+  if(isSbDrawer()){ document.getElementById('sbar').classList.contains('open')?closeSbar():openSbar(); return; }
+  const mini=document.documentElement.classList.toggle('sb-mini'); LS.setItem('atoll_sb_mini',mini?'1':'0');
+  setTimeout(()=>{ try{ fitCmdBar(); }catch(e){} },220);
+}
+function openSbar(){ document.getElementById('sbar').classList.add('open'); document.getElementById('sbOverlay').classList.add('show'); }
+function closeSbar(){ document.getElementById('sbar')?.classList.remove('open'); document.getElementById('sbOverlay')?.classList.remove('show'); }
+function sbPlanning(){ const c=document.getElementById('content'); if(c) c.scrollTo({top:0,behavior:'smooth'}); window.scrollTo({top:0,behavior:'smooth'});
+  if(isSbDrawer()) return; const app=document.querySelector('.app'); if(app && !app.classList.contains('nav-collapsed')) { /* panneau laissé tel quel */ } }
+function sbPanel(tab){
+  if(isSbDrawer()){ switchTab(tab); openMobileNav(); return; }
+  const app=document.querySelector('.app');
+  if(sbMode===tab && !app.classList.contains('nav-collapsed')) { toggleNav(); sbSync(); return; }   // 2e clic : replie le panneau
+  switchTab(tab); sbSync();
+}
+function openAlerts(){
+  const all=checkLaborWeek(cW);
+  const body = all.length ? all.map(x=>`<div class="al-row"><span class="cu-av" style="background:${x.color}">${ini(x.nom)}</span><div><b>${esc(x.nom)}</b>${x.issues.map(i=>`<div class="al-it ${i.code==='DISPO'?'d':''}">${i.code==='DISPO'?'📌':'⚖️'} ${esc(i.msg)}</div>`).join('')}</div></div>`).join('')
+    : '<div style="padding:24px;text-align:center;color:var(--ok);font-weight:700">✓ Aucune alerte sur cette semaine</div>';
+  openModal('dlgAlerts',`Alertes — ${fullWeekLabel(cW)}`, `<div class="cs-fixed">Droit du travail (repos, pauses, durées maximales) et disponibilités des collaborateurs pour la semaine affichée.</div>${body}`,560,
+    `<button class="fl-btn ghost" onclick="closeModal('dlgAlerts')">Fermer</button><button class="fl-btn primary" onclick="closeModal('dlgAlerts');openConstraints()">Règles &amp; disponibilités</button>`);
+}
+function sbSync(){
+  try{
+    const st=getCurrentStore()||{};
+    const n=document.getElementById('sbStoreName'); if(n) n.textContent=st.name||'Planning';
+    const l=document.getElementById('sbStoreLoc'); if(l) l.textContent=st.location||'';
+    const u=CURRENT_USER; const un=document.getElementById('sbUserName'), ur=document.getElementById('sbUserRole'), ua=document.getElementById('sbUserAv');
+    if(un) un.textContent=u?.name||'Non connecté'; if(ur) ur.textContent=u?(u.role==='admin'?'Administrateur':u.role==='viewer'?'Lecteur':'Éditeur'):'—';
+    if(ua){ ua.textContent=u?ini(u.name):'?'; ua.style.background=u?.color||'var(--ac)'; }
+    const cnt=document.getElementById('sbAlertCnt');
+    if(cnt && DATA?.[cW]){ const k=checkLaborWeek(cW).reduce((a,x)=>a+x.issues.length,0); cnt.textContent=k; cnt.hidden=!k; }
+    const gd=document.getElementById('ghStatusDot'), sd=document.getElementById('sbGhDot'); if(gd&&sd) sd.style.background=gd.style.background||'#8a8a8a';
+    navHeadTitle(sbMode);
+    const app=document.querySelector('.app'), open=app && !app.classList.contains('nav-collapsed');
+    ['weeks','kpi','equipe'].forEach(k=>document.getElementById('sbIt'+k)?.classList.toggle('pan', !isSbDrawer() && open && sbMode===k));
+    document.getElementById('sbItPlanning')?.classList.toggle('on', true);
+  }catch(e){}
+}
+try{ if(LS.getItem('atoll_sb_mini')==='1' || (LS.getItem('atoll_sb_mini')==null && window.innerWidth<1600)) document.documentElement.classList.add('sb-mini'); }catch(e){}
+window.addEventListener('resize',()=>{ if(!isSbDrawer()) closeSbar(); });
 // ══ APPLICATION INSTALLABLE ══
 let _installEvt=null;
 window.addEventListener('beforeinstallprompt', e=>{ e.preventDefault(); _installEvt=e; });
@@ -4037,6 +4262,95 @@ function renderWeekBand(sem, dayIdx, laborBanner){
     <div class="wb-days">${cards}</div>
   </div>${week('wb-line-m')}`;
 }
+
+// ══ PLANNING JOUR : COURBE DE PRÉSENCE, PANNEAU DU CRÉNEAU SÉLECTIONNÉ ══
+var SEL_CI = (typeof SEL_CI!=='undefined') ? SEL_CI : null;
+function renderCovChart(counts, US){
+  const n=counts.length, dem=US.dem||[];
+  const mx=Math.max(4, ...counts, ...dem)+1, H=84;
+  const y=v=>(H-6-(v/mx)*(H-14)).toFixed(1);
+  let area=`M0,${H-6}`, line='', need='', gaps='';
+  for(let q=0;q<n;q++){ const v=counts[q]; area+=` L${q},${y(v)} L${q+1},${y(v)}`; line+=`${q?' L':'M'}${q},${y(v)} L${q+1},${y(v)}`;
+    const d=dem[q]||0; need+=`${q?' L':'M'}${q},${y(d)} L${q+1},${y(d)}`;
+    if(d>0 && v<d) gaps+=`<rect x="${q}" y="0" width="1" height="${H}" class="cv-gap${v<US.min?' min':''}"/>`; }
+  area+=` L${n},${H-6} Z`;
+  let grid=''; for(let k=0;k<=mx;k+=2) grid+=`<line x1="0" x2="${n}" y1="${y(k)}" y2="${y(k)}" class="cv-grid"/>`;
+  const labels=[]; for(let k=0;k<=mx;k+=2) labels.push(`<span style="top:${(+y(k)/H*100).toFixed(1)}%">${k}</span>`);
+  const maxN=Math.max(...counts);
+  const nGap=dem.reduce((a,d,q)=>a+(d>0&&counts[q]<d?1:0),0);
+  return `<tr class="cov-chart-tr"><td class="c-emp" colspan="5"><div class="cv-lbl"><b>Présence en surface</b>
+      <span><i class="cv-k a"></i>présents</span><span><i class="cv-k n"></i>besoin (min ${US.min}${getPeaks(cW,cD).length?' · pics':''})</span><span><i class="cv-k g"></i>sous-effectif</span>
+      <span class="${nGap?'cv-bad':'cv-ok'}">${nGap?`⚠ ${(nGap/4).toString().replace('.',',')} h sous le besoin`:'✓ besoin couvert'} · max ${maxN}</span></div></td>
+    <td class="c-bar cv-cell"><div class="cv-wrap"><div class="cv-y">${labels.join('')}</div>
+      <svg class="cv-svg" viewBox="0 0 ${n} ${H}" preserveAspectRatio="none" aria-label="Courbe de présence en surface">${grid}${gaps}
+        <path d="${area}" class="cv-area"/><path d="${line}" class="cv-line" vector-effect="non-scaling-stroke"/><path d="${need}" class="cv-need" vector-effect="non-scaling-stroke"/></svg></div></td>
+    <td colspan="3" class="cv-side"></td></tr>`;
+}
+function selectSlot(ci){ SEL_CI=(SEL_CI===ci?null:ci); renderContent(); }
+function _slotSave(){ try{ saveLocal(); }catch(e){} renderContent(); }
+function setSlotTime(ci, field, v){
+  const sl=DATA[cW].jours[cD].collaborateurs[ci]; if(!sl) return;
+  const inp={value:v,dataset:{},defaultValue:sl[field]||'10:00'}; normTime(inp); v=inp.value;
+  if(sl.statut!=='work'){ sl.statut='work'; if(!sl.debut||sl.debut===sl.fin){ sl.debut='10:00'; sl.fin='19:00'; sl.pause=1; } }
+  if(field==='pauseDebut'){ sl.pauseDebut=v; }
+  else { const o=sl[field]; sl[field]=v; if(t2h(sl.fin)<=t2h(sl.debut)){ sl[field]=o; toast('⚠ La fin doit être après le début','var(--warn)'); } }
+  _slotSave();
+}
+function setSlotPause(ci, v){ const sl=DATA[cW].jours[cD].collaborateurs[ci]; if(!sl) return; sl.pause=+v||0; if(!sl.pause) delete sl.pauseDebut; _slotSave(); }
+function setSlotStatus(ci, st){
+  const sl=DATA[cW].jours[cD].collaborateurs[ci]; if(!sl) return;
+  if(st==='work'){ if(sl.statut!=='work' || calcH(sl)<=0){ const T=TPLS[0]; Object.assign(sl,{statut:'work',debut:T?.debut||'10:00',fin:T?.fin||'19:00',pause:T?.pause??1}); } }
+  else { sl.statut=st; delete sl.np; }
+  _slotSave();
+}
+function applyTplToSlot(ci,id){ const T=TPLS.find(x=>x.id===id); if(!T) return; const sl=DATA[cW].jours[cD].collaborateurs[ci];
+  Object.assign(sl,{statut:'work',debut:T.debut,fin:T.fin,pause:T.pause||0}); delete sl.pauseDebut; _slotSave(); }
+function renderDaySide(counts, US, calc, s){
+  const WC=getCollsForWeek(cW), ci=SEL_CI;
+  let ed='';
+  if(ci==null || !WC[ci]){
+    ed=`<div class="ds-card"><div class="ds-h">Créneau sélectionné</div><div class="ds-empty">Cliquez sur le <b>nom</b> d’un collaborateur pour modifier son créneau ici.<br><span>Vous pouvez toujours glisser les barres et les pauses dans la frise.</span></div></div>`;
+  } else {
+    const c=WC[ci], sl=DATA[cW].jours[cD].collaborateurs[ci], work=sl.statut==='work', h=calcH(sl);
+    let wH=0; for(let j=0;j<7;j++) wH+=calcH(DATA[cW].jours[j].collaborateurs[ci]);
+    const diff=wH-c.base, dcol=Math.abs(diff)<0.05?'var(--ok)':diff>0?'var(--warn)':'var(--bad)';
+    const ps=work&&sl.pause>0?pauseStart(sl):null;
+    const tin=(f,v)=>stepper(`<input type="text" inputmode="numeric" maxlength="5" data-time="1" class="ds-in" value="${v}" onchange="setSlotTime(${ci},'${f}',this.value)">`,'sm');
+    const pOpts=[0,.25,.5,.75,1,1.5,2].map(v=>`<option value="${v}"${(+sl.pause||0)===v?' selected':''}>${v?(v<1?Math.round(v*60)+' min':String(v).replace('.',',')+' h'):'Aucune'}</option>`).join('');
+    const st=(k,l)=>`<button type="button" class="ds-st${(k==='work'?work:sl.statut===k)?' on':''} ${k}" onclick="setSlotStatus(${ci},'${k}')">${l}</button>`;
+    const np=npList(sl);
+    ed=`<div class="ds-card"><div class="ds-h">Créneau sélectionné <button type="button" class="ds-x" onclick="selectSlot(${ci})" title="Fermer">✕</button></div>
+      <div class="ds-who"><span class="emp-av" style="background:${c.color}">${ini(c.nom)}</span><div><b>${esc(c.nom)}</b><small>${JOURS[cD]} ${dayLabelLong(PLANNING_YEAR,cW,cD)}</small></div></div>
+      <div class="ds-week"><span>Semaine <b>${f1v(wH)} h</b> / ${c.base} h</span><b style="color:${dcol}">${Math.abs(diff)<0.05?'✓ = contrat':(diff>0?'+':'')+f1v(diff)+' h'}</b></div>
+      <div class="ds-sts">${st('work','Travail')}${st('R','Repos')}${st('CP','CP')}${st('MAL','Maladie')}</div>
+      ${work?`<div class="ds-grid"><label>Début${tin('debut',sl.debut)}</label><label>Fin${tin('fin',sl.fin)}</label>
+        <label>Pause<select class="ds-sel" onchange="setSlotPause(${ci},this.value)">${pOpts}</select></label>
+        <label>Début de pause${ps!=null?tin('pauseDebut',fmtHM(ps)):'<span class="ds-na">—</span>'}</label></div>
+        <div class="ds-dur">Durée travaillée <b>${f1v(h)} h</b>${npHours(sl)>0?` · dont ${f1v(npHours(sl))} h non productives`:''}</div>
+        ${TPLS.length?`<div class="ds-lb">Plage type</div><div class="ds-tpls">${TPLS.map(T=>`<button type="button" class="ds-tpl" onclick="applyTplToSlot(${ci},'${T.id}')"><i style="background:${T.color}"></i>${esc(T.name)}</button>`).join('')}</div>`:''}
+        <div class="ds-lb">Activités</div><div class="ds-np">${np.length?np.map(n=>`<span class="ds-npi" style="--npc:${(NP_TYPES[n.t]||{}).color||'#888'}">${(NP_TYPES[n.t]||{lbl:n.t}).lbl} ${n.d}–${n.f}</span>`).join(''):'<span class="ds-na">Aucune (réunion, merch, CDSH…)</span>'}</div>`
+      :`<div class="ds-empty" style="margin-top:6px">${{R:'Repos',CP:'Congé payé',MAL:'Arrêt maladie'}[sl.statut]||'Pas de créneau'} ce jour-là.</div>`}
+      <button type="button" class="ds-more" onclick="openHM(${ci})">Activités et options avancées…</button></div>`;
+  }
+  // Contrôles
+  const items=[];
+  if(ci!=null && WC[ci]){
+    const iss=checkLabor(cW,ci).filter(i=>i.ji===cD||i.ji===-1);
+    if(iss.length) iss.forEach(i=>items.push(['bad',i.msg])); else items.push(['ok',`${esc(WC[ci].nom)} : repos, pauses et durées conformes`]);
+  } else {
+    const all=checkLaborWeek(cW).reduce((a,x)=>a+x.issues.filter(i=>i.ji===cD).length,0);
+    items.push(all?['bad',`${all} alerte${all>1?'s':''} droit du travail ce jour`]:['ok','Droit du travail : aucune alerte ce jour']);
+  }
+  if(US.runs.length) US.runs.forEach(r=>items.push(['warn',`${fmtHM(r.from)}–${fmtHM(r.to)} : ${r.n} en surface pour un besoin de ${r.need}`]));
+  else if(US.first>=0) items.push(['ok',`Couverture : minimum ${US.min} et pics tenus`]);
+  if(calc.tH>0 && s.prod_budget>0){ const r=calc.prod/s.prod_budget; items.push([r>=1?'ok':r>=.85?'warn':'bad',`Productivité ${Math.round(calc.prod)} €/h pour un objectif de ${s.prod_budget}`]); }
+  const ctl=`<div class="ds-card"><div class="ds-h">Contrôles</div>${items.map(([k,m])=>`<div class="ds-ck"><i class="${k}"></i><span>${m}</span></div>`).join('')}</div>`;
+  return ed+ctl;
+}
+function dayLayout(){ const w=document.getElementById('dayWrap'); if(!w) return; w.classList.toggle('narrow', w.clientWidth<1180 || window.innerWidth<=768); }
+window.addEventListener('resize',()=>{ clearTimeout(window._dlT); window._dlT=setTimeout(dayLayout,120); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape' && SEL_CI!=null && document.getElementById('dayWrap') && !document.querySelector('.open')){ SEL_CI=null; renderContent(); } });
+function f1v(v){ return (Math.round(v*10)/10).toFixed(1).replace('.',','); }
 function renderContent(){
   undoTrack();
   const s=DATA[cW];
@@ -4103,7 +4417,7 @@ function renderContent(){
         <th style="width:50px;text-align:center;border-left:2px solid var(--pa-blue-mid)">Hebdo</th>
         <th style="width:44px;text-align:center">Écart</th>
         <th style="width:62px;text-align:center">Actions</th>
-      </tr></thead><tbody>`;
+      </tr></thead><tbody>%%COVCHART%%`;
 
   WC.forEach((c,ci)=>{
     const slot=dayData.collaborateurs[ci],h=calcH(slot);
@@ -4175,8 +4489,8 @@ function renderContent(){
       ?`<span class="labor-flag" title="${laborIssues.map(i=>i.msg).join('\n')}">⚖ ${laborIssues.length}</span>`
       :'';
 
-    panel+=`<tr id="c${ci}"${laborIssues.length?' class="labor-row"':''}>
-      <td class="c-emp"><div class="emp-cell">
+    panel+=`<tr id="c${ci}" class="${laborIssues.length?'labor-row':''}${ci===SEL_CI?' sel-row':''}">
+      <td class="c-emp" onclick="selectSlot(${ci})" style="cursor:pointer" title="Sélectionner pour modifier dans le panneau de droite"><div class="emp-cell">
         <div class="emp-av" style="background:${c.color}">${ini(c.nom)}</div>
         <div style="min-width:0"><div class="emp-nm" title="${esc(c.nom)}">${c.nom}</div><div class="emp-tp">${c.base}h/sem ${laborBadge}</div></div>
       </div></td>
@@ -4243,10 +4557,11 @@ function renderContent(){
   </td></tr></tbody></table>
   </div>`;
 
+  panel=panel.replace('%%COVCHART%%', renderCovChart(counts, US));
   const weekCtx=renderWeekContext(cW,cD);
   const weekPanel=renderWeekPanel(cW);
-  document.getElementById('content').innerHTML=weekCtx+panel+weekPanel+renderMonthlyContract();
-  initGanttDrag();
+  document.getElementById('content').innerHTML=weekCtx+`<div class="day-wrap${SEL_CI!=null?' has-sel':''}" id="dayWrap"><div class="day-main">${panel}</div><aside class="day-side" id="daySide">${renderDaySide(counts,US,calc,s)}</aside></div>`+weekPanel+renderMonthlyContract();
+  initGanttDrag(); dayLayout();
   updateUndoBtn();
   try{ rtLabel(document.getElementById('content')); }catch(e){}
 }
